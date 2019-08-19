@@ -1,0 +1,128 @@
+[
+  {
+    "type": "keyword",
+    "content": "const",
+    "length": 5,
+    "greedy": false
+  },
+  " hello ",
+  {
+    "type": "operator",
+    "content": "=",
+    "length": 1,
+    "greedy": false
+  },
+  " ",
+  {
+    "type": "punctuation",
+    "content": "(",
+    "length": 1,
+    "greedy": false
+  },
+  "world",
+  {
+    "type": "punctuation",
+    "content": ")",
+    "length": 1,
+    "greedy": false
+  },
+  " ",
+  {
+    "type": "operator",
+    "content": "=",
+    "length": 1,
+    "greedy": false
+  },
+  {
+    "type": "operator",
+    "content": ">",
+    "length": 1,
+    "greedy": false
+  },
+  " ",
+  {
+    "type": "punctuation",
+    "content": "{",
+    "length": 1,
+    "greedy": false
+  },
+  " console",
+  {
+    "type": "punctuation",
+    "content": ".",
+    "length": 1,
+    "greedy": false
+  },
+  {
+    "type": "function",
+    "content": "log",
+    "length": 3,
+    "greedy": false
+  },
+  {
+    "type": "punctuation",
+    "content": "(",
+    "length": 1,
+    "greedy": false
+  },
+  {
+    "type": "template-string",
+    "content": [
+      {
+        "type": "string",
+        "content": "`hello ",
+        "length": 7,
+        "greedy": false
+      },
+      {
+        "type": "interpolation",
+        "content": [
+          {
+            "type": "interpolation-punctuation",
+            "content": "${",
+            "alias": "punctuation",
+            "length": 2,
+            "greedy": false
+          },
+          "world",
+          {
+            "type": "interpolation-punctuation",
+            "content": "}",
+            "alias": "punctuation",
+            "length": 1,
+            "greedy": false
+          }
+        ],
+        "length": 8,
+        "greedy": false
+      },
+      {
+        "type": "string",
+        "content": "`",
+        "length": 1,
+        "greedy": false
+      }
+    ],
+    "length": 16,
+    "greedy": true
+  },
+  {
+    "type": "punctuation",
+    "content": ")",
+    "length": 1,
+    "greedy": false
+  },
+  " ",
+  {
+    "type": "punctuation",
+    "content": "}",
+    "length": 1,
+    "greedy": false
+  },
+  {
+    "type": "punctuation",
+    "content": ";",
+    "length": 1,
+    "greedy": false
+  }
+]

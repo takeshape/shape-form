@@ -1,0 +1,135 @@
+[
+  {
+    "type": "tag",
+    "content": [
+      {
+        "type": "tag",
+        "content": [
+          {
+            "type": "punctuation",
+            "content": "<",
+            "length": 1,
+            "greedy": false
+          },
+          "script"
+        ],
+        "length": 7,
+        "greedy": false
+      },
+      " ",
+      {
+        "type": "attr-name",
+        "content": [
+          "src"
+        ],
+        "length": 3,
+        "greedy": false
+      },
+      {
+        "type": "attr-value",
+        "content": [
+          {
+            "type": "punctuation",
+            "content": "=",
+            "length": 1,
+            "greedy": false
+          },
+          {
+            "type": "punctuation",
+            "content": "\"",
+            "length": 1,
+            "greedy": false
+          },
+          "prism.js",
+          {
+            "type": "punctuation",
+            "content": "\"",
+            "length": 1,
+            "greedy": false
+          }
+        ],
+        "length": 11,
+        "greedy": false
+      },
+      " ",
+      {
+        "type": "attr-name",
+        "content": [
+          "data-default-language"
+        ],
+        "length": 21,
+        "greedy": false
+      },
+      {
+        "type": "attr-value",
+        "content": [
+          {
+            "type": "punctuation",
+            "content": "=",
+            "length": 1,
+            "greedy": false
+          },
+          {
+            "type": "punctuation",
+            "content": "\"",
+            "length": 1,
+            "greedy": false
+          },
+          "markup",
+          {
+            "type": "punctuation",
+            "content": "\"",
+            "length": 1,
+            "greedy": false
+          }
+        ],
+        "length": 9,
+        "greedy": false
+      },
+      {
+        "type": "punctuation",
+        "content": ">",
+        "length": 1,
+        "greedy": false
+      }
+    ],
+    "length": 54,
+    "greedy": false
+  },
+  {
+    "type": "script",
+    "content": [
+      ""
+    ],
+    "alias": "language-javascript",
+    "length": 0,
+    "greedy": false
+  },
+  {
+    "type": "tag",
+    "content": [
+      {
+        "type": "tag",
+        "content": [
+          {
+            "type": "punctuation",
+            "content": "</",
+            "length": 2,
+            "greedy": false
+          },
+          "script"
+        ],
+        "length": 8,
+        "greedy": false
+      },
+      {
+        "type": "punctuation",
+        "content": ">",
+        "length": 1,
+        "greedy": false
+      }
+    ],
+    "length": 9,
+    "greedy": false
+  }
+]

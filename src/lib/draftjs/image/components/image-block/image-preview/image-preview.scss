@@ -1,0 +1,49 @@
+@import "~react-toolbox/lib/colors";
+
+$max-height: 35rem;
+
+.preview {
+  display: block;
+  cursor: pointer;
+  will-change: box-shadow;
+  transition: box-shadow 0.1s ease-in-out;
+  background-color: $palette-blue-grey-50;
+  font-size: 0;
+  max-height: $max-height;
+
+  .imageDisplay {
+    display: inline-block;
+    object-fit: contain;
+    object-position: center;
+    max-width: 100%;
+    max-height: $max-height;
+  }
+}
+
+.placeholder {
+  cursor: pointer;
+  height: $max-height;
+  background-color: $palette-blue-grey-50;
+  color: $palette-blue-grey-600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  span {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.4rem;
+  }
+}
+
+.dragging {
+  border: 5px solid $palette-indigo-400;
+  height: $max-height;
+}
+
+.loading {
+  height: $max-height;
+}
+

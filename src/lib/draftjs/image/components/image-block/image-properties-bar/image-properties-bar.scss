@@ -1,0 +1,62 @@
+@import "~react-toolbox/lib/colors";
+
+// edit button style:
+.icon {
+  color: white;
+  background-color: $palette-grey-900;
+  vertical-align: center;
+}
+
+%propertyBarItems {
+  display: flex;
+  flex: 1;
+  vertical-align: center;
+  align-items: center;
+}
+
+.propertiesBar {
+  background-color: $palette-grey-900;
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+  justify-content: space-between;
+  cursor: pointer;
+
+  .statusIcons {
+    @extend %propertyBarItems;
+    justify-content: flex-start;
+  }
+
+  .title {
+    @extend %propertyBarItems;
+    flex: 4;
+    min-width: 0;
+  }
+
+  .edit {
+    @extend %propertyBarItems;
+    justify-content: flex-end;
+  }
+
+  .titleText {
+    color: white;
+    text-align: center;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-self: center;
+    white-space: nowrap;
+  }
+
+  .alignment {
+    color: white;
+    vertical-align: center;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    align-self: flex-end;
+    font-size: 2.2rem;
+  }
+}

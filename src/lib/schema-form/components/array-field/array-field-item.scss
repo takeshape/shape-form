@@ -1,0 +1,65 @@
+@import "~react-toolbox-legacy/lib/colors";
+
+.element {
+  opacity: 1;
+  list-style: none;
+
+  & + * {
+    margin-top: 1rem;
+  }
+}
+
+.dragging {
+  opacity: 0;
+}
+
+.card {
+  box-shadow: none;
+  overflow: visible;
+  transition: height 1s;
+
+  & + * {
+    margin-top: 4rem;
+  }
+}
+
+.cardText {
+  border-left: 1px solid $palette-blue-grey-50;
+  border-bottom: 1px solid $palette-blue-grey-50;
+  border-right: 1px solid $palette-blue-grey-50;
+
+  &:last-child {
+    padding-bottom: 1.4rem;
+  }
+}
+
+.header {
+  background-color: rgb(238,241,247);
+  width: 100%;
+  padding: 0.6rem 0.6rem 0.6rem 0;
+  color: $palette-blue-grey-500;
+  font-size: 1.2rem;
+
+  &.draggable {
+    cursor: move;
+  }
+}
+
+.delete {
+  float: right;
+}
+
+.caret {
+  svg {
+    height: 1.2rem;
+    margin: 1.2rem 0;
+    transition: 200ms ease all;
+    transform: rotate(90deg);
+  }
+}
+
+.collapsed {
+  svg {
+    transform: rotate(0deg);
+  }
+}

@@ -1,0 +1,87 @@
+@import "~react-toolbox/lib/colors";
+
+.editor {
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid $palette-blue-grey-50;
+  border-radius: 0.2rem;
+  padding: 3rem;
+  margin-bottom: 1.2rem;
+  color: #212121;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  cursor: text;
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.33;
+  }
+
+  h1 {
+    font-size: 3.8rem;
+  }
+
+  h2 {
+    font-size: 3.2rem;
+  }
+
+  h3 {
+    font-size: 2.8rem;
+  }
+
+  h4 {
+    font-size: 2.4rem;
+  }
+
+  h5 {
+    font-size: 2.2rem;
+  }
+
+  h6 {
+    font-size: 1.8rem;
+  }
+
+  blockquote {
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      left: -1rem;
+      top: 0;
+      width: 0.3rem;
+      height: 100%;
+      background-color: $palette-blue-grey-50;
+    }
+  }
+
+  [data-contents] {
+    > * {
+      & + * {
+        margin-top: 1.6rem;
+      }
+    }
+    > ul, ol {
+      margin-left: 1.6rem;
+
+      li {
+        line-height: 1.5;
+        margin-top: 0;
+      }
+    }
+
+    > ul {
+      list-style: disc;
+    }
+  }
+}
+
+.editor :global(.public-DraftEditor-content) {
+  min-height: 14rem;
+}
+
+.linkContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.8rem;
+}

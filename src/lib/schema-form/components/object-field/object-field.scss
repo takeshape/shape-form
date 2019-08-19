@@ -1,0 +1,19 @@
+@import "~react-toolbox/lib/colors";
+
+.objectTitle {
+  font-size: 1.6rem;
+  color: rgb(55,71,79);
+  margin-bottom: 0.6rem;
+}
+
+.objectWrapper {
+  border: 1px solid #eceff1;
+  padding: 1.6rem 1.6rem 2.6rem;
+}
+
+
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}

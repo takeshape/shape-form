@@ -1,0 +1,32 @@
+@import "~react-toolbox/lib/colors";
+
+.sizeIcon {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  display: inline-block;
+
+  path {
+    fill: $palette-grey-600;
+  }
+}
+
+.small {
+  path:nth-child(3) {
+    fill: white;
+  }
+}
+
+.medium {
+  path:nth-child(2) {
+    fill: white;
+  }
+}
+
+.large {
+  path:nth-child(1) {
+    fill: white;
+  }
+}
+

@@ -1,0 +1,59 @@
+@import "~react-toolbox/lib/colors";
+
+.widget {
+  display: block;
+  width: 100%;
+
+  &:not(:last-child) {
+    padding: 0 0 2rem 0;
+  }
+
+  .input {
+    padding: 2rem 0 0.8rem;
+  }
+
+  // checkbox
+  .field:only-of-type {
+    margin-bottom: 0.8rem;
+  }
+
+  &.disabled {
+    .title {
+      color: rgba($color-black, 0.26);
+    }
+  }
+}
+
+.header {
+  margin-bottom: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.title {
+  color: $palette-blue-grey-700;
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+  display: flex;
+}
+
+.actions {
+  display: flex;
+  > * + * {
+    margin-left: 1rem;
+  }
+}
+
+.required {
+  position: relative;
+  color: $palette-red-a200 !important;
+  font-size: 0.8em;
+  top: -0.2rem;
+}
+
+.error {
+  color: $palette-red-a200;
+  margin: 0.8rem 0;
+}

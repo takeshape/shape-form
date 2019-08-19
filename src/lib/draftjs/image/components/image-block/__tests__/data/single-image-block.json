@@ -1,0 +1,56 @@
+{
+  "entityMap": {
+    "0": {
+      "type": "image",
+      "mutability": "IMMUTABLE",
+      "data": {
+        "id": "a0a5aa0b-0289-4884-9f4c-fe67f32bd901",
+        "caption": {
+          "entityMap": {},
+          "blocks": [
+            {
+              "key": "brb03",
+              "text": "",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [],
+              "entityRanges": [],
+              "data": {}
+            }
+          ]
+        },
+        "credit": {
+          "entityMap": {},
+          "blocks": [
+            {
+              "key": "brb03",
+              "text": "",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [],
+              "entityRanges": [],
+              "data": {}
+            }
+          ]
+        }
+      }
+    }
+  },
+  "blocks": [
+    {
+      "key": "q30e",
+      "text": " ",
+      "type": "atomic",
+      "depth": 0,
+      "inlineStyleRanges": [],
+      "entityRanges": [
+        {
+          "offset": 0,
+          "length": 1,
+          "key": 0
+        }
+      ],
+      "data": {}
+    }
+  ]
+}

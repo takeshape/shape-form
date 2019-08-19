@@ -1,0 +1,30 @@
+@import "~react-toolbox/lib/colors";
+
+.editor {
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid #c2c8c9;
+  border-radius: 0.2rem;
+  min-height: 4rem;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  color: #212121;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  cursor: text;
+
+  &.disabled {
+    color: rgba($color-black, 0.26);
+  }
+
+  [data-contents] {
+    > * {
+      & + * {
+        margin-top: 1.6rem;
+      }
+    }
+    > ul, ol {
+      margin-left: 1.6rem;
+    }
+  }
+}

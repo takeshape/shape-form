@@ -1,0 +1,14 @@
+@import "~react-toolbox/lib/colors";
+
+.title {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  font-weight: normal;
+  line-height: 1.2;
+  color: $palette-blue-grey-700;
+}
+
+.error {
+  color: red;
+}

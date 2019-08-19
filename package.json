@@ -1,0 +1,31 @@
+{
+  "name": "shape-form",
+  "version": "0.0.1",
+  "description": "JSON Schema based form generation",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takeshape/shape-form.git"
+  },
+  "author": "asprouse",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/takeshape/shape-form/issues"
+  },
+  "homepage": "https://github.com/takeshape/shape-form#readme",
+  "dependencies": {
+    "draft-js": "^0.11.0",
+    "lodash": "^4.17.15",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "redux": "^4.0.4",
+    "redux-saga": "^1.0.5",
+    "reselect": "^4.0.0"
+  }
+}

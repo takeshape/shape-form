@@ -1,0 +1,20 @@
+@import "~react-toolbox/lib/colors";
+
+$palette-blue-10 : #F4F6F7;
+
+.image {
+  position: relative;
+  background-color: $palette-blue-10;
+  display: block;
+  text-align: center;
+  user-select: none;
+  border-radius: 0.4rem;
+  overflow: hidden;
+
+  .disabled {
+    input {
+      color: #000;
+    }
+  }
+
+}

@@ -1,0 +1,45 @@
+{
+  "title": "itle",
+  "description": null,
+  "filename": "dandelion-2295441_1920.jpg",
+  "caption": {
+    "entityMap": {},
+    "blocks": [
+      {
+        "key": "brb03",
+        "text": "",
+        "type": "unstyled",
+        "depth": 0,
+        "inlineStyleRanges": [],
+        "entityRanges": [],
+        "data": {}
+      }
+    ]
+  },
+  "credit": {
+    "entityMap": {},
+    "blocks": [
+      {
+        "key": "brb03",
+        "text": "",
+        "type": "unstyled",
+        "depth": 0,
+        "inlineStyleRanges": [],
+        "entityRanges": [],
+        "data": {}
+      }
+    ]
+  },
+  "path": "6f78e8ac-527a-4e09-9c5e-510876b096bf/dev/7ee8dc40-b9b5-4e97-a3ce-0f3996708262/dandelion-2295441_1920.jpg",
+  "mimeType": "image/jpeg",
+  "uploadStatus": "PENDING",
+  "_id": "a0a5aa0b-0289-4884-9f4c-fe67f32bd901",
+  "_version": 2,
+  "_contentTypeId": "ASSET",
+  "_contentTypeName": "asset",
+  "_createdAt": "2017-09-18T15:28:28.423Z",
+  "_updatedAt": "2017-09-18T15:28:28.423Z",
+  "_enabled": true,
+  "_enabledAt": "2017-09-18T15:28:28.423Z",
+  "searchSummary": "itle"
+}

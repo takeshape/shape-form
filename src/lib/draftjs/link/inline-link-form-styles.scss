@@ -1,0 +1,64 @@
+.linkForm {
+  width: 220px;
+  height: 68px;
+  position: absolute;
+  border-radius: 2px;
+  background-color: #434953;
+  box-shadow: 0 1px 3px 0 rgba(220,220,220,1);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+
+  > button > span {
+    font-size: 1.5rem !important;
+    display: flex !important;
+  }
+  & button:first-of-type {
+    left: 10px;
+  }
+}
+
+.linkInput {
+  width: 275px;
+  > label {
+    color: #fff !important;
+    font-size: 1.2rem;
+  }
+
+  > span:after, > span:before {
+    background-color: #fff;
+  }
+
+  > input {
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    font-size: 1.2rem;
+  }
+}
+
+.buttonActive {
+  color: #68daa2 !important;
+  fill: #68daa2;
+}
+
+.buttonDefault {
+  color: #fff !important;
+  fill: #fff;
+}
+
+.pointer {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(67,73,83, 0);
+  border-top-color: #434953;
+  border-width: 6px;
+  margin-left: -6px;
+}

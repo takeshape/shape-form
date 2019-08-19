@@ -1,0 +1,92 @@
+[
+  {
+    "type": "tag",
+    "content": [
+      {
+        "type": "tag",
+        "content": [
+          {
+            "type": "punctuation",
+            "content": "<",
+            "length": 1,
+            "greedy": false
+          },
+          "a"
+        ],
+        "length": 2,
+        "greedy": false
+      },
+      " ",
+      {
+        "type": "attr-name",
+        "content": [
+          "href"
+        ],
+        "length": 4,
+        "greedy": false
+      },
+      {
+        "type": "attr-value",
+        "content": [
+          {
+            "type": "punctuation",
+            "content": "=",
+            "length": 1,
+            "greedy": false
+          },
+          {
+            "type": "punctuation",
+            "content": "\"",
+            "length": 1,
+            "greedy": false
+          },
+          "index.html",
+          {
+            "type": "punctuation",
+            "content": "\"",
+            "length": 1,
+            "greedy": false
+          }
+        ],
+        "length": 13,
+        "greedy": false
+      },
+      {
+        "type": "punctuation",
+        "content": ">",
+        "length": 1,
+        "greedy": false
+      }
+    ],
+    "length": 21,
+    "greedy": false
+  },
+  "home",
+  {
+    "type": "tag",
+    "content": [
+      {
+        "type": "tag",
+        "content": [
+          {
+            "type": "punctuation",
+            "content": "</",
+            "length": 2,
+            "greedy": false
+          },
+          "a"
+        ],
+        "length": 3,
+        "greedy": false
+      },
+      {
+        "type": "punctuation",
+        "content": ">",
+        "length": 1,
+        "greedy": false
+      }
+    ],
+    "length": 4,
+    "greedy": false
+  }
+]

@@ -1,0 +1,17 @@
+.captionBar {
+  align-items: right;
+  padding: 1.5rem;
+  cursor: pointer;
+
+  .caption {
+    font-size: 1.4rem;
+    text-align: left;
+    margin: .25rem;
+  }
+
+  .credit {
+    font-size: 1.4rem;
+    text-align: left;
+    margin: .25rem;
+  }
+}

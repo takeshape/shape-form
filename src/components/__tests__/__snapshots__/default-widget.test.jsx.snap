@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DefaultWidget renders checkbox 1`] = `
+<CheckboxWidget
+  checked={true}
+  config={Immutable.Map {}}
+  error=""
+  isRequired={false}
+  onBlur={[MockFunction]}
+  onChange={[Function]}
+  onFocus={[MockFunction]}
+  path="test"
+  schema={
+    Immutable.Map {
+      "type": "boolean",
+      "title": "Checkbox Input",
+    }
+  }
+  type="checkbox"
+  value={true}
+/>
+`;
+
+exports[`DefaultWidget renders dropdown 1`] = `
+<TextInputWidget
+  config={Immutable.Map {}}
+  error=""
+  isRequired={false}
+  onBlur={[MockFunction]}
+  onChange={[Function]}
+  onFocus={[MockFunction]}
+  path="test"
+  schema={
+    Immutable.Map {
+      "type": "string",
+      "title": "Text Input",
+      "enum": Immutable.List [
+        "foo",
+        "bar",
+        "baz",
+      ],
+    }
+  }
+  value="foo"
+/>
+`;
+
+exports[`DefaultWidget renders number input 1`] = `
+<TextInputWidget
+  config={Immutable.Map {}}
+  error=""
+  isRequired={false}
+  onBlur={[MockFunction]}
+  onChange={[Function]}
+  onFocus={[MockFunction]}
+  path="test"
+  schema={
+    Immutable.Map {
+      "type": "number",
+      "title": "Number Input",
+    }
+  }
+  type="number"
+  value={true}
+/>
+`;
+
+exports[`DefaultWidget renders text input 1`] = `
+<TextInputWidget
+  config={Immutable.Map {}}
+  error=""
+  isRequired={false}
+  onBlur={[MockFunction]}
+  onChange={[Function]}
+  onFocus={[MockFunction]}
+  path="test"
+  schema={
+    Immutable.Map {
+      "type": "string",
+      "title": "Text Input",
+    }
+  }
+  type="text"
+  value="Hello World"
+/>
+`;

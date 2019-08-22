@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Submit Button renders while saving 1`] = `
+<ForwardRef(WithStyles)
+  color="secondary"
+  disabled={true}
+  onClick={[Function]}
+  variant="contained"
+>
+  <ForwardRef(StyledComponent)
+    color="primary"
+    size={18}
+    variant="indeterminate"
+  />
+  Saving
+</ForwardRef(WithStyles)>
+`;
+
+exports[`Submit Button renders without exploding 1`] = `
+<ForwardRef(WithStyles)
+  color="secondary"
+  disabled={true}
+  onClick={[Function]}
+  variant="contained"
+>
+  Save
+</ForwardRef(WithStyles)>
+`;

@@ -1,0 +1,270 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ObjectField handles invalid property names in order 1`] = `
+<React.Fragment>
+  <SchemaField
+    config={Immutable.Map {}}
+    formName="test-form"
+    isRequired={true}
+    locale="pt-br"
+    path="user.email"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+  />
+  <SchemaField
+    config={Immutable.Map {}}
+    formName="test-form"
+    isRequired={false}
+    locale="pt-br"
+    path="user.firstName"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+  />
+  <SchemaField
+    config={Immutable.Map {}}
+    formName="test-form"
+    isRequired={false}
+    locale="pt-br"
+    path="user.lastName"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+  />
+</React.Fragment>
+`;
+
+exports[`ObjectField renders emptyObject widget 1`] = `
+<EmptyObject
+  config={Immutable.Map {}}
+  context={Object {}}
+  formName="test-form"
+  locale="pt-br"
+  path="user"
+  schema={
+    Immutable.Map {
+      "type": "object",
+      "properties": Immutable.Map {},
+    }
+  }
+  widgets={
+    Object {
+      "emptyObject": "EmptyObject",
+    }
+  }
+/>
+`;
+
+exports[`ObjectField renders with configured order 1`] = `
+<React.Fragment>
+  <SchemaField
+    config={Immutable.Map {}}
+    formName="test-form"
+    isRequired={true}
+    locale="pt-br"
+    path="user.email"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+  />
+  <SchemaField
+    config={Immutable.Map {}}
+    formName="test-form"
+    isRequired={false}
+    locale="pt-br"
+    path="user.firstName"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+  />
+  <SchemaField
+    config={Immutable.Map {}}
+    formName="test-form"
+    isRequired={false}
+    locale="pt-br"
+    path="user.lastName"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+  />
+</React.Fragment>
+`;
+
+exports[`ObjectField renders with empty order 1`] = `<React.Fragment />`;
+
+exports[`ObjectField renders with required 1`] = `
+<React.Fragment>
+  <SchemaField
+    config={Immutable.Map {}}
+    formName="test-form"
+    isRequired={true}
+    locale="pt-br"
+    path="user.email"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+  />
+  <SchemaField
+    config={Immutable.Map {}}
+    formName="test-form"
+    isRequired={false}
+    locale="pt-br"
+    path="user.firstName"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+  />
+  <SchemaField
+    config={Immutable.Map {}}
+    formName="test-form"
+    isRequired={false}
+    locale="pt-br"
+    path="user.lastName"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+  />
+</React.Fragment>
+`;
+
+exports[`ObjectField renders with title and required 1`] = `
+<ObjectFieldWrapper
+  config={Immutable.Map {}}
+  formName="test-form"
+  isRequired={true}
+  locale="pt-br"
+  path="user"
+  schema={
+    Immutable.Map {
+      "title": "User",
+      "type": "object",
+      "properties": Immutable.Map {
+        "firstName": Immutable.Map {
+          "type": "string",
+        },
+        "lastName": Immutable.Map {
+          "type": "string",
+        },
+        "email": Immutable.Map {
+          "type": "string",
+        },
+      },
+    }
+  }
+>
+  <SchemaField
+    config={Immutable.Map {}}
+    formName="test-form"
+    isRequired={false}
+    locale="pt-br"
+    path="user.firstName"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+  />
+  <SchemaField
+    config={Immutable.Map {}}
+    formName="test-form"
+    isRequired={false}
+    locale="pt-br"
+    path="user.lastName"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+  />
+  <SchemaField
+    config={Immutable.Map {}}
+    formName="test-form"
+    isRequired={false}
+    locale="pt-br"
+    path="user.email"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+  />
+</ObjectFieldWrapper>
+`;
+
+exports[`ObjectField renders without required 1`] = `
+<React.Fragment>
+  <SchemaField
+    config={Immutable.Map {}}
+    context={
+      Object {
+        "foo": "bar",
+      }
+    }
+    formName="test-form"
+    isRequired={false}
+    locale="pt-br"
+    path="email"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+    widgets={Object {}}
+  />
+  <SchemaField
+    config={Immutable.Map {}}
+    context={
+      Object {
+        "foo": "bar",
+      }
+    }
+    formName="test-form"
+    isRequired={false}
+    locale="pt-br"
+    path="firstName"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+    widgets={Object {}}
+  />
+  <SchemaField
+    config={Immutable.Map {}}
+    context={
+      Object {
+        "foo": "bar",
+      }
+    }
+    formName="test-form"
+    isRequired={false}
+    locale="pt-br"
+    path="lastName"
+    schema={
+      Immutable.Map {
+        "type": "string",
+      }
+    }
+    widgets={Object {}}
+  />
+</React.Fragment>
+`;

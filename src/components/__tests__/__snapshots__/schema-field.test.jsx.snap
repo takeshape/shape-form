@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SchemaField renders array field 1`] = `
+<Memo(Connect(ArrayField))
+  config={Immutable.Map {}}
+  formName="default"
+  path="text"
+  schema={
+    Immutable.Map {
+      "type": "array",
+    }
+  }
+/>
+`;
+
+exports[`SchemaField renders object field 1`] = `
+<ObjectField
+  config={Immutable.Map {}}
+  formName="default"
+  path="user"
+  schema={
+    Immutable.Map {
+      "type": "object",
+      "properties": Object {
+        "email": Object {
+          "type": "string",
+        },
+        "firstName": Object {
+          "type": "string",
+        },
+        "lastName": Object {
+          "type": "string",
+        },
+      },
+    }
+  }
+/>
+`;
+
+exports[`SchemaField renders scalar field 1`] = `
+<Memo(Connect(ScalarField))
+  config={Immutable.Map {}}
+  formName="default"
+  path="text"
+  schema={
+    Immutable.Map {
+      "type": "string",
+    }
+  }
+/>
+`;
+
+exports[`SchemaField renders scalar field with custom widget 1`] = `
+<Memo(Connect(ScalarField))
+  config={
+    Immutable.Map {
+      "widget": "text",
+    }
+  }
+  formName="default"
+  path="text"
+  schema={
+    Immutable.Map {
+      "type": "string",
+      "title": "Text Input",
+    }
+  }
+  widgets={
+    Object {
+      "text": [Function],
+    }
+  }
+/>
+`;

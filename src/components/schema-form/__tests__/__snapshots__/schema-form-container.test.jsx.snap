@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SchemaFormContainer renders 1`] = `
+<SchemaForm
+  clearForm={[Function]}
+  formName="test-form"
+  registerForm={[Function]}
+  registeredSchema={
+    Immutable.Map {
+      "type": "object",
+      "properties": Immutable.Map {
+        "name": Immutable.Map {
+          "type": "string",
+        },
+      },
+    }
+  }
+  submitForm={[Function]}
+/>
+`;

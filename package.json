@@ -1,0 +1,132 @@
+{
+  "name": "shape-form",
+  "version": "0.1.2",
+  "description": "JSON Schema based form generation",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "scripts": {
+    "storybook": "start-storybook",
+    "test": "BABEL_ENV=test NODE_PATH=. jest",
+    "typecheck": "tsc --skipLibCheck --noEmit",
+    "debug": "node --inspect --debug-brk ./node_modules/.bin/jest --runInBand",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "clean": "rimraf  lib es",
+    "prepublishOnly": "yarn lint && yarn test && yarn run clean && yarn run build",
+    "build": "yarn build:types && yarn build:js && yarn build:es",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --extensions \".js,.ts,.jsx,.tsx\" --ignore '**/__tests__'",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --extensions \".js,.ts,.jsx,.tsx\" --ignore '**/__tests__'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takeshape/shape-form.git"
+  },
+  "author": "asprouse",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/takeshape/shape-form/issues"
+  },
+  "homepage": "https://github.com/takeshape/shape-form#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.3.2",
+    "@material-ui/icons": "^4.2.1",
+    "@material-ui/styles": "^4.3.0",
+    "ajv": "^6.10.2",
+    "classnames": "^2.2.6",
+    "immutable": "^4.0.0-rc.12",
+    "lodash": "^4.17.15",
+    "react-dnd": "^2.1.4",
+    "react-dnd-html5-backend": "^2.1.2",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-saga": "^1.0.5",
+    "reselect": "^4.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-do-expressions": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-bind": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.0.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.0.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
+    "@babel/plugin-proposal-pipeline-operator": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/register": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@storybook/addon-knobs": "^5.1.11",
+    "@storybook/preset-scss": "^1.0.2",
+    "@storybook/react": "^5.1.11",
+    "@types/enzyme": "^3.10.3",
+    "@types/jest": "^24.0.18",
+    "@types/react": "^16.9.2",
+    "@types/react-redux": "^7.1.2",
+    "@types/react-test-renderer": "^16.9.0",
+    "@types/redux": "^3.6.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "babel-loader": "^8.0.0",
+    "babel-plugin-dynamic-import-node": "^1.1.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^3.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.4.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-react": "1.1.7",
+    "eslint-config-xo": "0.26.0",
+    "eslint-config-xo-react": "0.19.0",
+    "eslint-import-resolver-webpack": "^0.11.1",
+    "eslint-plugin-filenames": "^1.3.2",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "jest": "^24.9.0",
+    "node-sass": "^4.12.0",
+    "prettier": "^1.18.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-test-renderer": "^16.9.0",
+    "sass-loader": "^7.2.0",
+    "storybook-addon-jsx": "^7.1.5",
+    "style-loader": "^1.0.0",
+    "typescript": "^3.5.3"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./setup-tests.js"
+    ],
+    "roots": [
+      "src"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    },
+    "testMatch": [
+      "**/*.test.{js,jsx,ts,tsx}"
+    ]
+  }
+}

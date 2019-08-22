@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DefaultContentPreview renders number 1`] = `
+<span>
+  7
+</span>
+`;
+
+exports[`DefaultContentPreview renders object 1`] = `
+<span>
+  andrew@takeshape.io
+</span>
+`;
+
+exports[`DefaultContentPreview renders object with long string 1`] = `
+<span>
+  Cronut knausgaard bespoke green juice...
+</span>
+`;
+
+exports[`DefaultContentPreview renders object with order config 1`] = `
+<span>
+  Sprouse
+</span>
+`;
+
+exports[`DefaultContentPreview renders string 1`] = `
+<span>
+  Andrew
+</span>
+`;
+
+exports[`DefaultContentPreview renders with no content 1`] = `
+<span>
+  New item
+</span>
+`;

@@ -1,0 +1,1050 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArrayField renders 1`] = `
+<ForwardRef(WithStyles)
+  actions={
+    <span>
+      <ForwardRef(WithStyles)
+        onClick={[MockFunction]}
+        size="small"
+      >
+        <Memo(UnfoldLessIcon) />
+      </ForwardRef(WithStyles)>
+    </span>
+  }
+  addArrayItem={[MockFunction]}
+  blurField={[MockFunction]}
+  collapseAllArrayItems={[MockFunction]}
+  config={Immutable.Map {}}
+  context={Object {}}
+  expandAllArrayItems={[MockFunction]}
+  fieldAction={[MockFunction]}
+  formName="test-form"
+  initializeArray={[MockFunction]}
+  isRequired={false}
+  length={3}
+  locale="pt-br"
+  path="users"
+  removeArrayItem={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "type": "array",
+      "items": Immutable.Map {
+        "type": "object",
+        "properties": Immutable.Map {
+          "email": Immutable.Map {
+            "type": "string",
+          },
+          "firstName": Immutable.Map {
+            "type": "string",
+          },
+          "lastName": Immutable.Map {
+            "type": "string",
+          },
+        },
+      },
+    }
+  }
+  toggleArrayItem={[MockFunction]}
+  ui={
+    Immutable.Map {
+      "arrayKeys": Immutable.List [
+        0,
+        1,
+        2,
+      ],
+      "collapsed": Immutable.Set [],
+    }
+  }
+  widgets={Object {}}
+>
+  <ForwardRef(WithStyles)>
+    <ForwardRef(WithStyles)
+      arrayKey={0}
+      config={Immutable.Map {}}
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={0}
+      index={0}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+    <ForwardRef(WithStyles)
+      arrayKey={1}
+      config={Immutable.Map {}}
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={1}
+      index={1}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+    <ForwardRef(WithStyles)
+      arrayKey={2}
+      config={Immutable.Map {}}
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={2}
+      index={2}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+  </ForwardRef(WithStyles)>
+  <ForwardRef(WithStyles)
+    color="secondary"
+    onClick={[Function]}
+    size="small"
+  >
+    <Memo(AddIcon) />
+  </ForwardRef(WithStyles)>
+</ForwardRef(WithStyles)>
+`;
+
+exports[`ArrayField renders empty 1`] = `
+<ForwardRef(WithStyles)
+  addArrayItem={[MockFunction]}
+  blurField={[MockFunction]}
+  collapseAllArrayItems={[MockFunction]}
+  config={Immutable.Map {}}
+  context={Object {}}
+  expandAllArrayItems={[MockFunction]}
+  fieldAction={[MockFunction]}
+  formName="test-form"
+  initializeArray={[MockFunction]}
+  isRequired={false}
+  length={0}
+  locale="pt-br"
+  path="users"
+  removeArrayItem={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "type": "array",
+      "items": Immutable.Map {
+        "type": "object",
+        "properties": Immutable.Map {
+          "email": Immutable.Map {
+            "type": "string",
+          },
+          "firstName": Immutable.Map {
+            "type": "string",
+          },
+          "lastName": Immutable.Map {
+            "type": "string",
+          },
+        },
+      },
+    }
+  }
+  toggleArrayItem={[MockFunction]}
+  ui={
+    Immutable.Map {
+      "arrayKeys": Immutable.List [
+        0,
+        1,
+        2,
+      ],
+      "collapsed": Immutable.Set [],
+    }
+  }
+  widgets={Object {}}
+>
+  <ForwardRef(WithStyles) />
+  <ForwardRef(WithStyles)
+    color="secondary"
+    onClick={[Function]}
+    size="small"
+  >
+    <Memo(AddIcon) />
+  </ForwardRef(WithStyles)>
+</ForwardRef(WithStyles)>
+`;
+
+exports[`ArrayField renders placeholder 1`] = `
+<ForwardRef(WithStyles)
+  actions={
+    <span>
+      <ForwardRef(WithStyles)
+        onClick={[MockFunction]}
+        size="small"
+      >
+        <Memo(UnfoldLessIcon) />
+      </ForwardRef(WithStyles)>
+    </span>
+  }
+  addArrayItem={[MockFunction]}
+  blurField={[MockFunction]}
+  collapseAllArrayItems={[MockFunction]}
+  config={Immutable.Map {}}
+  context={Object {}}
+  expandAllArrayItems={[MockFunction]}
+  fieldAction={[MockFunction]}
+  formName="test-form"
+  initializeArray={[MockFunction]}
+  isRequired={false}
+  length={3}
+  locale="pt-br"
+  path="users"
+  removeArrayItem={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "type": "array",
+      "items": Immutable.Map {
+        "type": "object",
+        "properties": Immutable.Map {
+          "email": Immutable.Map {
+            "type": "string",
+          },
+          "firstName": Immutable.Map {
+            "type": "string",
+          },
+          "lastName": Immutable.Map {
+            "type": "string",
+          },
+        },
+      },
+    }
+  }
+  toggleArrayItem={[MockFunction]}
+  ui={
+    Immutable.Map {
+      "arrayKeys": Immutable.List [
+        0,
+        1,
+        2,
+      ],
+      "collapsed": Immutable.Set [],
+      "placeholder": Immutable.Map {
+        "index": 1,
+      },
+    }
+  }
+  widgets={Object {}}
+>
+  <ForwardRef(WithStyles)>
+    <ForwardRef(WithStyles)
+      arrayKey={0}
+      config={Immutable.Map {}}
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={0}
+      index={0}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+    <ForwardRef(WithStyles)
+      arrayKey={666}
+      config={Immutable.Map {}}
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={1}
+      index={1}
+      isCollapsed={false}
+      isPlaceholder={true}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+    <ForwardRef(WithStyles)
+      arrayKey={1}
+      config={Immutable.Map {}}
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={2}
+      index={1}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+    <ForwardRef(WithStyles)
+      arrayKey={2}
+      config={Immutable.Map {}}
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={3}
+      index={2}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+  </ForwardRef(WithStyles)>
+  <ForwardRef(WithStyles)
+    color="secondary"
+    onClick={[Function]}
+    size="small"
+  >
+    <Memo(AddIcon) />
+  </ForwardRef(WithStyles)>
+</ForwardRef(WithStyles)>
+`;
+
+exports[`ArrayField renders single 1`] = `
+<SchemaField
+  config={Immutable.Map {}}
+  context={Object {}}
+  formName="test-form"
+  locale="pt-br"
+  path="user[0]"
+  schema={
+    Immutable.Map {
+      "type": "object",
+      "properties": Immutable.Map {
+        "email": Immutable.Map {
+          "type": "string",
+        },
+        "firstName": Immutable.Map {
+          "type": "string",
+        },
+        "lastName": Immutable.Map {
+          "type": "string",
+        },
+      },
+    }
+  }
+  widgets={Object {}}
+/>
+`;
+
+exports[`ArrayField renders when disabled 1`] = `
+<ForwardRef(WithStyles)
+  actions={
+    <span>
+      <ForwardRef(WithStyles)
+        onClick={[MockFunction]}
+        size="small"
+      >
+        <Memo(UnfoldLessIcon) />
+      </ForwardRef(WithStyles)>
+    </span>
+  }
+  addArrayItem={[MockFunction]}
+  blurField={[MockFunction]}
+  collapseAllArrayItems={[MockFunction]}
+  config={Immutable.Map {}}
+  context={Object {}}
+  disabled={true}
+  expandAllArrayItems={[MockFunction]}
+  fieldAction={[MockFunction]}
+  formName="test-form"
+  initializeArray={[MockFunction]}
+  isRequired={false}
+  length={3}
+  locale="pt-br"
+  path="users"
+  removeArrayItem={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "type": "array",
+      "items": Immutable.Map {
+        "type": "object",
+        "properties": Immutable.Map {
+          "email": Immutable.Map {
+            "type": "string",
+          },
+          "firstName": Immutable.Map {
+            "type": "string",
+          },
+          "lastName": Immutable.Map {
+            "type": "string",
+          },
+        },
+      },
+    }
+  }
+  toggleArrayItem={[MockFunction]}
+  ui={
+    Immutable.Map {
+      "arrayKeys": Immutable.List [
+        0,
+        1,
+        2,
+      ],
+      "collapsed": Immutable.Set [],
+    }
+  }
+  widgets={Object {}}
+>
+  <ForwardRef(WithStyles)>
+    <ForwardRef(WithStyles)
+      arrayKey={0}
+      config={Immutable.Map {}}
+      context={Object {}}
+      disabled={true}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={0}
+      index={0}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+    <ForwardRef(WithStyles)
+      arrayKey={1}
+      config={Immutable.Map {}}
+      context={Object {}}
+      disabled={true}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={1}
+      index={1}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+    <ForwardRef(WithStyles)
+      arrayKey={2}
+      config={Immutable.Map {}}
+      context={Object {}}
+      disabled={true}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={2}
+      index={2}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+  </ForwardRef(WithStyles)>
+</ForwardRef(WithStyles)>
+`;
+
+exports[`ArrayField renders with a custom wrapper 1`] = `
+<Unstyled
+  addArrayItem={[MockFunction]}
+  blurField={[MockFunction]}
+  collapseAllArrayItems={[MockFunction]}
+  config={
+    Immutable.Map {
+      "wrapper": "unstyled",
+    }
+  }
+  context={Object {}}
+  expandAllArrayItems={[MockFunction]}
+  fieldAction={[MockFunction]}
+  formName="test-form"
+  initializeArray={[MockFunction]}
+  isRequired={false}
+  length={3}
+  locale="pt-br"
+  onCollapseAll={[MockFunction]}
+  onExpandAll={[MockFunction]}
+  path="users"
+  removeArrayItem={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "type": "array",
+      "items": Immutable.Map {
+        "type": "object",
+        "properties": Immutable.Map {
+          "email": Immutable.Map {
+            "type": "string",
+          },
+          "firstName": Immutable.Map {
+            "type": "string",
+          },
+          "lastName": Immutable.Map {
+            "type": "string",
+          },
+        },
+      },
+    }
+  }
+  toggleArrayItem={[MockFunction]}
+  ui={
+    Immutable.Map {
+      "arrayKeys": Immutable.List [
+        0,
+        1,
+        2,
+      ],
+      "collapsed": Immutable.Set [],
+    }
+  }
+  widgets={
+    Object {
+      "unstyled": [Function],
+    }
+  }
+>
+  <ForwardRef(WithStyles)>
+    <ForwardRef(WithStyles)
+      arrayKey={0}
+      config={
+        Immutable.Map {
+          "wrapper": "unstyled",
+        }
+      }
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={0}
+      index={0}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={
+        Object {
+          "unstyled": [Function],
+        }
+      }
+    />
+    <ForwardRef(WithStyles)
+      arrayKey={1}
+      config={
+        Immutable.Map {
+          "wrapper": "unstyled",
+        }
+      }
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={1}
+      index={1}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={
+        Object {
+          "unstyled": [Function],
+        }
+      }
+    />
+    <ForwardRef(WithStyles)
+      arrayKey={2}
+      config={
+        Immutable.Map {
+          "wrapper": "unstyled",
+        }
+      }
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={2}
+      index={2}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={
+        Object {
+          "unstyled": [Function],
+        }
+      }
+    />
+  </ForwardRef(WithStyles)>
+  <ForwardRef(WithStyles)
+    color="secondary"
+    onClick={[Function]}
+    size="small"
+  >
+    <Memo(AddIcon) />
+  </ForwardRef(WithStyles)>
+</Unstyled>
+`;
+
+exports[`ArrayField renders with dragAndDrop 1`] = `
+<ForwardRef(WithStyles)
+  actions={
+    <span>
+      <ForwardRef(WithStyles)
+        onClick={[MockFunction]}
+        size="small"
+      >
+        <Memo(UnfoldLessIcon) />
+      </ForwardRef(WithStyles)>
+    </span>
+  }
+  addArrayItem={[MockFunction]}
+  blurField={[MockFunction]}
+  collapseAllArrayItems={[MockFunction]}
+  config={
+    Immutable.Map {
+      "dragAndDrop": true,
+    }
+  }
+  context={Object {}}
+  expandAllArrayItems={[MockFunction]}
+  fieldAction={[MockFunction]}
+  formName="test-form"
+  initializeArray={[MockFunction]}
+  isRequired={false}
+  length={3}
+  locale="pt-br"
+  path="users"
+  removeArrayItem={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "type": "array",
+      "items": Immutable.Map {
+        "type": "object",
+        "properties": Immutable.Map {
+          "email": Immutable.Map {
+            "type": "string",
+          },
+          "firstName": Immutable.Map {
+            "type": "string",
+          },
+          "lastName": Immutable.Map {
+            "type": "string",
+          },
+        },
+      },
+    }
+  }
+  toggleArrayItem={[MockFunction]}
+  ui={
+    Immutable.Map {
+      "arrayKeys": Immutable.List [
+        0,
+        1,
+        2,
+      ],
+      "collapsed": Immutable.Set [],
+      "placeholder": Immutable.Map {
+        "index": 1,
+      },
+    }
+  }
+  widgets={Object {}}
+>
+  <DropTarget(ArrayFieldDropTarget)
+    count={3}
+    fieldAction={[MockFunction]}
+    path="users"
+    placeholderIndex={1}
+  >
+    <ForwardRef(WithStyles)
+      arrayKey={0}
+      config={
+        Immutable.Map {
+          "dragAndDrop": true,
+        }
+      }
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={0}
+      index={0}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+    <ForwardRef(WithStyles)
+      arrayKey={666}
+      config={
+        Immutable.Map {
+          "dragAndDrop": true,
+        }
+      }
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={1}
+      index={1}
+      isCollapsed={false}
+      isPlaceholder={true}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+    <ForwardRef(WithStyles)
+      arrayKey={1}
+      config={
+        Immutable.Map {
+          "dragAndDrop": true,
+        }
+      }
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={2}
+      index={1}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+    <ForwardRef(WithStyles)
+      arrayKey={2}
+      config={
+        Immutable.Map {
+          "dragAndDrop": true,
+        }
+      }
+      context={Object {}}
+      fieldAction={[MockFunction]}
+      formName="test-form"
+      hoverIndex={3}
+      index={2}
+      isCollapsed={false}
+      isPlaceholder={false}
+      locale="pt-br"
+      onBlur={[MockFunction]}
+      path="users"
+      removeItem={[MockFunction]}
+      schema={
+        Immutable.Map {
+          "type": "object",
+          "properties": Immutable.Map {
+            "email": Immutable.Map {
+              "type": "string",
+            },
+            "firstName": Immutable.Map {
+              "type": "string",
+            },
+            "lastName": Immutable.Map {
+              "type": "string",
+            },
+          },
+        }
+      }
+      toggleItem={[MockFunction]}
+      widgets={Object {}}
+    />
+  </DropTarget(ArrayFieldDropTarget)>
+  <ForwardRef(WithStyles)
+    color="secondary"
+    onClick={[Function]}
+    size="small"
+  >
+    <Memo(AddIcon) />
+  </ForwardRef(WithStyles)>
+</ForwardRef(WithStyles)>
+`;

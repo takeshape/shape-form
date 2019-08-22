@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScalarField falls back on DefaultWidget if the configured widget is undefined 1`] = `
+<DefaultWidget
+  config={
+    Immutable.Map {
+      "widget": "custom",
+    }
+  }
+  formName="test-form"
+  locale="pt-br"
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  onChangeSilent={[MockFunction]}
+  onFocus={[MockFunction]}
+  path="name"
+  schema={
+    Immutable.Map {
+      "type": "string",
+      "title": "Name",
+    }
+  }
+  setUI={[MockFunction]}
+  ui={Immutable.Map {}}
+  value="Andrew"
+  widgets={Object {}}
+/>
+`;
+
+exports[`ScalarField renders 1`] = `
+<DefaultWidget
+  config={Immutable.Map {}}
+  formName="test-form"
+  locale="pt-br"
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  onChangeSilent={[MockFunction]}
+  onFocus={[MockFunction]}
+  path="name"
+  schema={
+    Immutable.Map {
+      "type": "string",
+      "title": "Name",
+    }
+  }
+  setUI={[MockFunction]}
+  ui={Immutable.Map {}}
+  value="Andrew"
+/>
+`;
+
+exports[`ScalarField renders custom widget 1`] = `
+<Custom
+  config={
+    Immutable.Map {
+      "widget": "Custom",
+    }
+  }
+  formName="test-form"
+  locale="pt-br"
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  onChangeSilent={[MockFunction]}
+  onFocus={[MockFunction]}
+  path="name"
+  schema={
+    Immutable.Map {
+      "type": "string",
+      "title": "Name",
+    }
+  }
+  setUI={[MockFunction]}
+  ui={Immutable.Map {}}
+  value="Andrew"
+  widgets={
+    Object {
+      "Custom": [Function],
+    }
+  }
+/>
+`;

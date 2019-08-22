@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInputWidget renders 1`] = `
+<ForwardRef(WithStyles)
+  autoFocus={false}
+  error={false}
+  fullWidth={true}
+  label="Test Title"
+  margin="normal"
+  onBlur={[MockFunction]}
+  onChange={[Function]}
+  onFocus={[MockFunction]}
+  value="Brown Fox"
+/>
+`;
+
+exports[`TextInputWidget renders with instructions 1`] = `
+<ForwardRef(WithStyles)
+  autoFocus={false}
+  error={false}
+  fullWidth={true}
+  helperText="The quick brown fox jumps over the lazy dog. See [dogs](http://example.com/)"
+  label="Test Title"
+  margin="normal"
+  onBlur={[MockFunction]}
+  onChange={[Function]}
+  onFocus={[MockFunction]}
+  value="Brown Fox"
+/>
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScalarFieldContainer renders 1`] = `
+<ContentPreview
+  dispatch={[Function]}
+  formName="test-form"
+  path="name"
+  schema={
+    Immutable.Map {
+      "type": "string",
+      "title": "Name",
+    }
+  }
+  value="Andrew"
+/>
+`;

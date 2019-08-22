@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react",
+    "declaration": true,
+    "outDir": "lib",
+
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+       "src": ["src"]
+     },
+    "typeRoots": ["node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  "exclude" : ["src/**/*.test.ts", "node_modules"]
+}

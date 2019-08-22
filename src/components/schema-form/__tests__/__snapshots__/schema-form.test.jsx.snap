@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SchemaForm renders 1`] = `
+<SchemaForm
+  clearForm={[MockFunction]}
+  formName="test-form"
+  registerForm={[MockFunction]}
+  submitForm={[MockFunction]}
+/>
+`;
+
+exports[`SchemaForm renders with children 1`] = `
+<SchemaForm
+  clearForm={[MockFunction]}
+  formName="test-form"
+  locale="pt-br"
+  registerForm={[MockFunction]}
+  registeredSchema={
+    Immutable.Map {
+      "type": "string",
+    }
+  }
+  submitForm={[MockFunction]}
+>
+  <button>
+    submit
+  </button>
+</SchemaForm>
+`;
+
+exports[`SchemaForm renders with schema 1`] = `
+<SchemaForm
+  clearForm={[MockFunction]}
+  formName="test-form"
+  locale="pt-br"
+  registerForm={[MockFunction]}
+  registeredSchema={
+    Immutable.Map {
+      "type": "string",
+    }
+  }
+  submitForm={[MockFunction]}
+/>
+`;

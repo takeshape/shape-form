@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropTarget renders 1`] = `
+<ul
+  className="customClass"
+>
+  drag items here
+</ul>
+`;

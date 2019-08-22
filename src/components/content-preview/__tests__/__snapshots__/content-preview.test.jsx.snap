@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentPreview falls back on DefaultContentPreview if the configured widget is undefined 1`] = `
+<DefaultContentPreview
+  config={Immutable.Map {}}
+  formName="test-form"
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  onChangeSilent={[MockFunction]}
+  onFocus={[MockFunction]}
+  path="name"
+  schema={
+    Immutable.Map {
+      "type": "string",
+      "title": "Name",
+    }
+  }
+  value="Andrew"
+  widgets={Object {}}
+/>
+`;
+
+exports[`ContentPreview renders 1`] = `
+<DefaultContentPreview
+  config={Immutable.Map {}}
+  formName="test-form"
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  onChangeSilent={[MockFunction]}
+  onFocus={[MockFunction]}
+  path="name"
+  schema={
+    Immutable.Map {
+      "type": "string",
+      "title": "Name",
+    }
+  }
+  value="Andrew"
+/>
+`;
+
+exports[`ContentPreview renders custom widget 1`] = `
+<customPreview
+  config={
+    Immutable.Map {
+      "preview": "customPreview",
+    }
+  }
+  formName="test-form"
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  onChangeSilent={[MockFunction]}
+  onFocus={[MockFunction]}
+  path="name"
+  schema={
+    Immutable.Map {
+      "type": "string",
+      "title": "Name",
+    }
+  }
+  value="Andrew"
+  widgets={
+    Object {
+      "customPreview": [Function],
+    }
+  }
+/>
+`;

@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Widget renders 1`] = `
+<Widget
+  classes={
+    Object {
+      "error": "Widget-error-3",
+      "header": "Widget-header-1",
+      "title": "Widget-title-2",
+    }
+  }
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "title": "Test Title",
+    }
+  }
+  value="Brown Fox"
+/>
+`;
+
+exports[`Widget renders when disabled 1`] = `
+<Widget
+  classes={
+    Object {
+      "error": "Widget-error-3",
+      "header": "Widget-header-1",
+      "title": "Widget-title-2",
+    }
+  }
+  disabled={true}
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "title": "Test Title",
+    }
+  }
+  value="Brown Fox"
+/>
+`;
+
+exports[`Widget renders when required 1`] = `
+<Widget
+  classes={
+    Object {
+      "error": "Widget-error-3",
+      "header": "Widget-header-1",
+      "title": "Widget-title-2",
+    }
+  }
+  isRequired={true}
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "title": "Test Title",
+    }
+  }
+  value="Brown Fox"
+/>
+`;
+
+exports[`Widget renders with description 1`] = `
+<Widget
+  classes={
+    Object {
+      "error": "Widget-error-3",
+      "header": "Widget-header-1",
+      "title": "Widget-title-2",
+    }
+  }
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "title": "Test Title",
+      "description": "The quick brown fox jumps over the lazy dog.",
+    }
+  }
+  value="Brown Fox"
+/>
+`;
+
+exports[`Widget renders with error 1`] = `
+<Widget
+  classes={
+    Object {
+      "error": "Widget-error-3",
+      "header": "Widget-header-1",
+      "title": "Widget-title-2",
+    }
+  }
+  error="Invalid format"
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "title": "Test Title",
+    }
+  }
+  value="Brown Fox"
+/>
+`;
+
+exports[`Widget renders with instructions 1`] = `
+<Widget
+  classes={
+    Object {
+      "error": "Widget-error-3",
+      "header": "Widget-header-1",
+      "title": "Widget-title-2",
+    }
+  }
+  config={
+    Immutable.Map {
+      "instructions": "The quick brown fox jumps over the lazy dog. See [dogs](http://example.com/)",
+    }
+  }
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "title": "Test Title",
+    }
+  }
+  value="Brown Fox"
+/>
+`;

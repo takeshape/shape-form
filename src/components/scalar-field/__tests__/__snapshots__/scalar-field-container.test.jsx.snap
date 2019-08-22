@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScalarFieldContainer renders 1`] = `
+<ScalarField
+  config={Immutable.Map {}}
+  formName="test-form"
+  onBlur={[Function]}
+  onChange={[Function]}
+  onChangeSilent={[Function]}
+  onFocus={[Function]}
+  path="name"
+  schema={
+    Immutable.Map {
+      "type": "string",
+      "title": "Name",
+    }
+  }
+  setUI={[Function]}
+  value="Andrew"
+/>
+`;

@@ -1,0 +1,334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArrayFieldItem renders 1`] = `
+<li>
+  <div>
+    <ForwardRef(WithStyles)
+      classes={
+        Object {
+          "expanded": "expanded",
+          "root": undefined,
+        }
+      }
+      expanded={true}
+      onChange={[Function]}
+      square={true}
+    >
+      <ForwardRef(WithStyles)
+        expandIcon={<Memo(ExpandMoreIcon) />}
+      >
+        <Memo(ReorderIcon) />
+        <ForwardRef(WithStyles)>
+          <ContentPreview
+            config={Immutable.Map {}}
+            formName="test-form"
+            locale="pt-br"
+            path="users[0]"
+            schema={
+              Immutable.Map {
+                "type": "object",
+                "properties": Immutable.Map {
+                  "email": Object {
+                    "type": "string",
+                  },
+                  "firstName": Object {
+                    "type": "string",
+                  },
+                  "lastName": Object {
+                    "type": "string",
+                  },
+                },
+              }
+            }
+            widgets={Object {}}
+          />
+        </ForwardRef(WithStyles)>
+      </ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)
+        className="details"
+      >
+        <SchemaField
+          config={Immutable.Map {}}
+          context={
+            Object {
+              "foo": "bar",
+            }
+          }
+          formName="test-form"
+          locale="pt-br"
+          path="users[0]"
+          schema={
+            Immutable.Map {
+              "type": "object",
+              "properties": Immutable.Map {
+                "email": Object {
+                  "type": "string",
+                },
+                "firstName": Object {
+                  "type": "string",
+                },
+                "lastName": Object {
+                  "type": "string",
+                },
+              },
+            }
+          }
+          widgets={Object {}}
+        />
+      </ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)>
+        <ForwardRef(WithStyles)
+          onClick={[Function]}
+          variant="text"
+        >
+          Remove
+        </ForwardRef(WithStyles)>
+      </ForwardRef(WithStyles)>
+    </ForwardRef(WithStyles)>
+  </div>
+</li>
+`;
+
+exports[`ArrayFieldItem renders when collapsed 1`] = `
+<li>
+  <div>
+    <ForwardRef(WithStyles)
+      classes={
+        Object {
+          "expanded": "expanded",
+          "root": undefined,
+        }
+      }
+      expanded={false}
+      onChange={[Function]}
+      square={true}
+    >
+      <ForwardRef(WithStyles)
+        expandIcon={<Memo(ExpandMoreIcon) />}
+      >
+        <Memo(ReorderIcon) />
+        <ForwardRef(WithStyles)>
+          <ContentPreview
+            config={Immutable.Map {}}
+            formName="test-form"
+            locale="pt-br"
+            path="users[0]"
+            schema={
+              Immutable.Map {
+                "type": "object",
+                "properties": Immutable.Map {
+                  "email": Object {
+                    "type": "string",
+                  },
+                  "firstName": Object {
+                    "type": "string",
+                  },
+                  "lastName": Object {
+                    "type": "string",
+                  },
+                },
+              }
+            }
+            widgets={Object {}}
+          />
+        </ForwardRef(WithStyles)>
+      </ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)>
+        <ForwardRef(WithStyles)
+          onClick={[Function]}
+          variant="text"
+        >
+          Remove
+        </ForwardRef(WithStyles)>
+      </ForwardRef(WithStyles)>
+    </ForwardRef(WithStyles)>
+  </div>
+</li>
+`;
+
+exports[`ArrayFieldItem renders when disabled 1`] = `
+<li>
+  <div>
+    <ForwardRef(WithStyles)
+      classes={
+        Object {
+          "expanded": "expanded",
+          "root": undefined,
+        }
+      }
+      disabled={true}
+      expanded={true}
+      onChange={[Function]}
+      square={true}
+    >
+      <ForwardRef(WithStyles)
+        expandIcon={<Memo(ExpandMoreIcon) />}
+      >
+        <ForwardRef(WithStyles)>
+          <ContentPreview
+            config={Immutable.Map {}}
+            formName="test-form"
+            locale="pt-br"
+            path="users[0]"
+            schema={
+              Immutable.Map {
+                "type": "object",
+                "properties": Immutable.Map {
+                  "email": Object {
+                    "type": "string",
+                  },
+                  "firstName": Object {
+                    "type": "string",
+                  },
+                  "lastName": Object {
+                    "type": "string",
+                  },
+                },
+              }
+            }
+            widgets={Object {}}
+          />
+        </ForwardRef(WithStyles)>
+      </ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)
+        className="details"
+      >
+        <SchemaField
+          config={Immutable.Map {}}
+          context={
+            Object {
+              "foo": "bar",
+            }
+          }
+          disabled={true}
+          formName="test-form"
+          locale="pt-br"
+          path="users[0]"
+          schema={
+            Immutable.Map {
+              "type": "object",
+              "properties": Immutable.Map {
+                "email": Object {
+                  "type": "string",
+                },
+                "firstName": Object {
+                  "type": "string",
+                },
+                "lastName": Object {
+                  "type": "string",
+                },
+              },
+            }
+          }
+          widgets={Object {}}
+        />
+      </ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)>
+        <ForwardRef(WithStyles)
+          onClick={[Function]}
+          variant="text"
+        >
+          Remove
+        </ForwardRef(WithStyles)>
+      </ForwardRef(WithStyles)>
+    </ForwardRef(WithStyles)>
+  </div>
+</li>
+`;
+
+exports[`ArrayFieldItem renders with custom wrapper 1`] = `
+<Unstyled
+  arrayKey={0}
+  classes={
+    Object {
+      "details": "details",
+      "expanded": "expanded",
+    }
+  }
+  config={
+    Immutable.Map {
+      "wrapper": "unstyled",
+    }
+  }
+  connectDragPreview={[Function]}
+  connectDragSource={[Function]}
+  connectDropTarget={[Function]}
+  context={
+    Object {
+      "foo": "bar",
+    }
+  }
+  fieldAction={[MockFunction]}
+  formName="test-form"
+  index={0}
+  isCollapsed={false}
+  isDragging={false}
+  locale="pt-br"
+  onBlur={[MockFunction]}
+  onRemoveItem={[Function]}
+  onToggleItem={[Function]}
+  parentPath="users"
+  path="users[0]"
+  removeItem={[MockFunction]}
+  schema={
+    Immutable.Map {
+      "type": "object",
+      "properties": Immutable.Map {
+        "email": Object {
+          "type": "string",
+        },
+        "firstName": Object {
+          "type": "string",
+        },
+        "lastName": Object {
+          "type": "string",
+        },
+      },
+    }
+  }
+  setDomNode={[Function]}
+  toggleItem={[MockFunction]}
+  widgets={
+    Object {
+      "unstyled": [Function],
+    }
+  }
+>
+  <SchemaField
+    config={
+      Immutable.Map {
+        "wrapper": "unstyled",
+      }
+    }
+    context={
+      Object {
+        "foo": "bar",
+      }
+    }
+    formName="test-form"
+    locale="pt-br"
+    path="users[0]"
+    schema={
+      Immutable.Map {
+        "type": "object",
+        "properties": Immutable.Map {
+          "email": Object {
+            "type": "string",
+          },
+          "firstName": Object {
+            "type": "string",
+          },
+          "lastName": Object {
+            "type": "string",
+          },
+        },
+      }
+    }
+    widgets={
+      Object {
+        "unstyled": [Function],
+      }
+    }
+  />
+</Unstyled>
+`;

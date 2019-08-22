@@ -1,0 +1,46 @@
+{
+  "entityMap": {
+    "0": {
+      "type": "image",
+      "mutability": "IMMUTABLE",
+      "data": {
+        "id": "dc9a1ebd-ced2-4b24-bee6-c5735be6ce39"
+      }
+    }
+  },
+  "blocks": [
+    {
+      "key": "5s115",
+      "text": "",
+      "type": "unstyled",
+      "depth": 0,
+      "inlineStyleRanges": [],
+      "entityRanges": [],
+      "data": {}
+    },
+    {
+      "key": "9aoj2",
+      "text": " ",
+      "type": "atomic",
+      "depth": 0,
+      "inlineStyleRanges": [],
+      "entityRanges": [
+        {
+          "offset": 0,
+          "length": 1,
+          "key": 0
+        }
+      ],
+      "data": {}
+    },
+    {
+      "key": "6gtmh",
+      "text": "",
+      "type": "unstyled",
+      "depth": 0,
+      "inlineStyleRanges": [],
+      "entityRanges": [],
+      "data": {}
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`module index 1`] = `
+Object {
+  "FormContext": Object {
+    "$$typeof": Symbol(react.context),
+    "Consumer": Object {
+      "$$typeof": Symbol(react.context),
+      "_calculateChangedBits": null,
+      "_context": [Circular],
+    },
+    "Provider": Object {
+      "$$typeof": Symbol(react.provider),
+      "_context": [Circular],
+    },
+    "_calculateChangedBits": null,
+    "_currentRenderer": null,
+    "_currentRenderer2": null,
+    "_currentValue": undefined,
+    "_currentValue2": undefined,
+    "_threadCount": 0,
+  },
+  "ShapeForm": Object {
+    "$$typeof": Symbol(react.memo),
+    "DecoratedComponent": [Function],
+    "WrappedComponent": [Function],
+    "compare": null,
+    "displayName": "ShapeForm",
+    "type": [Function],
+  },
+  "ShapeFormProvider": [Function],
+  "SubmitButton": Object {
+    "$$typeof": Symbol(react.memo),
+    "WrappedComponent": [Function],
+    "compare": null,
+    "displayName": "SubmitButton",
+    "type": [Function],
+  },
+  "connectFormContext": [Function],
+  "createFormReducer": [Function],
+  "formSaga": [Function],
+  "getData": [Function],
+  "getDirty": [Function],
+  "getForm": [Function],
+  "getStructuralChanges": [Function],
+  "getUi": [Function],
+  "getValues": [Function],
+  "getWidgetOptions": [Function],
+  "makeArrayLengthSelector": [Function],
+  "makeSchemaSelector": [Function],
+  "makeValueSelector": [Function],
+  "onFormSubmit": [Function],
+}
+`;

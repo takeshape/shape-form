@@ -1,4 +1,4 @@
-# Shape Form
+# ShapeForm
 
 ![ShapeForm Logo](logo.png)
 

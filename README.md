@@ -148,3 +148,14 @@ export default App;
 - Better support non-Redux users
 - Explore BYO JSON Schema validation
 - Custom field serialization/deserialization
+
+---
+
+<p align="center">
+  <a href="https://www.takeshape.io/">
+    <img alt="TakeShape" src="./takeshape.png" width="201" />
+  </a>
+</p>
+<p align="center">
+  Made With Love by <a href="https://www.takeshape.io/">TakeShape</a>
+</p>

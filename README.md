@@ -2,11 +2,11 @@
 
 ![ShapeForm Logo](logo.png)
 
-## Welcome
+## 👋 Welcome
 
-Thanks for checking out ShapeForm! First announced at the [8/20 Reactadephia Meetup](https://www.meetup.com/Reactadelphia/events/263614474/) this code has been freshly ripped from our [React App](https://app.takeshape.io) and open sourced to the community. Check out [@asprouse](https://github.com/asprouse)'s [presentation](https://shape-form-talk.netlify.com) on how we decided to build our own solution. Give ShapeForm a whirl and let us know what you think or open a PR.
+Thanks for checking out ShapeForm! First announced at the [8/20 Reactadephia Meetup](https://www.meetup.com/Reactadelphia/events/263614474/) this code has been freshly ripped from our [React App](https://app.takeshape.io) and open sourced to the community. Check out [@asprouse](https://github.com/asprouse)'s presentation ([slides](https://shape-form-talk.netlify.com), [video](https://www.youtube.com/watch?v=iplY8Le1zK0&list=PLKZl1WiDIytFnHqZPgIFNVszTu71kngja)) detailing how we decided to build our own form solution. Give ShapeForm a whirl and let us know what you think or open a PR.
 
-## Installation
+## 🚀 Installation
 
 ```
 npm install --save shape-form
@@ -16,7 +16,7 @@ or
 yarn add shape-form
 ```
 
-## Documentation
+## 🎓 Documentation
 ShapeForm can be used with or without your own redux store.
 
 ### BYO Redux: Setup your store with the shape-form reducer and saga
@@ -139,7 +139,7 @@ export default App;
 
 ![](./demo.png)
 
-## Roadmap
+## 🛣️ Roadmap
 - ES6 -> TypeScript 
 - Move Material UI dependency into it's own widget package
 - Switch from Immutable.js to immer

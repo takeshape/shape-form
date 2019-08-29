@@ -6,6 +6,17 @@
 
 Thanks for checking out ShapeForm! First announced at the [8/20 Reactadephia Meetup](https://www.meetup.com/Reactadelphia/events/263614474/) this code has been freshly ripped from our [React App](https://app.takeshape.io) and open sourced to the community. Check out [@asprouse](https://github.com/asprouse)'s presentation ([slides](https://shape-form-talk.netlify.com), [video](https://www.youtube.com/watch?v=iplY8Le1zK0&list=PLKZl1WiDIytFnHqZPgIFNVszTu71kngja)) detailing how we decided to build our own form solution. Give ShapeForm a whirl and let us know what you think or open a PR.
 
+## ✨ Features
+
+- 💪JSON Schema validation - Easily share the same form validation frontend and backend
+- ⚡️Fast - Pure components for fast rendering even with large forms
+- 🗃Redux / Standalone state management - Choose your own adventure
+- 💅Custom widgets - Widgets are simply React components
+- 🚀Form reducers - Useful for async validation, data normalization, the sky is the limit. 
+- 👯‍♀️Multi-Part Forms - Multiple form components can edit the same form data. Useful for complex layouts or mult-step forms.
+
+
+
 ## 🚀 Installation
 
 ```

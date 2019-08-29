@@ -9,11 +9,12 @@ Thanks for checking out ShapeForm! First announced at the [8/20 Reactadephia Mee
 ## ✨ Features
 
 - 💪JSON Schema validation - Easily share the same form validation frontend and backend
+- 💧Nested Object / Array support with Drag and Drop
 - ⚡️Fast - Pure components for fast rendering even with large forms
 - 🗃Redux / Standalone state management - Choose your own adventure
 - 💅Custom widgets - Widgets are simply React components
-- 🚀Form reducers - Useful for async validation, data normalization, the sky is the limit. 
-- 👯‍♀️Multi-Part Forms - Multiple form components can edit the same form data. Useful for complex layouts or mult-step forms.
+- 🚀Form reducers - Useful for async validation, data normalization, the sky is the limit 
+- 👯‍♀️Multi-Part Forms - Multiple form components can edit the same form data. Useful for complex layouts or mult-step forms
 
 
 

@@ -20,14 +20,13 @@ exports[`ArrayFieldItem renders 1`] = `
         <Memo(ReorderIcon) />
         <ForwardRef(WithStyles)>
           <ContentPreview
-            config={Immutable.Map {}}
+            config={Object {}}
             formName="test-form"
             locale="pt-br"
             path="users[0]"
             schema={
-              Immutable.Map {
-                "type": "object",
-                "properties": Immutable.Map {
+              Object {
+                "properties": Object {
                   "email": Object {
                     "type": "string",
                   },
@@ -38,6 +37,7 @@ exports[`ArrayFieldItem renders 1`] = `
                     "type": "string",
                   },
                 },
+                "type": "object",
               }
             }
             widgets={Object {}}
@@ -48,7 +48,7 @@ exports[`ArrayFieldItem renders 1`] = `
         className="details"
       >
         <SchemaField
-          config={Immutable.Map {}}
+          config={Object {}}
           context={
             Object {
               "foo": "bar",
@@ -58,9 +58,8 @@ exports[`ArrayFieldItem renders 1`] = `
           locale="pt-br"
           path="users[0]"
           schema={
-            Immutable.Map {
-              "type": "object",
-              "properties": Immutable.Map {
+            Object {
+              "properties": Object {
                 "email": Object {
                   "type": "string",
                 },
@@ -71,6 +70,7 @@ exports[`ArrayFieldItem renders 1`] = `
                   "type": "string",
                 },
               },
+              "type": "object",
             }
           }
           widgets={Object {}}
@@ -109,14 +109,13 @@ exports[`ArrayFieldItem renders when collapsed 1`] = `
         <Memo(ReorderIcon) />
         <ForwardRef(WithStyles)>
           <ContentPreview
-            config={Immutable.Map {}}
+            config={Object {}}
             formName="test-form"
             locale="pt-br"
             path="users[0]"
             schema={
-              Immutable.Map {
-                "type": "object",
-                "properties": Immutable.Map {
+              Object {
+                "properties": Object {
                   "email": Object {
                     "type": "string",
                   },
@@ -127,6 +126,7 @@ exports[`ArrayFieldItem renders when collapsed 1`] = `
                     "type": "string",
                   },
                 },
+                "type": "object",
               }
             }
             widgets={Object {}}
@@ -166,14 +166,13 @@ exports[`ArrayFieldItem renders when disabled 1`] = `
       >
         <ForwardRef(WithStyles)>
           <ContentPreview
-            config={Immutable.Map {}}
+            config={Object {}}
             formName="test-form"
             locale="pt-br"
             path="users[0]"
             schema={
-              Immutable.Map {
-                "type": "object",
-                "properties": Immutable.Map {
+              Object {
+                "properties": Object {
                   "email": Object {
                     "type": "string",
                   },
@@ -184,6 +183,7 @@ exports[`ArrayFieldItem renders when disabled 1`] = `
                     "type": "string",
                   },
                 },
+                "type": "object",
               }
             }
             widgets={Object {}}
@@ -194,7 +194,7 @@ exports[`ArrayFieldItem renders when disabled 1`] = `
         className="details"
       >
         <SchemaField
-          config={Immutable.Map {}}
+          config={Object {}}
           context={
             Object {
               "foo": "bar",
@@ -205,9 +205,8 @@ exports[`ArrayFieldItem renders when disabled 1`] = `
           locale="pt-br"
           path="users[0]"
           schema={
-            Immutable.Map {
-              "type": "object",
-              "properties": Immutable.Map {
+            Object {
+              "properties": Object {
                 "email": Object {
                   "type": "string",
                 },
@@ -218,6 +217,7 @@ exports[`ArrayFieldItem renders when disabled 1`] = `
                   "type": "string",
                 },
               },
+              "type": "object",
             }
           }
           widgets={Object {}}
@@ -246,7 +246,7 @@ exports[`ArrayFieldItem renders with custom wrapper 1`] = `
     }
   }
   config={
-    Immutable.Map {
+    Object {
       "wrapper": "unstyled",
     }
   }
@@ -271,9 +271,8 @@ exports[`ArrayFieldItem renders with custom wrapper 1`] = `
   path="users[0]"
   removeItem={[MockFunction]}
   schema={
-    Immutable.Map {
-      "type": "object",
-      "properties": Immutable.Map {
+    Object {
+      "properties": Object {
         "email": Object {
           "type": "string",
         },
@@ -284,6 +283,7 @@ exports[`ArrayFieldItem renders with custom wrapper 1`] = `
           "type": "string",
         },
       },
+      "type": "object",
     }
   }
   setDomNode={[Function]}
@@ -296,7 +296,7 @@ exports[`ArrayFieldItem renders with custom wrapper 1`] = `
 >
   <SchemaField
     config={
-      Immutable.Map {
+      Object {
         "wrapper": "unstyled",
       }
     }
@@ -309,9 +309,8 @@ exports[`ArrayFieldItem renders with custom wrapper 1`] = `
     locale="pt-br"
     path="users[0]"
     schema={
-      Immutable.Map {
-        "type": "object",
-        "properties": Immutable.Map {
+      Object {
+        "properties": Object {
           "email": Object {
             "type": "string",
           },
@@ -322,6 +321,7 @@ exports[`ArrayFieldItem renders with custom wrapper 1`] = `
             "type": "string",
           },
         },
+        "type": "object",
       }
     }
     widgets={

@@ -2,7 +2,6 @@ import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 const renderer = new ReactShallowRenderer();
 import {mount} from 'enzyme';
-import {fromJS, Map} from 'immutable';
 import SchemaForm from '../schema-form';
 
 describe('SchemaForm', () => {
@@ -24,9 +23,9 @@ describe('SchemaForm', () => {
       registerForm: jest.fn(),
       submitForm: jest.fn(),
       clearForm: jest.fn(),
-      registeredSchema: fromJS({
+      registeredSchema: {
         type: 'string'
-      }),
+      },
       locale: 'pt-br'
     };
 
@@ -40,9 +39,9 @@ describe('SchemaForm', () => {
       registerForm: jest.fn(),
       submitForm: jest.fn(),
       clearForm: jest.fn(),
-      registeredSchema: fromJS({
+      registeredSchema: {
         type: 'string'
-      }),
+      },
       locale: 'pt-br'
     };
 
@@ -61,10 +60,10 @@ describe('SchemaForm', () => {
       submitForm: jest.fn(),
       onSubmit: jest.fn(),
       clearForm: jest.fn(),
-      schema: fromJS({
+      schema: {
         type: 'string'
-      }),
-      initialData: Map()
+      },
+      initialData: {}
     };
 
     mount(<SchemaForm {...props} />);
@@ -80,10 +79,10 @@ describe('SchemaForm', () => {
       submitForm: jest.fn(),
       onSubmit: jest.fn(),
       clearForm: jest.fn(),
-      schema: fromJS({
+      schema: {
         type: 'string'
-      }),
-      initialData: Map()
+      },
+      initialData: {}
     };
 
     const wrapper = mount(<SchemaForm {...props} />);
@@ -116,31 +115,31 @@ describe('SchemaForm', () => {
       submitForm: jest.fn(),
       onSubmit: jest.fn(),
       clearForm: jest.fn(),
-      schema: fromJS({
+      schema: {
         type: 'object',
         properties: {
           name: {type: 'string'}
         }
-      }),
-      initialData: Map(),
+      },
+      initialData: {},
       version: 1
     };
 
     const wrapper = mount(<SchemaForm {...props} />);
     expect(props.registerForm).toHaveBeenCalledTimes(1);
 
-    const newData = Map({name: 'Samy Pessé'});
+    const newData = {name: 'Samy Pessé'};
     wrapper.setProps({version: 2, initialData: newData});
     expect(props.registerForm).toHaveBeenCalledTimes(2);
     expect(props.registerForm).toHaveBeenLastCalledWith(props.formName, props.schema, newData);
 
-    const newSchema = fromJS({
+    const newSchema = {
       type: 'object',
       properties: {
         name: {type: 'string'},
         address: {type: 'string'}
       }
-    });
+    };
     wrapper.setProps({version: 3, initialData: undefined, schema: newSchema});
     expect(props.registerForm).toHaveBeenCalledTimes(3);
     expect(props.registerForm).toHaveBeenLastCalledWith(props.formName, newSchema, undefined);
@@ -153,25 +152,25 @@ describe('SchemaForm', () => {
       onSubmit: jest.fn(),
       clearForm: jest.fn(),
       context: {contentId: 'oldContentId'},
-      schema: fromJS({
+      schema: {
         type: 'object',
         properties: {
           name: {type: 'string'}
         }
-      }),
-      initialData: Map(),
+      },
+      initialData: {},
       version: 1
     };
 
     const wrapper = mount(<SchemaForm {...props} />);
     expect(props.registerForm).toHaveBeenCalledTimes(1);
 
-    const newSchema = fromJS({
+    const newSchema = {
       type: 'object',
       properties: {
         title: {type: 'string'}
       }
-    });
+    };
 
     wrapper.setProps({schema: newSchema});
     expect(props.registerForm).toHaveBeenCalledTimes(2);

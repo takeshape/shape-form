@@ -3,7 +3,6 @@ import root, {validateOnChange, submitFormSaga, waitForFormSubmit} from '../saga
 import {ADD_ARRAY_ITEM, BLUR_FIELD, CHANGE_FIELD, SUBMIT_FORM, SWAP_ARRAY_ITEMS, VALIDATE_FORM} from '../action-types';
 import {validateForm, submitForm, changeField, swapArrayItems} from '../actions';
 import {getForm, getStructuralChanges, getValues} from '../selectors';
-import {fromJS, Set} from 'immutable';
 
 const SUBMIT_FORM_FULFILLED = `${SUBMIT_FORM}_SUCCESS`;
 const SUBMIT_FORM_FAILURE = `${SUBMIT_FORM}_FAILURE`;
@@ -60,16 +59,16 @@ test('submitFormSaga - validation errors', () => {
   expect(gen.next().value).toEqual(put(validateForm(formName)));
   expect(gen.next().value).toEqual(select(getForm, {formName}));
 
-  const errors = fromJS({
+  const errors = {
     email: 'Must be valid email address'
-  });
+  };
 
-  const form = fromJS({
+  const form = {
     data: {
       email: 'bogus'
     },
     errors
-  });
+  };
 
   expect(gen.next(form).value).toEqual(
     put({
@@ -96,12 +95,12 @@ test('submitFormSaga - success', () => {
   expect(gen.next().value).toEqual(put(validateForm(formName)));
   expect(gen.next().value).toEqual(select(getForm, {formName}));
 
-  const form = fromJS({
+  const form = {
     data: {
       email: 'samy@baguette.fr',
       fullName: 'Samy Pessé'
     }
-  });
+  };
 
   expect(gen.next(form).value).toEqual(put({type: `${VALIDATE_FORM}_FULFILLED`, meta: {formName}}));
   expect(gen.next().value).toEqual(put({type: `${SUBMIT_FORM}_SUCCESS`, meta: {formName}}));
@@ -117,17 +116,17 @@ test('submitFormSaga - success callback', () => {
   expect(gen.next().value).toEqual(put(validateForm(formName)));
   expect(gen.next().value).toEqual(select(getForm, {formName}));
 
-  const form = fromJS({
+  const form = {
     data: {
       email: 'samy@baguette.fr',
       fullName: 'Samy Pessé'
     }
-  });
+  };
 
   expect(gen.next(form).value).toEqual(put({type: `${VALIDATE_FORM}_FULFILLED`, meta: {formName}}));
   expect(gen.next().value).toEqual(select(getValues, {formName}));
 
-  const values = form.get('data').toJS();
+  const values = form.data;
   expect(gen.next(values).value).toEqual(select(getStructuralChanges, {formName}));
   const structure = [];
   expect(gen.next(structure).value).toEqual(put({type: `${SUBMIT_FORM}_SUCCESS`, meta: {formName}, payload: values}));
@@ -144,13 +143,13 @@ test('submitFormSaga - withValues', () => {
   expect(gen.next().value).toEqual(put(validateForm(formName)));
   expect(gen.next().value).toEqual(select(getForm, {formName}));
 
-  const form = fromJS({
+  const form = {
     data: {
       email: 'samy@baguette.fr',
       fullName: 'Samy Pessé'
     },
-    dirty: Set.of('email')
-  });
+    dirty: new Set(['email'])
+  };
 
   expect(gen.next(form).value).toEqual(put({type: `${VALIDATE_FORM}_FULFILLED`, meta: {formName}}));
   expect(gen.next().value).toEqual(select(getValues, {formName, onlyDirty: true}));

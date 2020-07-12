@@ -12,7 +12,7 @@ exports[`Widget renders 1`] = `
   onBlur={[MockFunction]}
   onChange={[MockFunction]}
   schema={
-    Immutable.Map {
+    Object {
       "title": "Test Title",
     }
   }
@@ -33,7 +33,7 @@ exports[`Widget renders when disabled 1`] = `
   onBlur={[MockFunction]}
   onChange={[MockFunction]}
   schema={
-    Immutable.Map {
+    Object {
       "title": "Test Title",
     }
   }
@@ -54,7 +54,7 @@ exports[`Widget renders when required 1`] = `
   onBlur={[MockFunction]}
   onChange={[MockFunction]}
   schema={
-    Immutable.Map {
+    Object {
       "title": "Test Title",
     }
   }
@@ -74,9 +74,9 @@ exports[`Widget renders with description 1`] = `
   onBlur={[MockFunction]}
   onChange={[MockFunction]}
   schema={
-    Immutable.Map {
-      "title": "Test Title",
+    Object {
       "description": "The quick brown fox jumps over the lazy dog.",
+      "title": "Test Title",
     }
   }
   value="Brown Fox"
@@ -96,7 +96,7 @@ exports[`Widget renders with error 1`] = `
   onBlur={[MockFunction]}
   onChange={[MockFunction]}
   schema={
-    Immutable.Map {
+    Object {
       "title": "Test Title",
     }
   }
@@ -114,14 +114,14 @@ exports[`Widget renders with instructions 1`] = `
     }
   }
   config={
-    Immutable.Map {
+    Object {
       "instructions": "The quick brown fox jumps over the lazy dog. See [dogs](http://example.com/)",
     }
   }
   onBlur={[MockFunction]}
   onChange={[MockFunction]}
   schema={
-    Immutable.Map {
+    Object {
       "title": "Test Title",
     }
   }

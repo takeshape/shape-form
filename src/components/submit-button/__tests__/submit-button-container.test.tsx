@@ -1,5 +1,4 @@
 jest.mock('../../../selectors');
-import {fromJS} from 'immutable';
 import {mapStateToProps, mapDispatchToProps} from '../submit-button-container';
 // @ts-ignore
 import {getForm} from '../../../selectors';
@@ -23,7 +22,7 @@ describe('Submit Button Container', () => {
   });
 
   it('mapStateToProps', () => {
-    (getForm as jest.Mock).mockReturnValueOnce(fromJS({errors: {}}));
+    (getForm as jest.Mock).mockReturnValueOnce({errors: {}});
     expect(mapStateToProps(state, {formName})).toEqual({
       hasError: false,
       isDirty: false

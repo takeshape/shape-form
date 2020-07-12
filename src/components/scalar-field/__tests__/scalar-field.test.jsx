@@ -1,18 +1,17 @@
 import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 const renderer = new ReactShallowRenderer();
-import {Map} from 'immutable';
 import ScalarField from '../scalar-field';
 
 describe('ScalarField', () => {
   it('renders', () => {
     const props = {
       value: 'Andrew',
-      schema: Map({type: 'string', title: 'Name'}),
+      schema: {type: 'string', title: 'Name'},
       formName: 'test-form',
       path: 'name',
-      config: Map(),
-      ui: Map(),
+      config: {},
+      ui: {},
       locale: 'pt-br',
 
       onChange: jest.fn(),
@@ -29,11 +28,11 @@ describe('ScalarField', () => {
   it('renders custom widget', () => {
     const props = {
       value: 'Andrew',
-      schema: Map({type: 'string', title: 'Name'}),
+      schema: {type: 'string', title: 'Name'},
       formName: 'test-form',
       path: 'name',
-      config: Map({widget: 'Custom'}),
-      ui: Map(),
+      config: {widget: 'Custom'},
+      ui: {},
       widgets: {
         Custom({value}) { // eslint-disable-line
           return <div>{value}</div>;
@@ -55,11 +54,11 @@ describe('ScalarField', () => {
   it('falls back on DefaultWidget if the configured widget is undefined', () => {
     const props = {
       value: 'Andrew',
-      schema: Map({type: 'string', title: 'Name'}),
+      schema: {type: 'string', title: 'Name'},
       formName: 'test-form',
       path: 'name',
-      config: Map({widget: 'custom'}),
-      ui: Map(),
+      config: {widget: 'custom'},
+      ui: {},
       widgets: {},
       locale: 'pt-br',
 

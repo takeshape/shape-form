@@ -1,5 +1,4 @@
 import React from 'react';
-import {fromJS} from 'immutable';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 import Widget from '../widget';
 
@@ -7,9 +6,9 @@ const renderer = ReactShallowRenderer.createRenderer();
 
 function createProps(props) {
   return {
-    schema: fromJS({
+    schema: {
       title: 'Test Title'
-    }),
+    },
     onChange: jest.fn(),
     onBlur: jest.fn(),
     value: 'Brown Fox',
@@ -36,9 +35,9 @@ describe('Widget', () => {
 
   it('renders with instructions', () => {
     const props = createProps({
-      config: fromJS({
+      config: {
         instructions: 'The quick brown fox jumps over the lazy dog. See [dogs](http://example.com/)'
-      })
+      }
     });
 
     const tree = renderer.render(<Widget {...props} />);
@@ -56,10 +55,10 @@ describe('Widget', () => {
 
   it('renders with description', () => {
     const props = createProps({
-      schema: fromJS({
+      schema: {
         title: 'Test Title',
         description: 'The quick brown fox jumps over the lazy dog.'
-      })
+      }
     });
 
     const tree = renderer.render(<Widget {...props} />);

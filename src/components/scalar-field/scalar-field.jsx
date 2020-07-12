@@ -68,7 +68,7 @@ export default class ScalarField extends PureComponent {
     let Widget = DefaultWidget;
 
     if (widgets && config) {
-      const widgetName = config.get('widget');
+      const widgetName = config.widget;
       if (widgets[widgetName]) {
         Widget = widgets[widgetName];
       }

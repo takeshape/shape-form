@@ -19,7 +19,7 @@ export default class ContentPreview extends PureComponent {
     let Preview = DefaultContentPreview;
 
     if (widgets && config) {
-      const widgetName = config.get('preview', 'contentPreview');
+      const widgetName = config.preview || 'contentPreview';
       if (widgets[widgetName]) {
         Preview = widgets[widgetName];
       }

@@ -1,21 +1,23 @@
+import get from 'lodash/get';
+
 export default function getWidgetOptions(schema, config) {
   let options = [];
 
-  const configuredOptions = config.get('options');
-  const sharedNameValueEnum = schema.get('enum');
+  const configuredOptions = config.options;
+  const sharedNameValueEnum = schema.enum;
   if (configuredOptions) {
-    options = configuredOptions.toJS();
+    options = configuredOptions;
   } else if (sharedNameValueEnum) {
-    options = sharedNameValueEnum.toArray().map(tzName => ({
+    options = sharedNameValueEnum.map(tzName => ({
       label: tzName,
       value: tzName
     }));
   } else {
-    const oneOf = schema.get('type') === 'array' ? schema.getIn(['items', 'oneOf']) : schema.get('oneOf');
+    const oneOf = schema.type === 'array' ? get(schema, ['items', 'oneOf']) : schema.oneOf;
     if (oneOf) {
-      options = oneOf.toArray().map(optionSchema => ({
-        label: optionSchema.get('title'),
-        value: optionSchema.getIn(['enum', 0])
+      options = oneOf.map(optionSchema => ({
+        label: optionSchema.title,
+        value: get(optionSchema, ['enum', 0])
       }));
     }
   }

@@ -1,4 +1,3 @@
-import {fromJS} from 'immutable';
 import isDirty from '../is-dirty';
 
 test('isDirty - string', async () => {
@@ -24,13 +23,13 @@ test('isDirty - undefined + zero', async () => {
 });
 
 test('isDirty - object', async () => {
-  const initialData = fromJS({
+  const initialData = {
     a: 1,
     b: 2,
     c: 3
-  });
-  const currentData1 = initialData.set('c', 4);
-  const currentData2 = currentData1.set('c', 3);
+  };
+  const currentData1 = {...initialData, c: 4};
+  const currentData2 = {...currentData1, c: 3};
 
   expect(isDirty(initialData, currentData1)).toBe(true);
   expect(isDirty(initialData, currentData2)).toBe(false);

@@ -13,7 +13,7 @@ import DropTarget from './drop-target';
 import {PLACEHOLDER_KEY} from '../../constants';
 
 function isSingle(schema) {
-  return schema.get('minItems') === 1 && schema.get('maxItems') === 1;
+  return schema.minItems === 1 && schema.maxItems === 1;
 }
 
 const defaultValues = {
@@ -26,8 +26,8 @@ const defaultValues = {
 };
 
 function getDefaultValue(schema) {
-  const defaultValue = schema.get('default');
-  return defaultValue === undefined ? defaultValues[schema.get('type')] : defaultValue;
+  const defaultValue = schema.default;
+  return defaultValue === undefined ? defaultValues[schema.type] : defaultValue;
 }
 
 function initialize({initializeArray, schema, formName, path}) {
@@ -73,7 +73,7 @@ export default class ArrayField extends PureComponent {
 
   handleAddItem = event => {
     event.preventDefault();
-    const itemSchema = this.props.schema.get('items');
+    const itemSchema = this.props.schema.items;
     const defaultValue = getDefaultValue(itemSchema);
     this.props.addArrayItem(defaultValue);
     this.props.blurField();
@@ -111,14 +111,14 @@ export default class ArrayField extends PureComponent {
       locale
     } = this.props;
 
-    const keys = ui.get('arrayKeys');
-    const collapsed = ui.get('collapsed');
+    const keys = ui.arrayKeys;
+    const collapsed = ui.collapsed;
 
     const totalLength = length + (placeholder ? 1 : 0);
     const fields = new Array(totalLength);
     for (let i = 0, j = 0; j < totalLength; j++) {
-      const isPlaceholder = Boolean(placeholder && placeholder.get('index') === j);
-      const key = isPlaceholder ? PLACEHOLDER_KEY : keys.get(i, i);
+      const isPlaceholder = Boolean(placeholder && placeholder.index === j);
+      const key = isPlaceholder ? PLACEHOLDER_KEY : keys[i] === undefined ? i : keys[i];
       fields[j] = (
         <ArrayFieldItem
           key={key}
@@ -151,8 +151,8 @@ export default class ArrayField extends PureComponent {
     const onExpandAll = this.props.expandAllArrayItems;
     const onCollapseAll = this.props.collapseAllArrayItems;
 
-    const keys = ui.get('arrayKeys');
-    const collapsed = ui.get('collapsed');
+    const keys = ui.arrayKeys;
+    const collapsed = ui.collapsed;
     const allCollapsed = keys.size === collapsed.size;
 
     if (Wrapper === Widget) {
@@ -182,13 +182,13 @@ export default class ArrayField extends PureComponent {
   getFieldProps(dragAndDrop, placeholder) {
     const {config, path, length, fieldAction} = this.props;
     const fieldsProps = {
-      className: config.get('listStyle')
+      className: config.listStyle
     };
     if (dragAndDrop) {
       fieldsProps.path = path;
       fieldsProps.count = length;
       fieldsProps.fieldAction = fieldAction;
-      fieldsProps.placeholderIndex = placeholder && placeholder.get('index');
+      fieldsProps.placeholderIndex = placeholder && placeholder.index;
     }
     return fieldsProps;
   }
@@ -196,16 +196,16 @@ export default class ArrayField extends PureComponent {
   render() {
     const {schema, config, ui, widgets, disabled} = this.props;
 
-    const itemSchema = schema.get('items');
-    const itemConfig = config.get('items', config);
+    const itemSchema = schema.items;
+    const itemConfig = config.items || config;
 
     if (isSingle(schema)) {
       return this.renderSingle(itemSchema, itemConfig);
     }
-    const placeholder = ui.get('placeholder');
-    const dragAndDrop = config.get('dragAndDrop', false);
-    const showAddButton = config.get('showAddButton', true);
-    const Wrapper = (widgets && widgets[config.get('wrapper')]) || Widget;
+    const placeholder = ui.placeholder;
+    const dragAndDrop = config.dragAndDrop === undefined ? false : config.dragAndDrop;
+    const showAddButton = config.showAddButton === undefined ? true : config.showAddButton;
+    const Wrapper = (widgets && widgets[config.wrapper]) || Widget;
     const Fields = dragAndDrop ? DropTarget : List;
 
     return (

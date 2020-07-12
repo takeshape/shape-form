@@ -25,12 +25,12 @@ export default class TextInputWidget extends PureComponent {
   render() {
     const {schema, config, value, error, isRequired, multiline, onBlur, onFocus, disabled} = this.props;
 
-    const maxLength = schema.get('maxLength');
-    const description = schema.get('description');
-    const instructions = config.get('instructions');
-    const title = schema.get('title');
-    const type = schema.get('type');
-    const autoFocus = config.get('autoFocus', false);
+    const maxLength = schema.maxLength;
+    const description = schema.description;
+    const instructions = config.instructions;
+    const title = schema.title;
+    const type = schema.type;
+    const autoFocus = config.autoFocus || false;
 
     return (
       <TextField

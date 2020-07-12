@@ -1,5 +1,7 @@
-import Immutable from 'immutable';
 import {reducerFactory, matches, pathToString} from '../paths';
+import get from 'lodash/get';
+import produce from 'immer';
+import {updateIn} from '../util/immutable-util';
 
 test('matches', async () => {
   const path = ['a', 'b', 'c', 'd'];
@@ -15,26 +17,30 @@ test('matches', async () => {
 test('reducerFactory', async () => {
   const INCREMENT = 'increment';
 
-  const initialState = Immutable.fromJS({
+  const initialState = {
     forms: {}
-  });
+  };
 
   const reducers = {
     [INCREMENT](state, {meta}) {
-      return state.updateIn(['forms', meta.formName, 'data', 'x'], x => x + 1);
+      return produce(state, draft => {
+        updateIn(draft, ['forms', meta.formName, 'data', 'x'], x => x + 1);
+      });
     }
   };
 
-  const pluginInitial = Immutable.fromJS({
+  const pluginInitial = {
     data: {
       x: 0
     }
-  });
+  };
 
   const plugins = {
     'test-form'(state = pluginInitial, {type}) {
       if (type === INCREMENT) {
-        return state.updateIn(['data', 'x'], x => x + 2);
+        return produce(state, draft => {
+          updateIn(draft, ['data', 'x'], x => x + 2);
+        });
       }
       return state;
     }
@@ -50,7 +56,7 @@ test('reducerFactory', async () => {
   };
 
   const newState = reducer(undefined, action);
-  const x = newState.getIn(['forms', 'test-form', 'data', 'x']);
+  const x = get(newState, ['forms', 'test-form', 'data', 'x']);
   expect(x).toBe(3);
 });
 

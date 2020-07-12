@@ -13,8 +13,8 @@ export interface SubmitStateProps {
 export const mapStateToProps = (state: any, ownProps: Partial<SubmitProps>): SubmitStateProps => {
   const {formName} = ownProps;
   const form = getForm(state, {formName});
-  const errors = form && form.get('errors');
-  const dirty = form && form.get('dirty');
+  const errors = form && form.errors;
+  const dirty = form && form.dirty;
   return {
     hasError: Boolean(errors && errors.size > 0),
     isDirty: Boolean(dirty && dirty.size > 0)

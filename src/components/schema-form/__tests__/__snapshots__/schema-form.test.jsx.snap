@@ -16,7 +16,7 @@ exports[`SchemaForm renders with children 1`] = `
   locale="pt-br"
   registerForm={[MockFunction]}
   registeredSchema={
-    Immutable.Map {
+    Object {
       "type": "string",
     }
   }
@@ -35,7 +35,7 @@ exports[`SchemaForm renders with schema 1`] = `
   locale="pt-br"
   registerForm={[MockFunction]}
   registeredSchema={
-    Immutable.Map {
+    Object {
       "type": "string",
     }
   }

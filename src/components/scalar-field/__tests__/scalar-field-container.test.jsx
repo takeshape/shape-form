@@ -1,7 +1,6 @@
 jest.mock('../scalar-field', () => 'ScalarField');
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {Map, fromJS} from 'immutable';
 import ScalarFieldContainer from '../index';
 
 import {createStore, combineReducers} from 'redux';
@@ -9,10 +8,10 @@ import {Provider} from 'react-redux';
 import {createFormReducer} from '../../../reducer';
 import {NAME} from '../../../constants';
 
-const schema = Map({type: 'string', title: 'Name'});
+const schema = {type: 'string', title: 'Name'};
 const formName = 'test-form';
 const loadedState = {
-  [NAME]: fromJS({
+  [NAME]: {
     forms: {
       [formName]: {
         schema: {
@@ -26,7 +25,7 @@ const loadedState = {
         }
       }
     }
-  })
+  }
 };
 
 const reducer = combineReducers({[NAME]: createFormReducer()});
@@ -38,8 +37,8 @@ describe('ScalarFieldContainer', () => {
       schema,
       formName,
       path: 'name',
-      config: Map(),
-      ui: Map(),
+      config: {},
+      ui: {},
       onChange: jest.fn(),
       onChangeSilent: jest.fn(),
       onBlur: jest.fn(),

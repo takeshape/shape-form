@@ -3,7 +3,7 @@
 exports[`DefaultWidget renders checkbox 1`] = `
 <CheckboxWidget
   checked={true}
-  config={Immutable.Map {}}
+  config={Object {}}
   error=""
   isRequired={false}
   onBlur={[MockFunction]}
@@ -11,9 +11,9 @@ exports[`DefaultWidget renders checkbox 1`] = `
   onFocus={[MockFunction]}
   path="test"
   schema={
-    Immutable.Map {
-      "type": "boolean",
+    Object {
       "title": "Checkbox Input",
+      "type": "boolean",
     }
   }
   type="checkbox"
@@ -23,7 +23,7 @@ exports[`DefaultWidget renders checkbox 1`] = `
 
 exports[`DefaultWidget renders dropdown 1`] = `
 <TextInputWidget
-  config={Immutable.Map {}}
+  config={Object {}}
   error=""
   isRequired={false}
   onBlur={[MockFunction]}
@@ -31,14 +31,14 @@ exports[`DefaultWidget renders dropdown 1`] = `
   onFocus={[MockFunction]}
   path="test"
   schema={
-    Immutable.Map {
-      "type": "string",
-      "title": "Text Input",
-      "enum": Immutable.List [
+    Object {
+      "enum": Array [
         "foo",
         "bar",
         "baz",
       ],
+      "title": "Text Input",
+      "type": "string",
     }
   }
   value="foo"
@@ -47,7 +47,7 @@ exports[`DefaultWidget renders dropdown 1`] = `
 
 exports[`DefaultWidget renders number input 1`] = `
 <TextInputWidget
-  config={Immutable.Map {}}
+  config={Object {}}
   error=""
   isRequired={false}
   onBlur={[MockFunction]}
@@ -55,9 +55,9 @@ exports[`DefaultWidget renders number input 1`] = `
   onFocus={[MockFunction]}
   path="test"
   schema={
-    Immutable.Map {
-      "type": "number",
+    Object {
       "title": "Number Input",
+      "type": "number",
     }
   }
   type="number"
@@ -67,7 +67,7 @@ exports[`DefaultWidget renders number input 1`] = `
 
 exports[`DefaultWidget renders text input 1`] = `
 <TextInputWidget
-  config={Immutable.Map {}}
+  config={Object {}}
   error=""
   isRequired={false}
   onBlur={[MockFunction]}
@@ -75,9 +75,9 @@ exports[`DefaultWidget renders text input 1`] = `
   onFocus={[MockFunction]}
   path="test"
   schema={
-    Immutable.Map {
-      "type": "string",
+    Object {
       "title": "Text Input",
+      "type": "string",
     }
   }
   type="text"

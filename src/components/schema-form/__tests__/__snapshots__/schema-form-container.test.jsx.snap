@@ -6,13 +6,13 @@ exports[`SchemaFormContainer renders 1`] = `
   formName="test-form"
   registerForm={[Function]}
   registeredSchema={
-    Immutable.Map {
-      "type": "object",
-      "properties": Immutable.Map {
-        "name": Immutable.Map {
+    Object {
+      "properties": Object {
+        "name": Object {
           "type": "string",
         },
       },
+      "type": "object",
     }
   }
   submitForm={[Function]}

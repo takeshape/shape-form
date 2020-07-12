@@ -1,11 +1,16 @@
+import {removeIn, setIn} from '../util/immutable-util';
+
 jest.mock('../util/structural-changes');
 import {NAME} from '../constants';
 import {getValues, getStructuralChanges} from '../selectors';
-import {fromJS, Set} from 'immutable';
 import {PROPERTIES} from '../paths';
+import get from 'lodash/get';
 
 import {flattenStructuralChanges} from '../util/structural-changes';
+import produce, {setAutoFreeze} from 'immer';
 flattenStructuralChanges.mockImplementation((...args) => args);
+
+setAutoFreeze(false);
 
 const formData = {
   email: 'ahnald@dapump.com',
@@ -19,7 +24,7 @@ const formData = {
   ]
 };
 
-const formState = fromJS({
+const formState = {
   forms: {
     testForm: {
       schema: {
@@ -55,12 +60,12 @@ const formState = fromJS({
           }
         }
       },
-      dirty: Set.of('email', 'addresses'),
-      touched: Set.of('email'),
+      dirty: new Set(['email', 'addresses']),
+      touched: new Set(['email']),
       submitted: false
     }
   }
-});
+};
 
 function getState(domainState) {
   return {[NAME]: domainState};
@@ -72,17 +77,18 @@ test('getValues', () => {
 });
 
 test('getValues - onlyDirty', () => {
-  const dirtyFormState = formState.updateIn(['forms', 'testForm'], form => {
-    return form.merge({
-      data: form.get('data').setIn(['addresses', 0, 'street'], undefined),
-      dirty: Set.of('email', 'addresses[0].street')
-    });
+  const dirtyFormState = produce(formState, draft => {
+    const {testForm} = draft.forms;
+    testForm.dirty = new Set(['email', 'addresses[0].street']);
+    setIn(testForm.data, ['addresses', 0, 'street'], undefined);
   });
+
   const values = getValues(getState(dirtyFormState), {
     formName: 'testForm',
     onlyDirty: true
   });
-  const expected = {
+
+  expect(values).toEqual({
     email: 'ahnald@dapump.com',
     addresses: [
       {
@@ -91,19 +97,18 @@ test('getValues - onlyDirty', () => {
         zip: '11201'
       }
     ]
-  };
-  expect(values).toEqual(expected);
+  });
 });
 
-test('getStructuralChanges', () => {
+test('getStructuralChanges - no changes', () => {
   expect(getStructuralChanges(getState(formState), {formName: 'testForm'})).toEqual([
-    formState.getIn(['forms', 'testForm', 'structuralChanges']),
+    get(formState, ['forms', 'testForm', 'structuralChanges']),
     [],
     []
   ]);
 });
 
 test('getStructuralChanges', () => {
-  const state = getState(formState.removeIn(['forms', 'testForm', 'structuralChanges']));
+  const state = getState(produce(formState, draft => removeIn(draft, ['forms', 'testForm', 'structuralChanges'])));
   expect(getStructuralChanges(state, {formName: 'testForm'})).toEqual([]);
 });

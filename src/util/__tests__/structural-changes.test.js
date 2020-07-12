@@ -1,8 +1,7 @@
-import {fromJS} from 'immutable';
 import {PROPERTIES} from '../../paths';
 import {initStructuralChanges, flattenStructuralChanges} from '../structural-changes';
 
-const schema = fromJS({
+const schema = {
   type: 'object',
   properties: {
     people: {
@@ -32,9 +31,9 @@ const schema = fromJS({
       }
     }
   }
-});
+};
 
-const initialData = fromJS({
+const initialData = {
   people: [
     {
       fullName: 'John',
@@ -71,7 +70,7 @@ const initialData = fromJS({
       ]
     }
   ]
-});
+};
 
 test('initStructuralChanges', () => {
   const expected = {
@@ -102,11 +101,11 @@ test('initStructuralChanges', () => {
     }
   };
 
-  expect(initStructuralChanges(schema, initialData).toJS()).toEqual(expected);
+  expect(initStructuralChanges(schema, initialData)).toEqual(expected);
 });
 
 test('flattenStructuralChanges', () => {
-  const changes = fromJS({
+  const changes = {
     people: {
       '0': {
         addresses: {
@@ -132,7 +131,7 @@ test('flattenStructuralChanges', () => {
         originalSize: 2
       }
     }
-  });
+  };
   expect(flattenStructuralChanges(changes)).toEqual([
     {
       path: 'people',

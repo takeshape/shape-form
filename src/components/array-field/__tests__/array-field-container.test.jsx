@@ -1,7 +1,6 @@
 jest.mock('../array-field', () => 'ArrayField');
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {Map, fromJS} from 'immutable';
 import ArrayFieldContainer from '../index';
 
 import {createStore, combineReducers} from 'redux';
@@ -11,7 +10,7 @@ import {NAME} from '../../../constants';
 
 const formName = 'test-form';
 
-const schema = fromJS({
+const schema = {
   type: 'array',
   items: {
     type: 'object',
@@ -21,10 +20,10 @@ const schema = fromJS({
       lastName: {type: 'string'}
     }
   }
-});
+};
 
 const loadedState = {
-  [NAME]: fromJS({
+  [NAME]: {
     forms: {
       [formName]: {
         schema: {
@@ -54,7 +53,7 @@ const loadedState = {
         }
       }
     }
-  })
+  }
 };
 
 const reducer = combineReducers({[NAME]: createFormReducer()});
@@ -66,7 +65,7 @@ describe('ArrayFieldContainer', () => {
       schema,
       formName,
       path: 'users',
-      config: Map()
+      config: {}
     };
 
     const tree = renderer

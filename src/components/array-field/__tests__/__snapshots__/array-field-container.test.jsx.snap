@@ -5,39 +5,38 @@ exports[`ArrayFieldContainer renders 1`] = `
   addArrayItem={[Function]}
   blurField={[Function]}
   collapseAllArrayItems={[Function]}
-  config={Immutable.Map {}}
+  config={Object {}}
   expandAllArrayItems={[Function]}
   fieldAction={[Function]}
   formName="test-form"
   initializeArray={[Function]}
-  length={3}
   path="users"
   removeArrayItem={[Function]}
   schema={
-    Immutable.Map {
-      "type": "array",
-      "items": Immutable.Map {
-        "type": "object",
-        "properties": Immutable.Map {
-          "email": Immutable.Map {
+    Object {
+      "items": Object {
+        "properties": Object {
+          "email": Object {
             "type": "string",
           },
-          "firstName": Immutable.Map {
+          "firstName": Object {
             "type": "string",
           },
-          "lastName": Immutable.Map {
+          "lastName": Object {
             "type": "string",
           },
         },
+        "type": "object",
       },
+      "type": "array",
     }
   }
   swapArrayItems={[Function]}
   toggleArrayItem={[Function]}
   ui={
-    Immutable.Map {
-      "arrayKeys": Immutable.List [],
-      "collapsed": Immutable.Set [],
+    Object {
+      "arrayKeys": Array [],
+      "collapsed": Set {},
     }
   }
 />

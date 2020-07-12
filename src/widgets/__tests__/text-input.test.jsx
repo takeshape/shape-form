@@ -1,17 +1,16 @@
 import React from 'react';
-import {fromJS} from 'immutable';
 import TextInputWidget from '../text-input';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 const renderer = ReactShallowRenderer.createRenderer();
 
 function getProps(props) {
   return {
-    schema: fromJS({
+    schema: {
       title: 'Test Title'
-    }),
-    config: fromJS({
+    },
+    config: {
       // instructions: 'The quick brown fox jumps over the lazy dog. See [dogs](http://example.com/)'
-    }),
+    },
     onChange: jest.fn(),
     onBlur: jest.fn(),
     onFocus: jest.fn(),
@@ -31,9 +30,9 @@ describe('TextInputWidget', () => {
 
   it('renders with instructions', () => {
     const props = getProps({
-      config: fromJS({
+      config: {
         instructions: 'The quick brown fox jumps over the lazy dog. See [dogs](http://example.com/)'
-      })
+      }
     });
 
     const tree = renderer.render(<TextInputWidget {...props} />);

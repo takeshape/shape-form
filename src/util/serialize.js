@@ -1,44 +1,33 @@
-import {Map, List, Iterable, fromJS} from 'immutable';
-
 function serializerFactory() {
-  const transform = (schema, data, toPojo = false) => {
+  const transform = (schema, data) => {
     if (data === null || data === undefined) {
       return data;
     }
 
-    const type = schema.get('type');
+    const type = schema.type;
     if (type === 'object') {
-      if (schema.get('draftjs')) {
+      if (schema.draftjs) {
         return null;
       }
 
-      const fromImmutable = Iterable.isIterable(data);
-      const properties = schema.get('properties');
+      const properties = schema.properties;
       if (properties) {
         const result = {};
-        properties.forEach((propSchema, name) => {
-          const value = fromImmutable ? data.get(name) : data[name];
+        for (const name of Object.keys(properties)) {
+          const propSchema = properties[name];
+          const value = data[name];
           if (value !== undefined) {
-            result[name] = transform(propSchema, value, toPojo);
+            result[name] = transform(propSchema, value);
           }
-        });
-
-        return toPojo ? result : Map(result);
+        }
+        return result;
       }
-      if (fromImmutable) {
-        return toPojo ? data.toJS() : data;
-      }
-      return toPojo ? data : fromJS(data);
+      return data;
     }
     if (type === 'array') {
-      const items = schema.get('items');
+      const items = schema.items;
       if (items) {
-        const mapped = data.map(item => transform(items, item, toPojo));
-        if (Iterable.isIterable(data)) {
-          return toPojo ? mapped.toArray() : mapped;
-        }
-
-        return toPojo ? mapped : List(mapped);
+        return data.map(item => transform(items, item));
       }
     }
 
@@ -49,26 +38,3 @@ function serializerFactory() {
 }
 
 export const serialize = serializerFactory();
-export const deserialize = serializerFactory();
-
-export function toPojo(obj, transform) {
-  const convert = obj => {
-    if (Iterable.isKeyed(obj)) {
-      return obj
-        .toSeq()
-        .map(convert)
-        .toObject();
-    }
-
-    if (Iterable.isIndexed(obj)) {
-      return obj
-        .toSeq()
-        .map(convert)
-        .toArray();
-    }
-
-    return transform ? transform(obj) : obj;
-  };
-
-  return convert(obj);
-}

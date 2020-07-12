@@ -2,17 +2,16 @@ import PropTypes from 'prop-types';
 import React, {Fragment, PureComponent} from 'react';
 import SchemaField from '../schema-field';
 import ObjectFieldWrapper from './object-field-wrapper';
-import {Map} from 'immutable';
+import get from 'lodash/get';
 
 const nope = () => false;
-const emptyMap = Map();
 
 function getPropIsRequired(required) {
   if (!required) {
     return nope;
   }
 
-  const requiredSet = required.toSet();
+  const requiredSet = new Set(required);
   return name => requiredSet.has(name);
 }
 
@@ -32,10 +31,10 @@ export default class ObjectField extends PureComponent {
   render() {
     const {schema, formName, path, config, context, widgets, disabled, locale} = this.props;
 
-    const properties = schema.get('properties');
-    const names = (config.get('order') || properties.keySeq()).toArray();
-    const isPropRequired = getPropIsRequired(schema.get('required'));
-    const title = schema.get('title');
+    const properties = schema.properties;
+    const names = config.order || Object.keys(properties);
+    const isPropRequired = getPropIsRequired(schema.required);
+    const title = schema.title;
 
     if (!names.length) {
       const EmptyObject = widgets && widgets.emptyObject;
@@ -56,12 +55,12 @@ export default class ObjectField extends PureComponent {
     }
 
     const fields = names.map(name => {
-      const propertySchema = properties.get(name);
+      const propertySchema = properties[name];
       if (!propertySchema) {
         return null;
       }
 
-      const propertyConfig = config.getIn(['properties', name], emptyMap);
+      const propertyConfig = get(config, ['properties', name], {});
       return (
         <SchemaField
           key={name}
@@ -78,7 +77,7 @@ export default class ObjectField extends PureComponent {
       );
     });
 
-    const Wrapper = (widgets && widgets[config.get('wrapper')]) || (title ? ObjectFieldWrapper : Fragment);
+    const Wrapper = (widgets && widgets[config.wrapper]) || (title ? ObjectFieldWrapper : Fragment);
     const wrapperProps = Wrapper === Fragment ? {} : this.props;
 
     return <Wrapper {...wrapperProps}>{fields}</Wrapper>;

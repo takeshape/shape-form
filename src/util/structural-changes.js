@@ -1,5 +1,6 @@
-import {Map, Range} from 'immutable';
 import {pathToString, PROPERTIES} from '../paths';
+import range from 'lodash/range';
+import set from 'lodash/set';
 
 function visitProps(schema, data, callback, path = []) {
   callback(schema, data, path);
@@ -7,19 +8,20 @@ function visitProps(schema, data, callback, path = []) {
     return;
   }
 
-  const type = schema.get('type');
+  const type = schema.type;
   if (type === 'object') {
-    const properties = schema.get('properties');
+    const properties = schema.properties;
     if (properties) {
-      properties.forEach((propSchema, name) => {
-        const value = data.get(name);
+      for (const name of Object.keys(properties)) {
+        const propSchema = properties[name];
+        const value = data[name];
         if (value !== undefined) {
           visitProps(propSchema, value, callback, path.concat(name));
         }
-      });
+      }
     }
   } else if (type === 'array') {
-    const itemSchema = schema.get('items');
+    const itemSchema = schema.items;
     if (itemSchema) {
       return data.map((item, i) => visitProps(itemSchema, item, callback, path.concat(i)));
     }
@@ -27,30 +29,30 @@ function visitProps(schema, data, callback, path = []) {
 }
 
 function initStructuralChangeProps(initialValue) {
-  const size = initialValue.size;
-  return Map({
-    arrayKeys: Range(0, size).toList(),
+  const size = initialValue.length;
+  return {
+    arrayKeys: range(size),
     nextKey: size,
     originalSize: size
-  });
+  };
 }
 
 export function initStructuralChanges(schema, initialData) {
-  return Map().withMutations(result => {
-    visitProps(schema, initialData, (schema, data, path) => {
-      if (schema.get('type') === 'array') {
-        result.setIn(path.concat(PROPERTIES), initStructuralChangeProps(data));
-      }
-    });
+  const result = {};
+  visitProps(schema, initialData, (schema, data, path) => {
+    if (schema.type === 'array') {
+      set(result, path.concat(PROPERTIES), initStructuralChangeProps(data));
+    }
   });
+  return result;
 }
 
 function wasStructureModified(indicies, originalSize) {
-  if (indicies.size !== originalSize) {
+  if (indicies.length !== originalSize) {
     return true;
   }
-  for (let i = 0; i < indicies.size; i++) {
-    if (indicies.get(i) !== i) {
+  for (let i = 0; i < indicies.length; i++) {
+    if (indicies[i] !== i) {
       return true;
     }
   }
@@ -58,20 +60,20 @@ function wasStructureModified(indicies, originalSize) {
 }
 
 export function flattenStructuralChanges(changes, path = [], result = []) {
-  const props = changes.get(PROPERTIES);
+  const props = changes[PROPERTIES];
   if (props) {
-    const arrayKeys = props.get('arrayKeys');
-    const originalSize = props.get('originalSize');
+    const arrayKeys = props.arrayKeys;
+    const originalSize = props.originalSize;
 
     if (wasStructureModified(arrayKeys, originalSize)) {
-      result.push({path: pathToString(path), structure: arrayKeys.toArray()});
+      result.push({path: pathToString(path), structure: arrayKeys});
     }
   }
-  changes.forEach((change, key) => {
+  for (const key of Object.keys(changes)) {
     if (key !== PROPERTIES) {
-      flattenStructuralChanges(change, path.concat(key), result);
+      flattenStructuralChanges(changes[key], path.concat(key), result);
     }
-  });
+  }
 
   return result;
 }

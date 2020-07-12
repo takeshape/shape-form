@@ -1,4 +1,6 @@
-import {fromJS, Set, Map, is} from 'immutable';
+import get from 'lodash/get';
+import set from 'lodash/set';
+import produce from 'immer';
 import {getDataPath, getKeysPath, getCollapsedPath, PROPERTIES, getPlaceholderPath} from '../paths';
 import {
   createFormReducer,
@@ -25,6 +27,7 @@ import {
   collapseAllArrayItems,
   submitForm
 } from '../actions';
+import {mergeIn, removeIn, setIn} from '../util/immutable-util';
 
 const reducer = createFormReducer();
 
@@ -54,7 +57,7 @@ const sampleSchema = {
   required: ['name', 'age', 'coordinates']
 };
 
-const testFormState = fromJS({
+const testFormState = {
   forms: {
     'test-form': {
       data: sampleData,
@@ -62,18 +65,18 @@ const testFormState = fromJS({
       schema: sampleSchema,
       errors: {},
       submitted: false,
-      dirty: Set(),
+      dirty: new Set(),
       ui: {
         coordinates: {
           [PROPERTIES]: {
             arrayKeys: [0, 1, 2],
-            collapsed: Set.of(1)
+            collapsed: new Set([1])
           }
         }
       }
     }
   }
-});
+};
 
 test('reducer - intial state', () => {
   const newState = reducer(undefined, {});
@@ -82,7 +85,7 @@ test('reducer - intial state', () => {
     forms: {}
   };
 
-  expect(newState.toJS()).toEqual(expected);
+  expect(newState).toEqual(expected);
 });
 
 const bindCoordinates = bindMeta('test-form', 'coordinates');
@@ -98,10 +101,10 @@ test('SWAP_ARRAY_ITEMS', () => {
   const action = swapItems(0, 1);
 
   const newState = reducer(testFormState, action);
-  const keys = newState.getIn(getKeysPath(action.meta)).toJS();
+  const keys = get(newState, getKeysPath(action.meta));
   expect(keys).toEqual([1, 0, 2]);
 
-  const data = newState.getIn(getDataPath(action.meta)).toJS();
+  const data = get(newState, getDataPath(action.meta));
   expect(data).toEqual([sampleData.coordinates[1], sampleData.coordinates[0], sampleData.coordinates[2]]);
 });
 
@@ -109,10 +112,10 @@ test('ADD_ARRAY_ITEM', () => {
   const action = addItem({});
 
   const newState = reducer(testFormState, action);
-  const keys = newState.getIn(getKeysPath(action.meta)).toJS();
+  const keys = get(newState, getKeysPath(action.meta));
   expect(keys).toEqual([0, 1, 2, 3]);
 
-  const data = newState.getIn(getDataPath(action.meta)).toJS();
+  const data = get(newState, getDataPath(action.meta));
   expect(data).toEqual([...sampleData.coordinates, action.payload]);
 });
 
@@ -120,33 +123,30 @@ test('ADD_ARRAY_ITEM - specified index', () => {
   const action = addItem({foo: 'bar'}, 2);
 
   const newState = reducer(testFormState, action);
-  const keys = newState.getIn(getKeysPath(action.meta)).toJS();
+  const keys = get(newState, getKeysPath(action.meta));
   expect(keys).toEqual([0, 1, 3, 2]);
 
-  const data = newState
-    .getIn(getDataPath(action.meta))
-    .get(action.meta.index)
-    .toJS();
+  const data = get(newState, getDataPath(action.meta))[action.meta.index];
   expect(data).toEqual(action.payload);
 });
 
 test('ADD_ARRAY_ITEM - specified index empty', () => {
-  const initialState = fromJS({
+  const initialState = {
     forms: {
       'test-form': {
         schema: sampleSchema,
         errors: {}
       }
     }
-  });
+  };
 
   const action = addItem({foo: 'bar'}, 0);
 
   const newState = reducer(initialState, action);
-  const keys = newState.getIn(getKeysPath(action.meta)).toJS();
+  const keys = get(newState, getKeysPath(action.meta));
   expect(keys).toEqual([0]);
 
-  const data = newState.getIn(getDataPath(action.meta)).toJS();
+  const data = get(newState, getDataPath(action.meta));
   expect(data).toEqual([action.payload]);
 });
 
@@ -154,29 +154,29 @@ test('ADD_ARRAY_ITEM - clears placeholder', () => {
   const value = {foo: 'bar'};
   const action = addItem(value, 0);
   const placeholderPath = getPlaceholderPath(action.meta);
-  const initialState = testFormState.setIn(placeholderPath, Map({index: 0, value}));
+  const initialState = produce(testFormState, draft => set(draft, placeholderPath, {index: 0, value}));
 
   const newState = reducer(initialState, action);
-  expect(newState.getIn(placeholderPath)).toBe(undefined);
+  expect(get(newState, placeholderPath)).toBe(undefined);
 });
 
 test('ADD_ARRAY_ITEM - empty', () => {
-  const initialState = fromJS({
+  const initialState = {
     forms: {
       'test-form': {
         schema: sampleSchema,
         errors: {}
       }
     }
-  });
+  };
 
   const action = addItem({foo: 'bar'});
 
   const newState = reducer(initialState, action);
-  const keys = newState.getIn(getKeysPath(action.meta)).toJS();
+  const keys = get(newState, getKeysPath(action.meta));
   expect(keys).toEqual([0]);
 
-  const data = newState.getIn(getDataPath(action.meta)).toJS();
+  const data = get(newState, getDataPath(action.meta));
   expect(data).toEqual([action.payload]);
 });
 
@@ -189,10 +189,10 @@ test('ADD_ARRAY_ITEM - after REMOVE_ARRAY_ITEM', () => {
 
   newState = reducer(newState, addAction);
 
-  const keys = newState.getIn(getKeysPath(addAction.meta)).toJS();
+  const keys = get(newState, getKeysPath(addAction.meta));
   expect(keys).toEqual([1, 2, 3]);
 
-  const data = newState.getIn(getDataPath(addAction.meta)).toJS();
+  const data = get(newState, getDataPath(addAction.meta));
   expect(data).toEqual([...sampleData.coordinates.slice(1), addAction.payload]);
 });
 
@@ -200,10 +200,10 @@ test('REMOVE_ARRAY_ITEM', () => {
   const action = removeItem(1);
 
   const newState = reducer(testFormState, action);
-  const keys = newState.getIn(getKeysPath(action.meta)).toJS();
+  const keys = get(newState, getKeysPath(action.meta));
   expect(keys).toEqual([0, 2]);
 
-  const data = newState.getIn(getDataPath(action.meta)).toJS();
+  const data = get(newState, getDataPath(action.meta));
   expect(data).toEqual([sampleData.coordinates[0], sampleData.coordinates[2]]);
 });
 
@@ -213,24 +213,24 @@ test('INSERT_PLACEHOLDER', () => {
   const placeholderPath = getPlaceholderPath(action.meta);
 
   const newState = reducer(testFormState, action);
-  expect(newState.getIn(placeholderPath).toJS()).toEqual({index: 2, value});
+  expect(get(newState, placeholderPath)).toEqual({index: 2, value});
 });
 
 test('CLEAR_PLACEHOLDER - clears placeholder', () => {
   const value = {foo: 'bar'};
   const action = clearPlaceholder(value, 0);
   const placeholderPath = getPlaceholderPath(action.meta);
-  const initialState = testFormState.setIn(placeholderPath, Map({index: 0, value}));
+  const initialState = produce(testFormState, draft => setIn(draft, {index: 0, value}));
 
   const newState = reducer(initialState, action);
-  expect(newState.getIn(placeholderPath)).toBe(undefined);
+  expect(get(newState, placeholderPath)).toBe(undefined);
 });
 
 test('TOGGLE_ARRAY_ITEM - expand', () => {
   const action = toggleItem(1);
 
   const newState = reducer(testFormState, action);
-  const collapsed = newState.getIn(getCollapsedPath(action.meta));
+  const collapsed = get(newState, getCollapsedPath(action.meta));
   expect(collapsed.size).toBe(0);
 });
 
@@ -238,7 +238,7 @@ test('TOGGLE_ARRAY_ITEM - collapse', () => {
   const action = toggleItem(0);
 
   const newState = reducer(testFormState, action);
-  const collapsed = newState.getIn(getCollapsedPath(action.meta));
+  const collapsed = get(newState, getCollapsedPath(action.meta));
   expect(collapsed.size).toBe(2);
   expect(collapsed.has(0)).toBe(true);
   expect(collapsed.has(1)).toBe(true);
@@ -248,7 +248,7 @@ test('EXPAND_ALL_ARRAY_ITEMS', () => {
   const action = expandAllItems();
 
   const newState = reducer(testFormState, action);
-  const collapsed = newState.getIn(getCollapsedPath(action.meta));
+  const collapsed = get(newState, getCollapsedPath(action.meta));
   expect(collapsed.size).toBe(0);
 });
 
@@ -257,38 +257,41 @@ test('COLLAPSE_ALL_ARRAY_ITEMS - top level', () => {
   const action = bindMeta(formName, 'menu')(collapseAllArrayItems)();
 
   const newState = reducer(menuFormState, action);
-  let collapsed = newState.getIn(getCollapsedPath({formName, path: ['menu']}));
-  expect(is(collapsed, Set.of(0, 1))).toBe(true);
+  let collapsed = get(newState, getCollapsedPath({formName, path: ['menu']}));
+  expect(collapsed).toEqual(new Set([0, 1]));
 
-  collapsed = newState.getIn(getCollapsedPath({formName, path: ['menu', '0', 'items']}));
-  expect(is(collapsed, Set.of(0, 1))).toBe(true);
+  collapsed = get(newState, getCollapsedPath({formName, path: ['menu', '0', 'items']}));
+  expect(collapsed).toEqual(new Set([0, 1]));
 
-  collapsed = newState.getIn(
+  collapsed = get(
+    newState,
     getCollapsedPath({
       formName,
       path: ['menu', '0', 'items', '0', 'ingredients']
     })
   );
-  expect(is(collapsed, Set.of(0, 1, 2, 3))).toBe(true);
+  expect(collapsed).toEqual(new Set([0, 1, 2, 3]));
 
-  collapsed = newState.getIn(
+  collapsed = get(
+    newState,
     getCollapsedPath({
       formName,
       path: ['menu', '0', 'items', '1', 'ingredients']
     })
   );
-  expect(is(collapsed, Set.of(0, 1, 2))).toBe(true);
+  expect(collapsed).toEqual(new Set([0, 1, 2]));
 
-  collapsed = newState.getIn(getCollapsedPath({formName, path: ['menu', '1', 'items']}));
-  expect(is(collapsed, Set.of(0))).toBe(true);
+  collapsed = get(newState, getCollapsedPath({formName, path: ['menu', '1', 'items']}));
+  expect(collapsed).toEqual(new Set([0]));
 
-  collapsed = newState.getIn(
+  collapsed = get(
+    newState,
     getCollapsedPath({
       formName,
       path: ['menu', '1', 'items', '0', 'ingredients']
     })
   );
-  expect(is(collapsed, Set.of(0, 1, 2))).toBe(true);
+  expect(collapsed).toEqual(new Set([0, 1, 2]));
 });
 
 test('COLLAPSE_ALL_ARRAY_ITEMS - one level deep', () => {
@@ -296,38 +299,41 @@ test('COLLAPSE_ALL_ARRAY_ITEMS - one level deep', () => {
   const action = bindMeta(formName, 'menu.0.items')(collapseAllArrayItems)();
 
   const newState = reducer(menuFormState, action);
-  let collapsed = newState.getIn(getCollapsedPath({formName, path: ['menu']}));
-  expect(is(collapsed, Set())).toBe(true);
+  let collapsed = get(newState, getCollapsedPath({formName, path: ['menu']}));
+  expect(collapsed).toEqual(new Set());
 
-  collapsed = newState.getIn(getCollapsedPath({formName, path: ['menu', '0', 'items']}));
-  expect(is(collapsed, Set.of(0, 1))).toBe(true);
+  collapsed = get(newState, getCollapsedPath({formName, path: ['menu', '0', 'items']}));
+  expect(collapsed).toEqual(new Set([0, 1]));
 
-  collapsed = newState.getIn(
+  collapsed = get(
+    newState,
     getCollapsedPath({
       formName,
       path: ['menu', '0', 'items', '0', 'ingredients']
     })
   );
-  expect(is(collapsed, Set.of(0, 1, 2, 3))).toBe(true);
+  expect(collapsed).toEqual(new Set([0, 1, 2, 3]));
 
-  collapsed = newState.getIn(
+  collapsed = get(
+    newState,
     getCollapsedPath({
       formName,
       path: ['menu', '0', 'items', '1', 'ingredients']
     })
   );
-  expect(is(collapsed, Set.of(0, 1, 2))).toBe(true);
+  expect(collapsed).toEqual(new Set([0, 1, 2]));
 
-  collapsed = newState.getIn(getCollapsedPath({formName, path: ['menu', '1', 'items']}));
-  expect(is(collapsed, Set())).toBe(true);
+  collapsed = get(newState, getCollapsedPath({formName, path: ['menu', '1', 'items']}));
+  expect(collapsed).toEqual(new Set());
 
-  collapsed = newState.getIn(
+  collapsed = get(
+    newState,
     getCollapsedPath({
       formName,
       path: ['menu', '1', 'items', '0', 'ingredients']
     })
   );
-  expect(is(collapsed, Set())).toBe(true);
+  expect(collapsed).toEqual(new Set());
 });
 
 test('VALIDATE_FORM', () => {
@@ -361,8 +367,8 @@ test('VALIDATE_FORM', () => {
   const invalidState = reducer(intermediateState, blurAction);
 
   const newState = reducer(invalidState, validateAction);
-  const nameError = newState.getIn(['forms', 'test-form', 'errors', 'name']);
-  expect(newState.getIn(['forms', 'test-form', 'dirty']).has('name')).toBe(true);
+  const nameError = get(newState, ['forms', 'test-form', 'errors', 'name']);
+  expect(get(newState, ['forms', 'test-form', 'dirty']).has('name')).toBe(true);
   expect(typeof nameError).toBe('string');
 });
 
@@ -375,7 +381,7 @@ test('VALIDATE_FORM - dirty', () => {
   };
 
   // remove age data without setting it as dirty
-  let invalidState = testFormState.removeIn(['forms', 'test-form', 'data', 'age']);
+  let invalidState = produce(testFormState, draft => removeIn(draft, ['forms', 'test-form', 'data', 'age']));
 
   const changeAction = {
     type: CHANGE_FIELD,
@@ -400,10 +406,10 @@ test('VALIDATE_FORM - dirty', () => {
   invalidState = reducer(intermediateState, blurAction);
 
   const newState = reducer(invalidState, validateAction);
-  const nameError = newState.getIn(['forms', 'test-form', 'errors', 'name']);
+  const nameError = get(newState, ['forms', 'test-form', 'errors', 'name']);
   expect(typeof nameError).toBe('string');
 
-  const ageError = newState.getIn(['forms', 'test-form', 'errors', 'age']);
+  const ageError = get(newState, ['forms', 'test-form', 'errors', 'age']);
   expect(typeof ageError).toBe('undefined');
 });
 
@@ -416,16 +422,17 @@ test('VALIDATE_FORM - submitted', () => {
   };
 
   // set submitted to true
-  const invalidState = testFormState
-    .setIn(['forms', 'test-form', 'submitted'], true)
-    .removeIn(['forms', 'test-form', 'data', 'age'])
-    .removeIn(['forms', 'test-form', 'data', 'name']);
+  const invalidState = produce(testFormState, draft => {
+    setIn(draft, ['forms', 'test-form', 'submitted'], true);
+    removeIn(draft, ['forms', 'test-form', 'data', 'age']);
+    removeIn(draft, ['forms', 'test-form', 'data', 'name']);
+  });
 
   const newState = reducer(invalidState, validateAction);
-  const nameError = newState.getIn(['forms', 'test-form', 'errors', 'name']);
+  const nameError = get(newState, ['forms', 'test-form', 'errors', 'name']);
   expect(typeof nameError).toBe('string');
 
-  const ageError = newState.getIn(['forms', 'test-form', 'errors', 'age']);
+  const ageError = get(newState, ['forms', 'test-form', 'errors', 'age']);
   expect(typeof ageError).toBe('string');
 });
 
@@ -435,7 +442,7 @@ test('normalizeDataPath', () => {
   expect(normalizeDataPath(".properties['Sy3wKf-fe'].relationship")).toBe('properties.Sy3wKf-fe.relationship');
 });
 
-const isNullObjectData = fromJS({
+const isNullObjectData = {
   restaurant: {
     menu: {
       desserts: {
@@ -445,7 +452,7 @@ const isNullObjectData = fromJS({
       specials: [{name: 'cereal and milk'}, {name: 'french fries'}, {name: null}]
     }
   }
-});
+};
 
 test('getIsNullObject - incorrect error keyword', () => {
   const error = {
@@ -522,8 +529,8 @@ test('getParentSchemaPath', () => {
 });
 
 test('getIsRequired', () => {
-  expect(getIsRequired(fromJS({required: ['not me', 'nor me']}), 'relationship')).toBeFalsy();
-  expect(getIsRequired(fromJS({required: ['not me', 'relationship']}), 'relationship')).toBeTruthy();
+  expect(getIsRequired({required: ['not me', 'nor me']}, 'relationship')).toBeFalsy();
+  expect(getIsRequired({required: ['not me', 'relationship']}, 'relationship')).toBeTruthy();
 });
 
 test('getName', () => {
@@ -533,40 +540,44 @@ test('getName', () => {
 test('CLEAR_FORM', () => {
   const formName = 'test-form';
   const state = reducer(testFormState, clearForm(formName));
-  expect(state.getIn(['forms', formName])).toBe(undefined);
+  expect(get(state, ['forms', formName])).toBe(undefined);
 });
 
 test('SUBMIT_FORM', () => {
   const formName = 'test-form';
-  const touched = Set.of(['name', 'age']);
-  const dirty = Set.of(['name']);
-  const formState = testFormState.mergeIn(['forms', formName], {
-    dirty,
-    touched
-  });
+  const touched = new Set(['name', 'age']);
+  const dirty = new Set(['name']);
+  const formState = produce(testFormState, draft =>
+    mergeIn(draft, ['forms', formName], {
+      dirty,
+      touched
+    })
+  );
   const state = reducer(formState, submitForm(formName));
-  const newFormState = state.getIn(['forms', formName]);
-  expect(newFormState.get('dirty')).toBe(dirty);
-  expect(newFormState.get('touched')).toBe(touched);
-  expect(newFormState.get('submitErrors').size).toBe(0);
-  expect(newFormState.get('submitted')).toBe(true);
+  const newFormState = get(state, ['forms', formName]);
+  expect(newFormState.dirty).toBe(dirty);
+  expect(newFormState.touched).toBe(touched);
+  expect(Object.keys(newFormState.submitErrors).length).toBe(0);
+  expect(newFormState.submitted).toBe(true);
 });
 
 test('SUBMIT_FORM_SUCCESS', () => {
   const formName = 'test-form';
-  const touched = Set.of(['name', 'age']);
-  const dirty = Set.of(['name']);
-  const formState = testFormState.mergeIn(['forms', formName], {
-    dirty,
-    touched,
-    submitted: true,
-    submitErrors: Map()
-  });
+  const touched = new Set(['name', 'age']);
+  const dirty = new Set(['name']);
+  const formState = produce(testFormState, draft =>
+    mergeIn(draft, ['forms', formName], {
+      dirty,
+      touched,
+      submitted: true,
+      submitErrors: {}
+    })
+  );
   const action = {type: `${SUBMIT_FORM}_SUCCESS`, meta: {formName}};
   const state = reducer(formState, action);
-  const newFormState = state.getIn(['forms', formName]);
-  expect(newFormState.get('dirty').size).toBe(0);
-  expect(newFormState.get('touched').size).toBe(0);
-  expect(newFormState.get('submitErrors').size).toBe(0);
-  expect(newFormState.get('submitted')).toBe(true);
+  const newFormState = get(state, ['forms', formName]);
+  expect(newFormState.dirty.size).toBe(0);
+  expect(newFormState.touched.size).toBe(0);
+  expect(Object.keys(newFormState.submitErrors).length).toBe(0);
+  expect(newFormState.submitted).toBe(true);
 });

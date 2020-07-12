@@ -3,7 +3,6 @@ import ReactShallowRenderer from 'react-test-renderer/shallow';
 const renderer = new ReactShallowRenderer();
 
 import {shallow} from 'enzyme';
-import {fromJS} from 'immutable';
 import DefaultWidget from '../default-widget';
 
 function getProps(props) {
@@ -11,9 +10,9 @@ function getProps(props) {
     value: 'Hello World',
     isRequired: false,
     error: '',
-    config: fromJS({}),
+    config: {},
     path: 'test',
-    schema: fromJS({type: 'string', title: 'Text Input'}),
+    schema: {type: 'string', title: 'Text Input'},
     onChange: jest.fn(),
     onBlur: jest.fn(),
     onFocus: jest.fn(),
@@ -32,7 +31,7 @@ describe('DefaultWidget', () => {
   it('renders dropdown', () => {
     const props = getProps({
       value: 'foo',
-      schema: fromJS({type: 'string', title: 'Text Input', enum: ['foo', 'bar', 'baz']})
+      schema: {type: 'string', title: 'Text Input', enum: ['foo', 'bar', 'baz']}
     });
 
     const tree = renderer.render(<DefaultWidget {...props} />);
@@ -42,7 +41,7 @@ describe('DefaultWidget', () => {
   it('renders checkbox', () => {
     const props = getProps({
       value: true,
-      schema: fromJS({type: 'boolean', title: 'Checkbox Input'})
+      schema: {type: 'boolean', title: 'Checkbox Input'}
     });
 
     const tree = renderer.render(<DefaultWidget {...props} />);
@@ -52,7 +51,7 @@ describe('DefaultWidget', () => {
   it('renders number input', () => {
     const props = getProps({
       value: true,
-      schema: fromJS({type: 'number', title: 'Number Input'})
+      schema: {type: 'number', title: 'Number Input'}
     });
 
     const tree = renderer.render(<DefaultWidget {...props} />);
@@ -66,7 +65,7 @@ describe('DefaultWidget', () => {
 
     const props = getProps({
       value: true,
-      schema: fromJS({type: 'number', title: 'Number Input'}),
+      schema: {type: 'number', title: 'Number Input'},
       onChange(value) {
         expect(value).toBe(expected);
         done();
@@ -84,7 +83,7 @@ describe('DefaultWidget', () => {
 
     const props = getProps({
       value: true,
-      schema: fromJS({type: 'number', title: 'Number Input'}),
+      schema: {type: 'number', title: 'Number Input'},
       onChange(value) {
         expect(value).toBe(expected);
         done();
@@ -100,7 +99,7 @@ describe('DefaultWidget', () => {
 
     const props = getProps({
       value: true,
-      schema: fromJS({type: 'string', title: 'Text Input'}),
+      schema: {type: 'string', title: 'Text Input'},
       onChange(value) {
         expect(value).toBe(eventValue);
         done();

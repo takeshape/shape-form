@@ -19,10 +19,10 @@ export default class SchemaField extends PureComponent {
 
   render() {
     const {schema, config, widgets} = this.props;
-    const type = schema.get('type');
+    const type = schema.type;
 
     let Component;
-    if (config && widgets && widgets[config.get('widget')]) {
+    if (config && widgets && widgets[config.widget]) {
       // handle custom widget
       Component = ScalarField;
     } else if (type === 'object') {

@@ -3,37 +3,37 @@
 exports[`ObjectField handles invalid property names in order 1`] = `
 <React.Fragment>
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     formName="test-form"
     isRequired={true}
     locale="pt-br"
     path="user.email"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
   />
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     formName="test-form"
     isRequired={false}
     locale="pt-br"
     path="user.firstName"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
   />
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     formName="test-form"
     isRequired={false}
     locale="pt-br"
     path="user.lastName"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
@@ -43,15 +43,15 @@ exports[`ObjectField handles invalid property names in order 1`] = `
 
 exports[`ObjectField renders emptyObject widget 1`] = `
 <EmptyObject
-  config={Immutable.Map {}}
+  config={Object {}}
   context={Object {}}
   formName="test-form"
   locale="pt-br"
   path="user"
   schema={
-    Immutable.Map {
+    Object {
+      "properties": Object {},
       "type": "object",
-      "properties": Immutable.Map {},
     }
   }
   widgets={
@@ -65,37 +65,37 @@ exports[`ObjectField renders emptyObject widget 1`] = `
 exports[`ObjectField renders with configured order 1`] = `
 <React.Fragment>
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     formName="test-form"
     isRequired={true}
     locale="pt-br"
     path="user.email"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
   />
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     formName="test-form"
     isRequired={false}
     locale="pt-br"
     path="user.firstName"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
   />
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     formName="test-form"
     isRequired={false}
     locale="pt-br"
     path="user.lastName"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
@@ -108,37 +108,37 @@ exports[`ObjectField renders with empty order 1`] = `<React.Fragment />`;
 exports[`ObjectField renders with required 1`] = `
 <React.Fragment>
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     formName="test-form"
     isRequired={true}
     locale="pt-br"
     path="user.email"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
   />
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     formName="test-form"
     isRequired={false}
     locale="pt-br"
     path="user.firstName"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
   />
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     formName="test-form"
     isRequired={false}
     locale="pt-br"
     path="user.lastName"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
@@ -148,61 +148,61 @@ exports[`ObjectField renders with required 1`] = `
 
 exports[`ObjectField renders with title and required 1`] = `
 <ObjectFieldWrapper
-  config={Immutable.Map {}}
+  config={Object {}}
   formName="test-form"
   isRequired={true}
   locale="pt-br"
   path="user"
   schema={
-    Immutable.Map {
-      "title": "User",
-      "type": "object",
-      "properties": Immutable.Map {
-        "firstName": Immutable.Map {
+    Object {
+      "properties": Object {
+        "email": Object {
           "type": "string",
         },
-        "lastName": Immutable.Map {
+        "firstName": Object {
           "type": "string",
         },
-        "email": Immutable.Map {
+        "lastName": Object {
           "type": "string",
         },
       },
+      "title": "User",
+      "type": "object",
     }
   }
 >
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     formName="test-form"
     isRequired={false}
     locale="pt-br"
     path="user.firstName"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
   />
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     formName="test-form"
     isRequired={false}
     locale="pt-br"
     path="user.lastName"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
   />
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     formName="test-form"
     isRequired={false}
     locale="pt-br"
     path="user.email"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
@@ -213,7 +213,7 @@ exports[`ObjectField renders with title and required 1`] = `
 exports[`ObjectField renders without required 1`] = `
 <React.Fragment>
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     context={
       Object {
         "foo": "bar",
@@ -224,14 +224,14 @@ exports[`ObjectField renders without required 1`] = `
     locale="pt-br"
     path="email"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
     widgets={Object {}}
   />
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     context={
       Object {
         "foo": "bar",
@@ -242,14 +242,14 @@ exports[`ObjectField renders without required 1`] = `
     locale="pt-br"
     path="firstName"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }
     widgets={Object {}}
   />
   <SchemaField
-    config={Immutable.Map {}}
+    config={Object {}}
     context={
       Object {
         "foo": "bar",
@@ -260,7 +260,7 @@ exports[`ObjectField renders without required 1`] = `
     locale="pt-br"
     path="lastName"
     schema={
-      Immutable.Map {
+      Object {
         "type": "string",
       }
     }

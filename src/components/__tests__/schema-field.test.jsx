@@ -2,15 +2,14 @@ import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 const renderer = new ReactShallowRenderer();
 
-import {Map} from 'immutable';
 import SchemaField from '../schema-field';
 import DefaultWidget from '../default-widget';
 
 describe('SchemaField', () => {
   it('renders scalar field', () => {
     const props = {
-      schema: Map({type: 'string'}),
-      config: Map(),
+      schema: {type: 'string'},
+      config: {},
       formName: 'default',
       path: 'text'
     };
@@ -21,8 +20,8 @@ describe('SchemaField', () => {
 
   it('renders array field', () => {
     const props = {
-      schema: Map({type: 'array'}),
-      config: Map(),
+      schema: {type: 'array'},
+      config: {},
       formName: 'default',
       path: 'text'
     };
@@ -33,15 +32,15 @@ describe('SchemaField', () => {
 
   it('renders object field', () => {
     const props = {
-      schema: Map({
+      schema: {
         type: 'object',
         properties: {
           email: {type: 'string'},
           firstName: {type: 'string'},
           lastName: {type: 'string'}
         }
-      }),
-      config: Map(),
+      },
+      config: {},
       formName: 'default',
       path: 'user'
     };
@@ -52,8 +51,8 @@ describe('SchemaField', () => {
 
   it('renders scalar field with custom widget', () => {
     const props = {
-      schema: Map({type: 'string', title: 'Text Input'}),
-      config: Map({widget: 'text'}),
+      schema: {type: 'string', title: 'Text Input'},
+      config: {widget: 'text'},
       widgets: {
         text: DefaultWidget
       },

@@ -1,6 +1,5 @@
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {List, Map, Set} from 'immutable';
 import {makeArrayLengthSelector, makeValueSelector} from '../../selectors';
 import {
   bindMeta,
@@ -15,10 +14,10 @@ import {
 } from '../../actions';
 import ArrayField from './array-field';
 
-const initialUiState = Map({
-  arrayKeys: List(),
-  collapsed: Set()
-});
+const initialUiState = {
+  arrayKeys: [],
+  collapsed: new Set()
+};
 
 function mapStateToProps() {
   const lengthSelector = makeArrayLengthSelector();

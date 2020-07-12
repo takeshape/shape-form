@@ -1,7 +1,6 @@
 jest.mock('../schema-form', () => 'SchemaForm');
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {fromJS} from 'immutable';
 import SchemaFormContainer from '../index';
 
 import {createStore, combineReducers} from 'redux';
@@ -10,7 +9,7 @@ import {createFormReducer} from '../../../reducer';
 import {NAME} from '../../../constants';
 
 const loadedState = {
-  [NAME]: fromJS({
+  [NAME]: {
     forms: {
       'test-form': {
         schema: {
@@ -21,7 +20,7 @@ const loadedState = {
         }
       }
     }
-  })
+  }
 };
 
 const reducer = combineReducers({[NAME]: createFormReducer()});

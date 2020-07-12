@@ -27,7 +27,7 @@ export default class DefaultWidget extends PureComponent {
 
   handleChange = value => {
     const {schema, onChange} = this.props;
-    const type = schema.get('type');
+    const type = schema.type;
     if (TYPE_MAPPING[type] === 'number') {
       onChange(value === '' ? undefined : Number(value));
     } else {
@@ -51,8 +51,8 @@ export default class DefaultWidget extends PureComponent {
       value
     };
 
-    const type = schema.get('type');
-    const options = schema.get('enum');
+    const type = schema.type;
+    const options = schema.enum;
     if (options) {
       InputComponent = SelectInputWidget;
     } else if (type === 'boolean') {

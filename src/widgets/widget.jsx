@@ -28,14 +28,14 @@ class Widget extends PureComponent {
 
   render() {
     const {classes, schema, config, error, isRequired, actions, children, innerRef, className} = this.props;
-    const description = schema && schema.get('description');
-    const instructions = config && config.get('instructions');
+    const description = schema && schema.description;
+    const instructions = config && config.instructions;
 
     return (
       <div ref={innerRef} className={className}>
         <header className={classes.header}>
           <Typography className={classes.title}>
-            {schema.get('title')}
+            {schema.title}
             {isRequired && <span> *</span>}
           </Typography>
           <div>

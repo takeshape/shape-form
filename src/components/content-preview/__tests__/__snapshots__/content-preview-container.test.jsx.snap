@@ -6,9 +6,9 @@ exports[`ScalarFieldContainer renders 1`] = `
   formName="test-form"
   path="name"
   schema={
-    Immutable.Map {
-      "type": "string",
+    Object {
       "title": "Name",
+      "type": "string",
     }
   }
   value="Andrew"

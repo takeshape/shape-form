@@ -26,11 +26,11 @@ export default class CheckboxWidget extends PureComponent {
   render() {
     const {value, schema, config, path, error} = this.props;
 
-    const enabled = typeof value === 'boolean' ? value : schema.get('default', false);
-    const title = schema.get('title');
-    const description = schema.get('description');
+    const enabled = typeof value === 'boolean' ? value : schema.default || false;
+    const title = schema.title;
+    const description = schema.description;
 
-    const instructions = config.get('instructions');
+    const instructions = config.instructions;
     const helperText = error || instructions || description;
 
     return (

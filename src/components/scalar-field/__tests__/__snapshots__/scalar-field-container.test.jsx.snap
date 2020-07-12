@@ -2,7 +2,7 @@
 
 exports[`ScalarFieldContainer renders 1`] = `
 <ScalarField
-  config={Immutable.Map {}}
+  config={Object {}}
   formName="test-form"
   onBlur={[Function]}
   onChange={[Function]}
@@ -10,9 +10,9 @@ exports[`ScalarFieldContainer renders 1`] = `
   onFocus={[Function]}
   path="name"
   schema={
-    Immutable.Map {
-      "type": "string",
+    Object {
       "title": "Name",
+      "type": "string",
     }
   }
   setUI={[Function]}

@@ -2,11 +2,11 @@
 
 exports[`SchemaField renders array field 1`] = `
 <Memo(Connect(ArrayField))
-  config={Immutable.Map {}}
+  config={Object {}}
   formName="default"
   path="text"
   schema={
-    Immutable.Map {
+    Object {
       "type": "array",
     }
   }
@@ -15,12 +15,11 @@ exports[`SchemaField renders array field 1`] = `
 
 exports[`SchemaField renders object field 1`] = `
 <ObjectField
-  config={Immutable.Map {}}
+  config={Object {}}
   formName="default"
   path="user"
   schema={
-    Immutable.Map {
-      "type": "object",
+    Object {
       "properties": Object {
         "email": Object {
           "type": "string",
@@ -32,6 +31,7 @@ exports[`SchemaField renders object field 1`] = `
           "type": "string",
         },
       },
+      "type": "object",
     }
   }
 />
@@ -39,11 +39,11 @@ exports[`SchemaField renders object field 1`] = `
 
 exports[`SchemaField renders scalar field 1`] = `
 <Memo(Connect(ScalarField))
-  config={Immutable.Map {}}
+  config={Object {}}
   formName="default"
   path="text"
   schema={
-    Immutable.Map {
+    Object {
       "type": "string",
     }
   }
@@ -53,16 +53,16 @@ exports[`SchemaField renders scalar field 1`] = `
 exports[`SchemaField renders scalar field with custom widget 1`] = `
 <Memo(Connect(ScalarField))
   config={
-    Immutable.Map {
+    Object {
       "widget": "text",
     }
   }
   formName="default"
   path="text"
   schema={
-    Immutable.Map {
-      "type": "string",
+    Object {
       "title": "Text Input",
+      "type": "string",
     }
   }
   widgets={

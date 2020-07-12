@@ -1,11 +1,8 @@
 import PropTypes from 'prop-types';
 import React, {PureComponent} from 'react';
-import {Map, fromJS} from 'immutable';
 
 import dnd from '../../dnd';
 import SchemaField from '../schema-field';
-
-const emptyMap = Map();
 
 export const FormContext = React.createContext();
 
@@ -39,7 +36,7 @@ class SchemaForm extends PureComponent {
   componentDidMount() {
     const {formName, initialData, schema, registerForm} = this.props;
     if (schema) {
-      registerForm(formName, fromJS(schema), fromJS(initialData || {}));
+      registerForm(formName, schema, initialData || {});
     }
   }
 
@@ -47,7 +44,7 @@ class SchemaForm extends PureComponent {
     const {registerForm, version, schema, formName, initialData} = this.props;
 
     if ((prevProps.version !== version || prevProps.schema !== schema) && (initialData || schema)) {
-      registerForm(formName, fromJS(schema), fromJS(initialData));
+      registerForm(formName, schema, initialData);
     }
   }
 
@@ -69,7 +66,7 @@ class SchemaForm extends PureComponent {
             schema={registeredSchema}
             formName={formName}
             path={basePath || ''}
-            config={fromJS(config) || emptyMap}
+            config={config || {}}
             context={context}
             widgets={widgets}
             disabled={disabled}

@@ -1,15 +1,17 @@
+import produce from 'immer';
+
 jest.mock('../../schema-field', () => 'SchemaField');
 import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 
 const renderer = new ReactShallowRenderer();
 import {shallow} from 'enzyme';
-import {Map, Set, List, fromJS} from 'immutable';
 import ArrayField from '../array-field';
 import Fab from '@material-ui/core/Fab';
+import {setIn} from '../../../util/immutable-util';
 
 const formName = 'test-form';
-const schema = fromJS({
+const schema = {
   type: 'array',
   items: {
     type: 'object',
@@ -19,12 +21,12 @@ const schema = fromJS({
       lastName: {type: 'string'}
     }
   }
-});
+};
 
-const ui = fromJS({
-  arrayKeys: List.of(0, 1, 2),
-  collapsed: Set()
-});
+const ui = {
+  arrayKeys: [0, 1, 2],
+  collapsed: new Set()
+};
 
 function createProps(props) {
   return {
@@ -32,7 +34,7 @@ function createProps(props) {
     formName,
     ui,
     path: 'users',
-    config: Map(),
+    config: {},
     context: {},
     widgets: {},
     isRequired: false,
@@ -81,8 +83,8 @@ describe('ArrayField', () => {
 
   it('renders single', () => {
     const props = createProps({
-      schema: schema.merge({minItems: 1, maxItems: 1}),
-      ui: ui.merge({arrayKeys: List.of(0), collapsed: Set()}),
+      schema: {...schema, minItems: 1, maxItems: 1},
+      ui: {...ui, arrayKeys: [0], collapsed: new Set()},
       path: 'user',
       length: 1
     });
@@ -93,7 +95,7 @@ describe('ArrayField', () => {
 
   it('renders placeholder', () => {
     const props = createProps({
-      ui: ui.merge({placeholder: Map({index: 1})})
+      ui: {...ui, placeholder: {index: 1}}
     });
 
     const tree = renderer.render(<ArrayField {...props} />);
@@ -102,8 +104,8 @@ describe('ArrayField', () => {
 
   it('renders with dragAndDrop', () => {
     const props = createProps({
-      ui: ui.merge({placeholder: Map({index: 1})}),
-      config: Map({dragAndDrop: true})
+      ui: {...ui, placeholder: {index: 1}},
+      config: {dragAndDrop: true}
     });
 
     const tree = renderer.render(<ArrayField {...props} />);
@@ -114,7 +116,7 @@ describe('ArrayField', () => {
     const Unstyled = ({children}) => <div>{children}</div>;// eslint-disable-line
     const props = createProps({
       widgets: {unstyled: Unstyled},
-      config: Map({wrapper: 'unstyled'})
+      config: {wrapper: 'unstyled'}
     });
 
     const tree = renderer.render(<ArrayField {...props} />);
@@ -158,13 +160,12 @@ describe('ArrayField', () => {
   });
 
   it('handleAddItem with default value', () => {
-    const defaultValue = Map({
+    const defaultValue = {
       email: 'samy@baguette.fr',
       firstName: 'Samy',
       lastName: 'Pessé'
-    });
-    const props = createProps();
-    props.schema = props.schema.setIn(['items', 'default'], defaultValue);
+    };
+    const props = produce(createProps(), draft => setIn(draft, ['schema', 'items', 'default'], defaultValue));
 
     const wrapper = shallow(<ArrayField {...props} />);
     const event = mockEvent();

@@ -3,7 +3,7 @@
 exports[`ScalarField falls back on DefaultWidget if the configured widget is undefined 1`] = `
 <DefaultWidget
   config={
-    Immutable.Map {
+    Object {
       "widget": "custom",
     }
   }
@@ -15,13 +15,13 @@ exports[`ScalarField falls back on DefaultWidget if the configured widget is und
   onFocus={[MockFunction]}
   path="name"
   schema={
-    Immutable.Map {
-      "type": "string",
+    Object {
       "title": "Name",
+      "type": "string",
     }
   }
   setUI={[MockFunction]}
-  ui={Immutable.Map {}}
+  ui={Object {}}
   value="Andrew"
   widgets={Object {}}
 />
@@ -29,7 +29,7 @@ exports[`ScalarField falls back on DefaultWidget if the configured widget is und
 
 exports[`ScalarField renders 1`] = `
 <DefaultWidget
-  config={Immutable.Map {}}
+  config={Object {}}
   formName="test-form"
   locale="pt-br"
   onBlur={[MockFunction]}
@@ -38,13 +38,13 @@ exports[`ScalarField renders 1`] = `
   onFocus={[MockFunction]}
   path="name"
   schema={
-    Immutable.Map {
-      "type": "string",
+    Object {
       "title": "Name",
+      "type": "string",
     }
   }
   setUI={[MockFunction]}
-  ui={Immutable.Map {}}
+  ui={Object {}}
   value="Andrew"
 />
 `;
@@ -52,7 +52,7 @@ exports[`ScalarField renders 1`] = `
 exports[`ScalarField renders custom widget 1`] = `
 <Custom
   config={
-    Immutable.Map {
+    Object {
       "widget": "Custom",
     }
   }
@@ -64,13 +64,13 @@ exports[`ScalarField renders custom widget 1`] = `
   onFocus={[MockFunction]}
   path="name"
   schema={
-    Immutable.Map {
-      "type": "string",
+    Object {
       "title": "Name",
+      "type": "string",
     }
   }
   setUI={[MockFunction]}
-  ui={Immutable.Map {}}
+  ui={Object {}}
   value="Andrew"
   widgets={
     Object {

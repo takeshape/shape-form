@@ -1,4 +1,3 @@
-import {fromJS, Set} from 'immutable';
 import {PROPERTIES} from '../../paths';
 
 export const menuSchema = {
@@ -114,7 +113,7 @@ export const menuData = {
   ]
 };
 
-export const menuFormState = fromJS({
+export const menuFormState = {
   forms: {
     'test-form': {
       data: menuData,
@@ -122,7 +121,7 @@ export const menuFormState = fromJS({
       schema: menuSchema,
       errors: {},
       submitted: false,
-      dirty: Set(),
+      dirty: new Set(),
       ui: {
         menu: {
           '0': {
@@ -131,7 +130,7 @@ export const menuFormState = fromJS({
                 ingredients: {
                   [PROPERTIES]: {
                     arrayKeys: [0, 1, 2, 3],
-                    collapsed: Set()
+                    collapsed: new Set()
                   }
                 }
               },
@@ -139,13 +138,13 @@ export const menuFormState = fromJS({
                 ingredients: {
                   [PROPERTIES]: {
                     arrayKeys: [0, 1, 2],
-                    collapsed: Set()
+                    collapsed: new Set()
                   }
                 }
               },
               [PROPERTIES]: {
                 arrayKeys: [0, 1],
-                collapsed: Set()
+                collapsed: new Set()
               }
             }
           },
@@ -155,22 +154,22 @@ export const menuFormState = fromJS({
                 ingredients: {
                   [PROPERTIES]: {
                     arrayKeys: [0, 1, 2],
-                    collapsed: Set()
+                    collapsed: new Set()
                   }
                 }
               },
               [PROPERTIES]: {
                 arrayKeys: [0],
-                collapsed: Set()
+                collapsed: new Set()
               }
             }
           },
           [PROPERTIES]: {
             arrayKeys: [0, 1],
-            collapsed: Set()
+            collapsed: new Set()
           }
         }
       }
     }
   }
-});
+};

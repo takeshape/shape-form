@@ -20,8 +20,8 @@ export function* submitFormSaga(action) {
   yield put(validateForm(formName));
   const form = yield select(getForm, {formName});
 
-  const errors = form.get('errors');
-  const hasErrors = errors && errors.size;
+  const errors = form.errors;
+  const hasErrors = errors && Object.keys(errors).length;
   yield put({
     type: `${VALIDATE_FORM}_FULFILLED`,
     meta: {formName},

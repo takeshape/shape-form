@@ -1,24 +1,23 @@
 import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 const renderer = new ReactShallowRenderer();
-import {Map, fromJS} from 'immutable';
 import ObjectField from '../index';
 
 describe('ObjectField', () => {
   it('renders without required', () => {
-    const schema = fromJS({
+    const schema = {
       type: 'object',
       properties: {
         email: {type: 'string'},
         firstName: {type: 'string'},
         lastName: {type: 'string'}
       }
-    });
+    };
     const props = {
       schema,
       formName: 'test-form',
       path: '',
-      config: Map(),
+      config: {},
       context: {foo: 'bar'},
       widgets: {},
       locale: 'pt-br'
@@ -28,7 +27,7 @@ describe('ObjectField', () => {
   });
 
   it('renders with required', () => {
-    const schema = fromJS({
+    const schema = {
       type: 'object',
       properties: {
         email: {type: 'string'},
@@ -36,12 +35,12 @@ describe('ObjectField', () => {
         lastName: {type: 'string'}
       },
       required: ['email']
-    });
+    };
     const props = {
       schema,
       formName: 'test-form',
       path: 'user',
-      config: Map(),
+      config: {},
       locale: 'pt-br'
     };
     const tree = renderer.render(<ObjectField {...props} />);
@@ -49,7 +48,7 @@ describe('ObjectField', () => {
   });
 
   it('renders with title and required', () => {
-    const schema = fromJS({
+    const schema = {
       title: 'User',
       type: 'object',
       properties: {
@@ -57,12 +56,12 @@ describe('ObjectField', () => {
         lastName: {type: 'string'},
         email: {type: 'string'}
       }
-    });
+    };
     const props = {
       schema,
       formName: 'test-form',
       path: 'user',
-      config: Map(),
+      config: {},
       isRequired: true,
       locale: 'pt-br'
     };
@@ -71,7 +70,7 @@ describe('ObjectField', () => {
   });
 
   it('renders with configured order', () => {
-    const schema = fromJS({
+    const schema = {
       type: 'object',
       properties: {
         firstName: {type: 'string'},
@@ -79,14 +78,14 @@ describe('ObjectField', () => {
         email: {type: 'string'}
       },
       required: ['email']
-    });
+    };
     const props = {
       schema,
       formName: 'test-form',
       path: 'user',
-      config: fromJS({
+      config: {
         order: ['email', 'firstName', 'lastName']
-      }),
+      },
       locale: 'pt-br'
     };
     const tree = renderer.render(<ObjectField {...props} />);
@@ -94,7 +93,7 @@ describe('ObjectField', () => {
   });
 
   it('renders with empty order', () => {
-    const schema = fromJS({
+    const schema = {
       type: 'object',
       properties: {
         firstName: {type: 'string'},
@@ -102,14 +101,14 @@ describe('ObjectField', () => {
         email: {type: 'string'}
       },
       required: ['email']
-    });
+    };
     const props = {
       schema,
       formName: 'test-form',
       path: 'user',
-      config: fromJS({
+      config: {
         order: []
-      }),
+      },
       locale: 'pt-br',
       context: {
         projectId: 'project_id',
@@ -122,7 +121,7 @@ describe('ObjectField', () => {
   });
 
   it('handles invalid property names in order', () => {
-    const schema = fromJS({
+    const schema = {
       type: 'object',
       properties: {
         firstName: {type: 'string'},
@@ -130,14 +129,14 @@ describe('ObjectField', () => {
         email: {type: 'string'}
       },
       required: ['email']
-    });
+    };
     const props = {
       schema,
       formName: 'test-form',
       path: 'user',
-      config: fromJS({
+      config: {
         order: ['email', 'bogus', 'firstName', 'lastName']
-      }),
+      },
       locale: 'pt-br'
     };
     const tree = renderer.render(<ObjectField {...props} />);
@@ -145,10 +144,10 @@ describe('ObjectField', () => {
   });
 
   it('renders emptyObject widget', () => {
-    const schema = fromJS({
+    const schema = {
       type: 'object',
       properties: {}
-    });
+    };
     const props = {
       schema,
       widgets: {
@@ -156,7 +155,7 @@ describe('ObjectField', () => {
       },
       formName: 'test-form',
       path: 'user',
-      config: fromJS({}),
+      config: {},
       locale: 'pt-br',
       context: {}
     };

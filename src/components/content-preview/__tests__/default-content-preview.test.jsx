@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 const renderer = new ReactShallowRenderer();
-import {Map, OrderedMap, fromJS} from 'immutable';
 import DefaultContentPreview from '../default-content-preview';
 
 describe('DefaultContentPreview', () => {
   it('renders string', () => {
     const props = {
       value: 'Andrew',
-      schema: Map({type: 'string', title: 'Name'}),
-      config: Map()
+      schema: {type: 'string', title: 'Name'},
+      config: {}
     };
 
     const tree = renderer.render(<DefaultContentPreview {...props} />);
@@ -19,8 +18,8 @@ describe('DefaultContentPreview', () => {
   it('renders number', () => {
     const props = {
       value: 7,
-      schema: Map({type: 'number', title: 'Lucky Number'}),
-      config: Map()
+      schema: {type: 'number', title: 'Lucky Number'},
+      config: {}
     };
 
     const tree = renderer.render(<DefaultContentPreview {...props} />);
@@ -29,20 +28,20 @@ describe('DefaultContentPreview', () => {
 
   it('renders object', () => {
     const props = {
-      value: Map({
+      value: {
         email: 'andrew@takeshape.io',
         firstName: 'Andrew',
         lastName: 'Sprouse'
-      }),
-      schema: Map({
+      },
+      schema: {
         type: 'object',
-        properties: OrderedMap([
-          ['email', Map({type: 'string'})],
-          ['firstName', Map({type: 'string'})],
-          ['lastName', Map({type: 'string'})]
-        ])
-      }),
-      config: Map()
+        properties: {
+          email: {type: 'string'},
+          firstName: {type: 'string'},
+          lastName: {type: 'string'}
+        }
+      },
+      config: {}
     };
 
     const tree = renderer.render(<DefaultContentPreview {...props} />);
@@ -51,20 +50,20 @@ describe('DefaultContentPreview', () => {
 
   it('renders object with order config', () => {
     const props = {
-      value: Map({
+      value: {
         email: 'andrew@takeshape.io',
         firstName: 'Andrew',
         lastName: 'Sprouse'
-      }),
-      schema: Map({
+      },
+      schema: {
         type: 'object',
-        properties: OrderedMap([
-          ['email', Map({type: 'string'})],
-          ['firstName', Map({type: 'string'})],
-          ['lastName', Map({type: 'string'})]
-        ])
-      }),
-      config: fromJS({order: ['lastName', 'firstName', 'email']})
+        properties: {
+          email: {type: 'string'},
+          firstName: {type: 'string'},
+          lastName: {type: 'string'}
+        }
+      },
+      config: {order: ['lastName', 'firstName', 'email']}
     };
 
     const tree = renderer.render(<DefaultContentPreview {...props} />);
@@ -73,16 +72,16 @@ describe('DefaultContentPreview', () => {
 
   it('renders with no content', () => {
     const props = {
-      value: Map({}),
-      schema: Map({
+      value: {},
+      schema: {
         type: 'object',
-        properties: OrderedMap([
-          ['email', Map({type: 'string'})],
-          ['firstName', Map({type: 'string'})],
-          ['lastName', Map({type: 'string'})]
-        ])
-      }),
-      config: fromJS({order: ['lastName', 'firstName', 'email']})
+        properties: {
+          email: {type: 'string'},
+          firstName: {type: 'string'},
+          lastName: {type: 'string'}
+        }
+      },
+      config: {order: ['lastName', 'firstName', 'email']}
     };
 
     const tree = renderer.render(<DefaultContentPreview {...props} />);
@@ -91,17 +90,17 @@ describe('DefaultContentPreview', () => {
 
   it('renders object with long string', () => {
     const props = {
-      value: Map({
+      value: {
         content:
           'Cronut knausgaard bespoke green juice kitsch. DIY lyft four loko ethical bespoke meggings quinoa tousled 3 wolf moon lomo.'
-      }),
-      schema: fromJS({
+      },
+      schema: {
         type: 'object',
         properties: {
           content: {type: 'string'}
         }
-      }),
-      config: Map()
+      },
+      config: {}
     };
 
     const tree = renderer.render(<DefaultContentPreview {...props} />);

@@ -1,8 +1,7 @@
-import {Map} from 'immutable';
 import mapValues from 'lodash/mapValues';
 import isNaN from 'lodash/isNaN';
-
-const emptyMap = Map();
+import get from 'lodash/get';
+import produce from 'immer';
 
 export function getFormPath(formName) {
   return ['forms', formName];
@@ -49,7 +48,7 @@ export function getStructuralChangesPath({formName, path}) {
 }
 
 export function getForm(state, formName) {
-  return state.getIn(['forms', formName]);
+  return get(state, ['forms', formName]);
 }
 
 function applyPlugins(state, plugins, action, prevState) {
@@ -58,13 +57,15 @@ function applyPlugins(state, plugins, action, prevState) {
     const prevFormState = getForm(prevState, formName);
     return pluginReducer(formState, action, prevFormState);
   });
-  return state.mergeIn(['forms'], update);
+  return produce(state, draft => {
+    draft.forms = {...draft.forms, ...update};
+  });
 }
 
 export function reducerFactory(initialState, baseReducers) {
   return plugins => {
     if (plugins) {
-      initialState = applyPlugins(initialState, plugins, {}, emptyMap);
+      initialState = applyPlugins(initialState, plugins, {}, {});
     }
 
     return (state = initialState, action) => {

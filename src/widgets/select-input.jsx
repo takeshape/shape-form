@@ -25,11 +25,11 @@ export default class TextInputWidget extends PureComponent {
   render() {
     const {schema, config, value, error, isRequired, onBlur, disabled} = this.props;
 
-    const description = schema.get('description');
-    const instructions = config.get('instructions');
-    const type = schema.get('type');
-    const title = schema.get('title');
-    const autoFocus = config.get('autoFocus', false);
+    const description = schema.description;
+    const instructions = config.instructions;
+    const type = schema.type;
+    const title = schema.title;
+    const autoFocus = config.autoFocus || false;
     const options = getWidgetOptions(schema, config);
 
     return (

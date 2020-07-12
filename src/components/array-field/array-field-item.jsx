@@ -100,7 +100,7 @@ class ArrayFieldItem extends PureComponent {
       );
     }
 
-    const Wrapper = widgets && widgets[config.get('wrapper')];
+    const Wrapper = widgets && widgets[config.wrapper];
     if (Wrapper) {
       return (
         <Wrapper

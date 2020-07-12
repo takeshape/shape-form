@@ -6,19 +6,18 @@ import ReactShallowRenderer from 'react-test-renderer/shallow';
 import Button from '@material-ui/core/Button';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import {shallow} from 'enzyme';
-import {Map} from 'immutable';
 import {ArrayFieldItem} from '../array-field-item';
 
 const renderer = new ReactShallowRenderer();
 
-const schema = Map({
+const schema = {
   type: 'object',
-  properties: Map({
+  properties: {
     email: {type: 'string'},
     firstName: {type: 'string'},
     lastName: {type: 'string'}
-  })
-});
+  }
+};
 
 function createProps(props) {
   const passthrough = x => x;
@@ -26,7 +25,7 @@ function createProps(props) {
     formName: 'test-form',
     schema,
     path: 'users',
-    config: Map(),
+    config: {},
     context: {foo: 'bar'},
     widgets: {},
 
@@ -77,7 +76,7 @@ describe('ArrayFieldItem', () => {
   it('renders with custom wrapper', () => {
     const Unstyled = ({children}) => <div>{children}</div>; // eslint-disable-line
     const props = createProps({
-      config: Map({wrapper: 'unstyled'}),
+      config: {wrapper: 'unstyled'},
       widgets: {unstyled: Unstyled}
     });
     const tree = renderer.render(<ArrayFieldItem {...props} />);

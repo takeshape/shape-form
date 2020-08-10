@@ -1,0 +1,10 @@
+branchName: 'issue-${issue.number}/${issue.title,}'
+branches:
+  - label: '/bug/'
+    template: 'bug.md'
+  - label: '/feature/'
+    template: 'feature.md'
+  - label: '/chore/'
+    template: 'chore.md'
+  - label: '/documentation/'
+    template: 'documentation.md'

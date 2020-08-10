@@ -1,0 +1,56 @@
+name: Housekeeping
+
+on:
+  pull_request:
+    types: [opened]
+  issues:
+    types: [opened, assigned]
+        
+jobs:
+  assign-author:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'    
+    steps:
+      - name: Assign author to PR
+        uses: technote-space/assign-author@v1
+
+  issue-link:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+    steps:
+      - uses: tkt-actions/add-issue-links@v1.4.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          branch-prefix: issue-
+          position: top
+          resolve: true
+          link-style: body
+
+  add-new-issue-to-column--issue:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'opened'
+    steps:
+      - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
+        with:
+          action-token: ${{ secrets.ORG_PROJECT_TOKEN }}
+          project-url: https://github.com/orgs/takeshape/projects/2
+          column-name: Backlog
+
+  add-new-issue-to-column--pr:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+    steps:
+      - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
+        with:
+          action-token: ${{ secrets.ORG_PROJECT_TOKEN }}
+          project-url: https://github.com/orgs/takeshape/projects/2
+          column-name: Waiting on Review
+          
+  create-pr-comment:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'assigned'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: takeshape/github-action-create-pr-comment@trunk
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

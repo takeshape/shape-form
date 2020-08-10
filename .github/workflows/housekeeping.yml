@@ -34,7 +34,7 @@ jobs:
         with:
           action-token: ${{ secrets.ORG_PROJECT_TOKEN }}
           project-url: https://github.com/orgs/takeshape/projects/2
-          column-name: Backlog
+          column-name: Icebox
 
   add-new-issue-to-column--pr:
     runs-on: ubuntu-latest

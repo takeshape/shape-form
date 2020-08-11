@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'issues' && github.event.action == 'opened'
     steps:
-      - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
+      - uses: konradpabjan/actions-add-new-issue-to-column@master 
         with:
           action-token: ${{ secrets.ORG_PROJECT_TOKEN }}
           project-url: https://github.com/orgs/takeshape/projects/2
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request' && github.event.action == 'opened'
     steps:
-      - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
+      - uses: konradpabjan/actions-add-new-issue-to-column@master
         with:
           action-token: ${{ secrets.ORG_PROJECT_TOKEN }}
           project-url: https://github.com/orgs/takeshape/projects/2

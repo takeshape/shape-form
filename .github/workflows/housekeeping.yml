@@ -1,24 +1,28 @@
-name: Housekeeping
+name: housekeeping
 
 on:
   pull_request:
     types: [opened]
   issues:
     types: [opened, assigned]
-        
-jobs:
-  assign-author:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.action == 'opened'    
-    steps:
-      - name: Assign author to PR
-        uses: technote-space/assign-author@v1
 
-  issue-link:
+jobs:
+  # PR jobs
+  assign-author:
+    name: assign author
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request' && github.event.action == 'opened'
     steps:
-      - uses: tkt-actions/add-issue-links@v1.4.0
+      - name: assigning author to pr
+        uses: technote-space/assign-author@v1
+
+  add-issue-link:
+    name: add issue link
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+    steps:
+      - name: adding issue link
+        uses: tkt-actions/add-issue-links@v1.4.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           branch-prefix: issue-
@@ -26,17 +30,18 @@ jobs:
           resolve: true
           link-style: body
 
-  add-new-issue-to-column--issue:
+  pr-labeler:
+    name: pr labeler
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
     runs-on: ubuntu-latest
-    if: github.event_name == 'issues' && github.event.action == 'opened'
     steps:
-      - uses: konradpabjan/actions-add-new-issue-to-column@master 
-        with:
-          action-token: ${{ secrets.ORG_PROJECT_TOKEN }}
-          project-url: https://github.com/orgs/takeshape/projects/2
-          column-name: Icebox
+      - name: labeling pr
+        uses: TimonVS/pr-labeler-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   add-new-issue-to-column--pr:
+    name: "add pr to project board"
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request' && github.event.action == 'opened'
     steps:
@@ -45,12 +50,55 @@ jobs:
           action-token: ${{ secrets.ORG_PROJECT_TOKEN }}
           project-url: https://github.com/orgs/takeshape/projects/2
           column-name: Waiting on Review
-          
-  create-pr-comment:
+
+  # Issues jobs
+  add-new-issue-to-column--issue:
+    name: "add issue to project board"
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'opened'
+    steps:
+      - uses: konradpabjan/actions-add-new-issue-to-column@master
+        with:
+          action-token: ${{ secrets.ORG_PROJECT_TOKEN }}
+          project-url: https://github.com/orgs/takeshape/projects/2
+          column-name: Icebox
+
+  create-issue-branch:
+    name: "create issue branch"
     runs-on: ubuntu-latest
     if: github.event_name == 'issues' && github.event.action == 'assigned'
     steps:
-      - uses: actions/checkout@v2
-      - uses: takeshape/github-action-create-pr-comment@trunk
+      - name: create the issue branch
+        uses: robvanderleek/create-issue-branch@master
+        id: create-issue-branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: choose a pr template
+        if: steps.create-issue-branch.outputs.branchName != ''
+        id: template
+        env:
+          ISSUE_BRANCH_NAME: ${{ steps.create-issue-branch.outputs.branchName }}
+        run: |
+          name=$ISSUE_BRANCH_NAME
+          if [[ $name =~ ^fix/ ]]; then \
+            template="bug.md"; \
+          elif [[ $name =~ ^feat/ ]]; then \
+            template="feature.md"; \
+          elif [[ $name =~ ^chore/ ]]; then \
+            template="chore.md"
+          elif [[ $name =~ ^docs/ ]]; then \
+            template="documentation.md"
+          fi
+          echo "::set-output name=template-name::$template"
+
+      - name: add pr link in comment
+        uses: mshick/add-pr-comment@master
+        if: steps.create-issue-branch.outputs.branchName != ''
+        env:
+          PULL_REQUEST_URL: ${{ format('https://github.com/{0}/compare/{1}...{2}?quick_pull=1&template={3}', github.repository, github.event.repository.default_branch, steps.create-issue-branch.outputs.branchName, steps.template.outputs.template-name) }}
         with:
+          message: |
+            [Create a pull request](${{ env.PULL_REQUEST_URL }})
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: "github-actions[bot]"

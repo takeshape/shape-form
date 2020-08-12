@@ -66,8 +66,11 @@ jobs:
         if: steps.create-issue-branch.outputs.branchName != ''
         env:
           PULL_REQUEST_URL: ${{ format('https://github.com/{0}/compare/{1}...{2}?quick_pull=1&template={3}', github.repository, github.event.repository.default_branch, steps.create-issue-branch.outputs.branchName, steps.template.outputs.template-name) }}
+          TEMPLATE: ${{ steps.template.outputs.template-name }}
         with:
           message: |
-            [Create a pull request](${{ env.PULL_REQUEST_URL }})
+            ## Pull Request ![](https://raw.githubusercontent.com/primer/octicons/master/icons/git-pull-request-16.svg)
+
+            [Create a pull request](${{ env.PULL_REQUEST_URL }}) for the issue branch using the `${{ env.TEMPLATE }}` template.
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"

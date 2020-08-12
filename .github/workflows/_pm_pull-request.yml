@@ -1,0 +1,56 @@
+name: pm / pull request
+
+on:
+  pull_request:
+    types: [opened]
+
+env:
+  PROJECT_BOARD: "TakeShape"
+  ICEBOX_COLUMN_NAME: "Icebox"
+  STARTED_COLUMN_NAME: "In Progress"
+  BEFORE_REVIEW_COLUMN_NAME: "Waiting on Review"
+
+jobs:
+  assign-author:
+    name: assign author
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+    steps:
+      - name: assigning author to pr
+        uses: technote-space/assign-author@v1
+
+  add-issue-link:
+    name: add issue link
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+    steps:
+      - name: adding issue link
+        uses: tkt-actions/add-issue-links@v1.4.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          branch-prefix: issue-
+          position: top
+          resolve: true
+          link-style: body
+
+  pr-labeler:
+    name: pr labeler
+    if: github.event.action == 'opened'
+    runs-on: ubuntu-latest
+    steps:
+      - name: labeling pr
+        uses: TimonVS/pr-labeler-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  add-pr-to-project-board:
+    name: "add pr to project board"
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+    steps:
+      - name: add issue to column
+        uses: alex-page/github-project-automation-plus@v0.2.4
+        with:
+          project: ${{ env.PROJECT_BOARD }}
+          column: ${{ env.BEFORE_REVIEW_COLUMN_NAME }}
+          repo-token: ${{ secrets.ORG_PROJECT_TOKEN }}

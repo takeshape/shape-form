@@ -108,16 +108,16 @@ jobs:
         if: steps.create-issue-branch.outputs.branchName != ''
         id: template
         env:
-          ISSUE_BRANCH_NAME: ${{ steps.create-issue-branch.outputs.branchName }}
+          BRANCH_NAME: ${{ steps.create-issue-branch.outputs.branchName }}
         run: |
-          name=$ISSUE_BRANCH_NAME
-          if [[ $name =~ ^fix/ ]]; then \
+          branch=$BRANCH_NAME
+          if [[ $branch =~ ^fix/ ]]; then \
             template="bug.md"; \
-          elif [[ $name =~ ^feat/ ]]; then \
+          elif [[ $branch =~ ^feat/ ]]; then \
             template="feature.md"; \
-          elif [[ $name =~ ^chore/ ]]; then \
+          elif [[ $branch =~ ^chore/ ]]; then \
             template="chore.md"
-          elif [[ $name =~ ^docs/ ]]; then \
+          elif [[ $branch =~ ^docs/ ]]; then \
             template="documentation.md"
           fi
           echo "::set-output name=template-name::$template"

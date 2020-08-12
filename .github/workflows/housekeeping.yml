@@ -9,8 +9,10 @@ on:
     branches: [master, trunk]
 
 env:
+  PROJECT_BOARD: "TakeShape"
   ICEBOX_COLUMN_NAME: "Icebox"
   STARTED_COLUMN_NAME: "In Progress"
+  BEFORE_REVIEW_COLUMN_NAME: "Waiting on Review"
 
 jobs:
   # Releases
@@ -57,19 +59,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  add-new-issue-to-column--pr:
+  add-pr-to-project-board:
     name: "add pr to project board"
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request' && github.event.action == 'opened'
     steps:
-      - uses: konradpabjan/actions-add-new-issue-to-column@master
+      - name: add issue to column
+        uses: alex-page/github-project-automation-plus@v0.2.4
         with:
-          action-token: ${{ secrets.ORG_PROJECT_TOKEN }}
-          project-url: https://github.com/orgs/takeshape/projects/2
-          column-name: Waiting on Review
+          project: ${{ env.PROJECT_BOARD }}
+          column-name: ${{ env.BEFORE_REVIEW_COLUMN_NAME }}
+          repo-token: ${{ secrets.ORG_PROJECT_TOKEN }}
 
   # Issues jobs
-  add-new-issue-to-column--issue:
+  add-issue-to-project-board:
     name: "add issue to project board"
     runs-on: ubuntu-latest
     if: github.event_name == 'issues' && (github.event.action == 'opened' || github.event.action == 'assigned')
@@ -84,12 +87,11 @@ jobs:
           fi
 
       - name: add issue to column
-        if: steps.column.outputs.column-name != ''
-        uses: konradpabjan/actions-add-new-issue-to-column@master
+        uses: alex-page/github-project-automation-plus@v0.2.4
         with:
-          action-token: ${{ secrets.ORG_PROJECT_TOKEN }}
-          project-url: https://github.com/orgs/takeshape/projects/2
-          column-name: ${{ steps.column.outputs.column-name }}
+          project: ${{ env.PROJECT_BOARD }}
+          column: ${{ steps.column.outputs.column-name }}
+          repo-token: ${{ secrets.ORG_PROJECT_TOKEN }}
 
   create-issue-branch:
     name: "create issue branch"

@@ -68,7 +68,7 @@ jobs:
         uses: alex-page/github-project-automation-plus@v0.2.4
         with:
           project: ${{ env.PROJECT_BOARD }}
-          column-name: ${{ env.BEFORE_REVIEW_COLUMN_NAME }}
+          column: ${{ env.BEFORE_REVIEW_COLUMN_NAME }}
           repo-token: ${{ secrets.ORG_PROJECT_TOKEN }}
 
   # Issues jobs

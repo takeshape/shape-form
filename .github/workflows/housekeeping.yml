@@ -5,8 +5,21 @@ on:
     types: [opened]
   issues:
     types: [opened, assigned]
+  push:
+    branches: [master, trunk]
 
 jobs:
+  # Releases
+  release-drafter:
+    name: release drafter
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - name: updating draft release
+        uses: release-drafter/release-drafter@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   # PR jobs
   assign-author:
     name: assign author

@@ -51,13 +51,13 @@ jobs:
         run: |
           branch=$BRANCH_NAME
           if [[ $branch =~ ^fix/ ]]; then \
-            template="bug.md" \
+            template="bug.md"; \
           elif [[ $branch =~ ^feat/ ]]; then \
-            template="feature.md" \
+            template="feature.md"; \
           elif [[ $branch =~ ^chore/ ]]; then \
-            template="chore.md" \
+            template="chore.md"; \
           elif [[ $branch =~ ^docs/ ]]; then \
-            template="documentation.md" \
+            template="documentation.md"; \
           fi
           echo "::set-output name=template-name::$template"
 

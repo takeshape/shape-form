@@ -3,8 +3,6 @@ name-template: "v$RESOLVED_VERSION"
 tag-template: "release-v$RESOLVED_VERSION"
 
 template: |
-  ## What’s Changed
-
   $CHANGES
 
 version-resolver:
@@ -21,14 +19,12 @@ version-resolver:
       - "type: bug 🐛"
       - "type: chore 🧺"
 
-  default: patch
-
 categories:
-  - title: "Breaking"
+  - title: Breaking
     labels:
       - "type: breaking"
 
-  - title: "New"
+  - title: New
     labels:
       - "type: feature 🔨"
 

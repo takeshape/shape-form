@@ -1,4 +1,4 @@
-name: release / published
+name: pm / release
 
 on:
   release:

@@ -1,4 +1,4 @@
-name: pm / release
+name: pm / push
 
 on:
   push:
@@ -38,6 +38,7 @@ jobs:
 
       - name: get auto version
         id: auto
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

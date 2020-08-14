@@ -1,0 +1,84 @@
+name: pm / release
+
+on:
+  push:
+    branches: [master, trunk]
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+      - trigger:release
+
+jobs:
+  release-drafter:
+    name: release drafter
+    runs-on: ubuntu-latest
+    env:
+      DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: unshallow
+        run: |
+          git fetch --unshallow --tags
+
+      - name: setup node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: setup git
+        run: |
+          git config user.name "release-action"
+          git config user.email "releases@noreply.takeshape.io"
+
+      - name: install auto
+        run: |
+          npm install auto --global
+
+      - name: get auto version
+        id: auto
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cp ./.github/auto.json ./.autorc.json
+          latest_semver_sha=$(git rev-list --tags="v[0-9]*.[0-9]*.[0-9]*" --max-count=1)
+          version=$(auto version --from $latest_semver_sha)
+          echo "::set-output name=version::$version"
+
+      - name: setup pnpm
+        if: steps.auto.outputs.version != ''
+        uses: pnpm/action-setup@v1.2.0
+        with:
+          version: 5.5.1
+
+      - name: bump version and push
+        id: bump
+        if: steps.auto.outputs.version != ''
+        run: |
+          git pull --ff-only
+          npm version $BUMP -m "Bump version to: %s [skip ci]"
+          git push --follow-tags
+
+          latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
+          echo "::set-output name=tag::$latest_tag"
+          echo "::set-output name=version::${latest_tag//v/}"
+        env:
+          BUMP: ${{ steps.auto.outputs.version }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: get latest tag
+        id: tag
+        run: |
+          latest_tag=$(git describe --tags $(git rev-list --tags="v[0-9]*.[0-9]*.[0-9]*" --max-count=1))
+          echo "::set-output name=latest_tag::$latest_tag"
+          echo "::set-output name=latest_version::${latest_tag//v/}"
+
+      - name: updating draft release
+        id: release
+        uses: takeshape/release-drafter@master
+        with:
+          name: ${{ steps.tag.outputs.latest_tag }}
+          version: ${{ steps.tag.outputs.latest_version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

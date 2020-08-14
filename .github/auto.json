@@ -38,18 +38,8 @@
     },
     {
       "name": "pushToBaseBranch",
-      "changelogTitle": "",
       "releaseType": "none",
       "overwrite": true
     }
-  ],
-  "plugins": [
-    "@auto-it/git-tag",
-    [
-      "@auto-it/released",
-      {
-        "label": "status: released ✌️"
-      }
-    ]
   ]
 }

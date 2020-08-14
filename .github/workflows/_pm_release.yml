@@ -1,59 +1,26 @@
-name: pm / release
+name: release / published
 
 on:
-  workflow_dispatch:
-  repository_dispatch:
+  release:
     types:
-      - trigger:release
+      - published
 
 jobs:
-  auto:
-    name: auto
+  upload-release-assets:
+    name: upload release assets
     runs-on: ubuntu-latest
-    env:
-      DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-
-      - name: unshallow
+      - name: build project
         run: |
-          git fetch --unshallow --tags
+          echo "read something" > README.md
+          zip --junk-paths my-artifact README.md
 
-      - name: setup node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-
-      - name: setup pnpm
-        uses: pnpm/action-setup@v1.2.0
-        with:
-          version: 5.5.1
-
-      - name: install auto
-        run: |
-          npm install auto @auto-it/released @auto-it/git-tag --global
-
-      - name: copy config
-        run: |
-          cp ./.github/auto.json ./.autorc.json
-
-      - name: get version bump
-        id: version
+      - name: uploading built assets
+        uses: actions/upload-release-asset@v1
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "::set-output name=bump::$(auto version)"
-
-      - name: bump version and release
-        if: steps.version.outputs.bump != ''
-        run: |
-          git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
-          git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
-          git pull --ff-only
-          npm version $BUMP -m "Bump version to: %s [skip ci]"
-          git push --follow-tags
-          auto release --base-branch "$DEFAULT_BRANCH"
-        env:
-          BUMP: ${{ steps.version.outputs.bump }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./my-artifact.zip
+          asset_name: my-artifact.zip
+          asset_content_type: application/zip

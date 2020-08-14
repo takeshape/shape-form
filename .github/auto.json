@@ -1,0 +1,49 @@
+{
+  "labels": [
+    {
+      "name": "type: breaking",
+      "releaseType": "major",
+      "changelogTitle": "Breaking",
+      "overwrite": true
+    },
+    {
+      "name": "type: feature 🔨",
+      "releaseType": "minor",
+      "changelogTitle": "New",
+      "overwrite": true
+    },
+    {
+      "name": "type: bug 🐛",
+      "releaseType": "patch",
+      "changelogTitle": "Bug Fixes",
+      "overwrite": true
+    },
+    {
+      "name": "type: chore 🧺",
+      "releaseType": "patch",
+      "changelogTitle": "Maintenance",
+      "overwrite": true
+    },
+    {
+      "name": "type: documentation ✏️",
+      "changelogTitle": "Documentation",
+      "releaseType": "skip",
+      "overwrite": true
+    },
+    {
+      "name": "release: skip",
+      "releaseType": "none",
+      "overwrite": true,
+      "default": true
+    }
+  ],
+  "plugins": [
+    "@auto-it/git-tag",
+    [
+      "@auto-it/released",
+      {
+        "label": "status: released ✌️"
+      }
+    ]
+  ]
+}

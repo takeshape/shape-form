@@ -2,6 +2,9 @@ name: pm / release
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types:
+      - trigger:release
 
 jobs:
   auto:

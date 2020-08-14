@@ -35,6 +35,12 @@
       "releaseType": "none",
       "overwrite": true,
       "default": true
+    },
+    {
+      "name": "pushToBaseBranch",
+      "changelogTitle": "",
+      "releaseType": "none",
+      "overwrite": true
     }
   ],
   "plugins": [

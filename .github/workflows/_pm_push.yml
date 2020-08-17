@@ -60,7 +60,6 @@ jobs:
         run: |
           git pull --ff-only
           npm version $BUMP -m "Bump version to: %s [skip ci]"
-          git push --follow-tags
           git push "https://${GITHUB_TOKEN}@github.com/${REPOSITORY}.git" --follow-tags
 
           latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))

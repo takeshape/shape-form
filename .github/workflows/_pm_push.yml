@@ -61,13 +61,15 @@ jobs:
           git pull --ff-only
           npm version $BUMP -m "Bump version to: %s [skip ci]"
           git push --follow-tags
+          git push "https://${GITHUB_TOKEN}@github.com/${REPOSITORY}.git" --follow-tags
 
           latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
           echo "::set-output name=tag::$latest_tag"
           echo "::set-output name=version::${latest_tag//v/}"
         env:
           BUMP: ${{ steps.auto.outputs.version }}
-          GH_TOKEN: ${{ secrets.PROTECTED_PUSH_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.PROTECTED_PUSH_TOKEN }}
 
       - name: get latest tag
         id: tag

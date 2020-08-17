@@ -11,6 +11,7 @@ on:
 jobs:
   release-drafter:
     name: release drafter
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
     env:
       DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
@@ -66,7 +67,7 @@ jobs:
           echo "::set-output name=version::${latest_tag//v/}"
         env:
           BUMP: ${{ steps.auto.outputs.version }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PROTECTED_PUSH_TOKEN }}
 
       - name: get latest tag
         id: tag

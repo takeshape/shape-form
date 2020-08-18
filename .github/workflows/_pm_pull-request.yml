@@ -31,7 +31,7 @@ jobs:
           branch-prefix: issue-
           position: top
           resolve: true
-          link-style: body
+          link-style: comment
 
   pr-labeler:
     name: pr labeler

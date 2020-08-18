@@ -63,10 +63,6 @@ jobs:
           git pull --ff-only
           npm version $BUMP -m "Bump version to: %s [skip ci]"
           git push origin --follow-tags
-
-          latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
-          echo "::set-output name=tag::$latest_tag"
-          echo "::set-output name=version::${latest_tag//v/}"
         env:
           BUMP: ${{ steps.auto.outputs.version }}
 

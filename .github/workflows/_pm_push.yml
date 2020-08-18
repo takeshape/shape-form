@@ -73,6 +73,7 @@ jobs:
           latest_semver_sha=$(git rev-list --tags="v[0-9]*.[0-9]*.[0-9]*" --max-count=1)
           if [[ "$latest_semver_sha" != "" ]]; then \
             latest_tag=$(git describe --tags $latest_semver_sha); \
+            echo "::set-output name=latest_semver_sha::$latest_semver_sha"; \
             echo "::set-output name=latest_tag::$latest_tag"; \
             echo "::set-output name=latest_version::${latest_tag//v/}"; \
           fi
@@ -84,5 +85,6 @@ jobs:
         with:
           name: ${{ steps.tag.outputs.latest_tag }}
           version: ${{ steps.tag.outputs.latest_version }}
+          target-commitish: ${{ steps.tag.outputs.latest_semver_sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

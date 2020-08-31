@@ -48,6 +48,7 @@ jobs:
           cp ./.github/auto.json ./.autorc.json
           latest_semver_sha=$(git rev-list --tags="v[0-9]*.[0-9]*.[0-9]*" --max-count=1)
           version=$(auto version --from $latest_semver_sha)
+          rm ./.autorc.json
           echo "::set-output name=version::$version"
 
       - name: setup pnpm

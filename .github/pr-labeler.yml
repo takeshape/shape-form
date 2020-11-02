@@ -1,4 +1,4 @@
-"type: feature 🔨": ["feat/*", "feature/*"]
-"type: bug 🐛": ["fix/*", "bugfix/*", "bug/*"]
-"type: chore 🧺": ["chore/*"]
-"type: documentation ✏️": ["docs/*"]
+"type: feature 🔨": ["*/feature/*", "feat/*", "feature/*"]
+"type: bug 🐛": ["*/bug/*", "fix/*", "bugfix/*", "bug/*"]
+"type: chore 🧺": ["*/chore/*", "chore/*"]
+"type: documentation ✏️": ["*/chore/docs*", "docs/*"]

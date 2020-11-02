@@ -19,20 +19,6 @@ jobs:
       - name: assigning author to pr
         uses: technote-space/assign-author@v1
 
-  add-issue-link:
-    name: add issue link
-    runs-on: ubuntu-latest
-    if: github.event.action == 'opened'
-    steps:
-      - name: adding issue link
-        uses: tkt-actions/add-issue-links@v1.4.0
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          branch-prefix: issue-
-          position: top
-          resolve: true
-          link-style: comment
-
   pr-labeler:
     name: pr labeler
     if: github.event.action == 'opened'
@@ -43,14 +29,38 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  add-pr-to-project-board:
-    name: "add pr to project board"
+  clubhouse-link:
+    name: clubhouse link
+    if: github.event.action == 'opened' && startsWith(github.head_ref, 'ch')
     runs-on: ubuntu-latest
-    if: github.event.action == 'opened'
     steps:
-      - name: add issue to column
-        uses: alex-page/github-project-automation-plus@v0.2.4
+      - name: extract id
+        id: extract-id
+        run: |
+          if [[ $GITHUB_HEAD_REF =~ ^ch([0-9]+) ]]; \
+          then \
+            echo "::set-output name=clubhouse-id::${BASH_REMATCH[1]}"; \
+          fi
+
+      - name: get story name
+        id: get-story-name
+        env:
+          CLUBHOUSE_API_KEY: ${{ secrets.CLUBHOUSE_API_KEY }}
+          CLUBHOUSE_STORY_ID: ${{ steps.extract-id.outputs.clubhouse-id }}
+        run: |
+          story_name=$(curl -X GET \
+            -H "Content-Type: application/json" \
+            -H "Clubhouse-Token: ${CLUBHOUSE_API_KEY}" \
+            -L "https://api.clubhouse.io/api/v3/stories/${CLUBHOUSE_STORY_ID}" | \
+            jq -r ".name")
+          echo "::set-output name=story-name::${story_name}";
+
+      - name: add pr link in comment
+        if: steps.get-story-name.outputs.story-name != ''
+        uses: mshick/add-pr-comment@master
         with:
-          project: ${{ env.PROJECT_BOARD }}
-          column: ${{ env.BEFORE_REVIEW_COLUMN_NAME }}
-          repo-token: ${{ secrets.ORG_PROJECT_TOKEN }}
+          message: |
+            ## Related Clubhouse Story
+            [${{ steps.get-story-name.outputs.story-name }}](https://app.clubhouse.io/takeshape/story/${{ steps.extract-id.outputs.clubhouse-id }})
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: "github-actions[bot]"

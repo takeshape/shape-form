@@ -13,11 +13,14 @@ version-resolver:
   minor:
     labels:
       - "type: feature 🔨"
+      - "type: feature"
 
   patch:
     labels:
       - "type: bug 🐛"
       - "type: chore 🧺"
+      - "type: bug"
+      - "type: chore"
 
 categories:
   - title: Breaking
@@ -27,15 +30,19 @@ categories:
   - title: New
     labels:
       - "type: feature 🔨"
+      - "type: feature"
 
   - title: Bug Fixes
     labels:
       - "type: bug 🐛"
+      - "type: bug"
 
   - title: Maintenance
     labels:
       - "type: chore 🧺"
+      - "type: chore"
 
   - title: Documentation
     labels:
       - "type: documentation ✏️"
+      - "type: documentation"

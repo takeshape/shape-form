@@ -43,6 +43,7 @@ jobs:
           fi
 
       - name: get story name
+        if: steps.extract-id.outputs.clubhouse-id != ''
         id: get-story-name
         env:
           CLUBHOUSE_API_KEY: ${{ secrets.CLUBHOUSE_API_KEY }}

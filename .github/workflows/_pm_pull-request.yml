@@ -4,12 +4,6 @@ on:
   pull_request:
     types: [opened]
 
-env:
-  PROJECT_BOARD: "TakeShape"
-  ICEBOX_COLUMN_NAME: "Icebox"
-  STARTED_COLUMN_NAME: "In Progress"
-  BEFORE_REVIEW_COLUMN_NAME: "Waiting on Review"
-
 jobs:
   assign-author:
     name: assign author

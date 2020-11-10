@@ -1,4 +1,4 @@
-name: pm / push
+name: PM / Push
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   release-drafter:
-    name: release drafter
+    name: Draft Release
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
     env:

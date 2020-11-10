@@ -1,0 +1,17 @@
+name: Release / Pull Request Label Check
+
+on:
+  pull_request:
+    types: [review_requested, labeled, unlabeled]
+
+jobs:
+  labels-present:
+    name: Labels Present
+    if: github.event.action == 'review_requested' || github.event.action == 'labeled' || github.event.action == 'unlabeled'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for labels
+        if: "contains(toJson(github.event.pull_request.labels), '[]')"
+        run: |
+          echo "::error ::PR must be labeled"
+          exit 1

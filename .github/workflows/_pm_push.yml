@@ -55,7 +55,7 @@ jobs:
         if: steps.auto.outputs.version != ''
         uses: pnpm/action-setup@v1.2.1
         with:
-          version: 5.10.4
+          version: 5.13.2
 
       - name: bump version and push
         id: bump

@@ -53,16 +53,16 @@ jobs:
 
       - name: setup pnpm
         if: steps.auto.outputs.version != ''
-        uses: pnpm/action-setup@v1.2.1
+        uses: pnpm/action-setup@v2.0.1
         with:
-          version: 5.13.2
+          version: 6.11.5
 
       - name: bump version and push
         id: bump
         if: steps.auto.outputs.version != ''
         run: |
           git pull --ff-only
-          npm version $BUMP -m "Bump version to: %s [skip ci]"
+          npm run bump $BUMP -m "Bump version to: %s [skip ci]"
           git push origin --follow-tags
         env:
           BUMP: ${{ steps.auto.outputs.version }}

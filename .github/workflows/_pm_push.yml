@@ -62,7 +62,7 @@ jobs:
         if: steps.auto.outputs.version != ''
         run: |
           git pull --ff-only
-          npm run bump $BUMP -m "Bump version to: %s [skip ci]"
+          npm version $BUMP -m "Bump version to: %s [skip ci]"
           git push origin --follow-tags
         env:
           BUMP: ${{ steps.auto.outputs.version }}

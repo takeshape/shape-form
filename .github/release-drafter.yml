@@ -8,41 +8,38 @@ template: |
 version-resolver:
   major:
     labels:
-      - "type: breaking"
+      - "BREAKING"
 
   minor:
     labels:
-      - "type: feature 🔨"
-      - "type: feature"
+      - "feature"
 
   patch:
     labels:
-      - "type: bug 🐛"
-      - "type: chore 🧺"
-      - "type: bug"
-      - "type: chore"
+      - "bug"
+      - "chore"
 
 categories:
   - title: Breaking
     labels:
-      - "type: breaking"
+      - "BREAKING"
 
   - title: New
     labels:
-      - "type: feature 🔨"
-      - "type: feature"
+      - "feature"
 
   - title: Bug Fixes
     labels:
-      - "type: bug 🐛"
-      - "type: bug"
+      - "bug"
 
   - title: Maintenance
     labels:
-      - "type: chore 🧺"
-      - "type: chore"
+      - "chore"
 
   - title: Documentation
     labels:
-      - "type: documentation ✏️"
-      - "type: documentation"
+      - "documentation"
+
+exclude-labels:
+  - 'skip changelog'
+  - 'skip release'

@@ -1,37 +1,37 @@
 {
   "labels": [
     {
-      "name": "type: breaking",
+      "name": "BREAKING",
       "releaseType": "major",
-      "changelogTitle": "Breaking",
+      "changelogTitle": "BREAKING",
       "overwrite": true
     },
     {
-      "name": "type: feature 🔨",
+      "name": "feature",
       "releaseType": "minor",
       "changelogTitle": "New",
       "overwrite": true
     },
     {
-      "name": "type: bug 🐛",
+      "name": "bug",
       "releaseType": "patch",
       "changelogTitle": "Bug Fixes",
       "overwrite": true
     },
     {
-      "name": "type: chore 🧺",
+      "name": "chore",
       "releaseType": "patch",
       "changelogTitle": "Maintenance",
       "overwrite": true
     },
     {
-      "name": "type: documentation ✏️",
+      "name": "documentation",
       "changelogTitle": "Documentation",
       "releaseType": "skip",
       "overwrite": true
     },
     {
-      "name": "release: skip",
+      "name": "skip release",
       "releaseType": "none",
       "overwrite": true,
       "default": true

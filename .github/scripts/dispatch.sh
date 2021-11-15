@@ -13,14 +13,14 @@ event_type=${1:-"trigger:release"}
 repo=${2:-$package_repo}
 
 if [ -z $repo ]; then
-    echo "no repo provided"
-    exit 1
+  echo "no repo provided"
+  exit 1
 fi
 
 curl --silent --fail \
-    --header "Accept: application/vnd.github.everest-preview+json" \
-    --header "Authorization: token ${github_token}" \
-    --data "{ \"event_type\": \"${event_type}\" }" \
-    ${GITHUB_URL_BASE}/${repo}/dispatches
+  --header "Accept: application/vnd.github.everest-preview+json" \
+  --header "Authorization: token ${github_token}" \
+  --data "{ \"event_type\": \"${event_type}\" }" \
+  ${GITHUB_URL_BASE}/${repo}/dispatches
 
 echo "workflow event '${event_type}' triggered in repo '${repo}'"

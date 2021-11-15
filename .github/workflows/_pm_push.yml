@@ -79,13 +79,24 @@ jobs:
             echo "::set-output name=latest_version::${latest_tag//v/}"; \
           fi
 
+      # - name: updating draft release
+      #   if: ${{ steps.tag.outputs.latest_tag }}
+      #   id: release
+      #   uses: takeshape/release-drafter@master
+      #   with:
+      #     name: ${{ steps.tag.outputs.latest_tag }}
+      #     version: ${{ steps.tag.outputs.latest_version }}
+      #     target-commitish: ${{ steps.tag.outputs.latest_semver_sha }}
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: updating draft release
         if: ${{ steps.tag.outputs.latest_tag }}
         id: release
-        uses: takeshape/release-drafter@master
+        uses: release-drafter/release-drafter@v5
         with:
           name: ${{ steps.tag.outputs.latest_tag }}
           version: ${{ steps.tag.outputs.latest_version }}
-          target-commitish: ${{ steps.tag.outputs.latest_semver_sha }}
+          commitish: ${{ steps.tag.outputs.latest_semver_sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

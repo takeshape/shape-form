@@ -26,9 +26,10 @@ jobs:
           git fetch --unshallow --tags
 
       - name: setup node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: '14'
+          cache: 'npm'
 
       - name: setup git
         run: |
@@ -55,7 +56,7 @@ jobs:
         if: steps.auto.outputs.version != ''
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.11.5
+          version: 6.22.2
 
       - name: bump version and push
         id: bump

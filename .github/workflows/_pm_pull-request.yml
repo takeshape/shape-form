@@ -22,3 +22,23 @@ jobs:
         uses: TimonVS/pr-labeler-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  cowsay:
+    name: Cowsay
+    if: github.event.action == 'opened'
+    runs-on: ubuntu-latest
+    steps:
+      - name: get random fact
+        id: randomfact
+        run: |
+          message=$(wget randomfunfacts.com -O - 2>/dev/null | grep \<strong\> | sed "s;^.*<i>\(.*\)</i>.*$;\1;")
+          echo "::set-output name=message::$message"
+        
+      - name: cowsay
+        uses: Code-Hex/neo-cowsay-action@v1
+        with:
+          message: "${{ steps.randomfact.outputs.message }}"
+          cow: 'random'
+          cowsay_on_comment: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}       

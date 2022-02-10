@@ -19,7 +19,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.PROTECTED_PUSH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: unshallow
         run: |
@@ -29,7 +29,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-          cache: 'npm'
 
       - name: setup git
         run: |
@@ -80,17 +79,6 @@ jobs:
             echo "::set-output name=latest_version::${latest_tag//v/}"; \
           fi
 
-      # - name: updating draft release
-      #   if: ${{ steps.tag.outputs.latest_tag }}
-      #   id: release
-      #   uses: takeshape/release-drafter@master
-      #   with:
-      #     name: ${{ steps.tag.outputs.latest_tag }}
-      #     version: ${{ steps.tag.outputs.latest_version }}
-      #     target-commitish: ${{ steps.tag.outputs.latest_semver_sha }}
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: updating draft release
         if: ${{ steps.tag.outputs.latest_tag }}
         id: release
@@ -98,6 +86,6 @@ jobs:
         with:
           name: ${{ steps.tag.outputs.latest_tag }}
           version: ${{ steps.tag.outputs.latest_version }}
-          commitish: ${{ steps.tag.outputs.latest_semver_sha }}
+          # commitish: ${{ steps.tag.outputs.latest_semver_sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

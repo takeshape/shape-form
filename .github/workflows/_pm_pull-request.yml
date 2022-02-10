@@ -28,13 +28,21 @@ jobs:
     if: github.event.action == 'opened'
     runs-on: ubuntu-latest
     steps:
+      - name: coin flip
+        id: coin
+        run: |
+          flip=$(($(($RANDOM%10))%2))
+          echo "::set-output name=flip::$flip"
+          
       - name: get random fact
+        if: ${{ steps.coin.outputs.flip == '1' }}
         id: randomfact
         run: |
           message=$(wget randomfunfacts.com -O - 2>/dev/null | grep \<strong\> | sed "s;^.*<i>\(.*\)</i>.*$;\1;")
           echo "::set-output name=message::$message"
         
       - name: cowsay
+        if: ${{ steps.coin.outputs.flip == '1' }}      
         uses: Code-Hex/neo-cowsay-action@v1
         with:
           message: "${{ steps.randomfact.outputs.message }}"
